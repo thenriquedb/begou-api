@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  database_beagou:
+    image: postgres
+    container_name: database_beagou
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=beagou
+    volumes:
+      - pgdata:/data/postgres
+
+  app:
+    build: .
+    container_name: beagou-api
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/usr/app
+    links:
+      - database_beagou
+    depends_on:
+      - database_beagou
+
+volumes:
+  pgdata:
+    driver: local
