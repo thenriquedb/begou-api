@@ -8,8 +8,6 @@ import {
   ICreateAnimalSizeDTO,
 } from "../IAnimalSizeRepository";
 
-export const AnimalSizesRepositorys = AppDataSource.getRepository(AnimalSize);
-
 export class AnimalSizesRepository implements IAnimalSizesRepository {
   private repository: Repository<AnimalSize>;
 
