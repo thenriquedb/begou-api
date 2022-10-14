@@ -5,7 +5,7 @@ export interface ICreateAnimalPersonalityDTO {
   description: string;
 }
 
-export interface IAnimalPersonalitiesRepository {
+export interface IAnimalPersonalityRepository {
   create: (data: ICreateAnimalPersonalityDTO) => Promise<void>;
   findByName: (name: string) => Promise<AnimalPersonality>;
   list: () => Promise<AnimalPersonality[]>;

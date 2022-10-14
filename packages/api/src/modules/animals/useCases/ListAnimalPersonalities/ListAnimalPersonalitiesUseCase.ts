@@ -1,20 +1,20 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAnimalPersonalitiesRepository } from "@modules/animals/repositories/IAnimalPersonalitiesRepository";
+import { IAnimalPersonalityRepository } from "@modules/animals/repositories/IAnimalPersonalityRepository";
 
 @injectable()
 export class ListAnimalPersonalitiesUseCase {
-  private animalPersonalitiesRepository: IAnimalPersonalitiesRepository;
+  private animalPersonalityRepository: IAnimalPersonalityRepository;
 
   constructor(
-    @inject("AnimalPersonalitiesRepository")
-    animalPersonalitiesRepository: IAnimalPersonalitiesRepository
+    @inject("AnimalPersonalityRepository")
+    animalPersonalityRepository: IAnimalPersonalityRepository
   ) {
-    this.animalPersonalitiesRepository = animalPersonalitiesRepository;
+    this.animalPersonalityRepository = animalPersonalityRepository;
   }
 
   async execute() {
-    const animalPersonalities = await this.animalPersonalitiesRepository.list();
+    const animalPersonalities = await this.animalPersonalityRepository.list();
     return animalPersonalities;
   }
 }

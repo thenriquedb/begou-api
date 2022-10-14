@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAnimalPersonalitiesRepository } from "@modules/animals/repositories/IAnimalPersonalitiesRepository";
+import { IAnimalPersonalityRepository } from "@modules/animals/repositories/IAnimalPersonalityRepository";
 import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
@@ -10,23 +10,23 @@ interface IRequest {
 
 @injectable()
 export class CreateAnimalPersonalityUseCase {
-  private animalPersonalitiesRepository: IAnimalPersonalitiesRepository;
+  private animalPersonalityRepository: IAnimalPersonalityRepository;
 
   constructor(
-    @inject("AnimalPersonalitiesRepository")
-    animalPersonalitiesRepository: IAnimalPersonalitiesRepository
+    @inject("AnimalPersonalityRepository")
+    animalPersonalityRepository: IAnimalPersonalityRepository
   ) {
-    this.animalPersonalitiesRepository = animalPersonalitiesRepository;
+    this.animalPersonalityRepository = animalPersonalityRepository;
   }
 
   async execute({ name, description }: IRequest) {
     const animalSizeAlreadyExists =
-      await this.animalPersonalitiesRepository.findByName(name);
+      await this.animalPersonalityRepository.findByName(name);
 
     if (animalSizeAlreadyExists) {
       throw new AppError("Animal personality already exists");
     }
 
-    await this.animalPersonalitiesRepository.create({ name, description });
+    await this.animalPersonalityRepository.create({ name, description });
   }
 }

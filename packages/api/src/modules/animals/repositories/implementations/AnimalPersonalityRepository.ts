@@ -4,12 +4,12 @@ import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
 import { AnimalPersonality } from "../../entities/AnimalPersonality";
 import {
-  IAnimalPersonalitiesRepository,
+  IAnimalPersonalityRepository,
   ICreateAnimalPersonalityDTO,
-} from "../IAnimalPersonalitiesRepository";
+} from "../IAnimalPersonalityRepository";
 
-export class AnimalPersonalitiesRepository
-  implements IAnimalPersonalitiesRepository {
+export class AnimalPersonalityRepository
+  implements IAnimalPersonalityRepository {
   private repository: Repository<AnimalPersonality>;
 
   constructor() {
