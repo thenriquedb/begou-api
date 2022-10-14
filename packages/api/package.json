@@ -8,6 +8,7 @@
     "test": "jest",
     "typeorm": "typeorm-ts-node-commonjs -d ./src/shared/infra/http/typeorm/data-source.ts",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
+    "migration:generate": "typeorm-ts-node-commonjs -d ./src/shared/infra/http/typeorm/data-source.ts migration:generate",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/shared/infra/http/typeorm/data-source.ts migration:run",
     "migration:revert": "typeorm-ts-node-commonjs -d ./src/shared/infra/http/typeorm/data-source.ts migration:revert"
   },
