@@ -1,4 +1,6 @@
 import { DataSource } from "typeorm";
+import "dotenv/config";
+import "reflect-metadata";
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -7,6 +9,8 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  entities: [`${__dirname}/**/entities/*.ts`],
+  migrations: [`${__dirname}/**/migrations/*.ts`],
 });
 
 AppDataSource.initialize()
@@ -16,3 +20,5 @@ AppDataSource.initialize()
   .catch((err) => {
     console.error("Error during Data Source initialization", err);
   });
+
+export { AppDataSource };

@@ -1,6 +1,5 @@
-import "reflect-metadata";
 import express from "express";
-import "./typeorm";
+import "./typeorm/data-source";
 
 const app = express();
 
