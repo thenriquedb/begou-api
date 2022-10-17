@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { CreateRoleController } from "@modules/accounts/useCase/CreateRole";
-import { ListRolesController } from "@modules/accounts/useCase/ListRoles";
+import { CreateRoleController } from "@modules/accounts/useCases/CreateRole";
+import { ListRolesController } from "@modules/accounts/useCases/ListRoles";
 
 const createRoleController = new CreateRoleController();
 const listRolesController = new ListRolesController();
