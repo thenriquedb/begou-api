@@ -36,6 +36,11 @@ export class CreateAddressTable1665969585312 implements MigrationInterface {
             length: "2",
             isNullable: true,
           },
+          {
+            name: "created_at",
+            type: "timestamp",
+            default: "CURRENT_TIMESTAMP()",
+          },
         ],
         foreignKeys: [
           {
