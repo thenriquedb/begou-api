@@ -6,6 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
 
 import { Uf } from "./Uf";
 import { City } from "./City";
@@ -34,4 +35,10 @@ export class Address {
   @ManyToOne(() => Uf, (uf) => uf.initials)
   @JoinColumn({ name: "uf_initials" })
   uf: Uf;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidV4();
+    }
+  }
 }
