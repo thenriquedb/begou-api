@@ -19,16 +19,25 @@ export class AddressRepository implements IAddressRepository {
       neighborhood,
       street,
       uf_initials: ufInitials,
-      uf: ufInitials,
       zip_code: zipCode,
-      city: zipCode,
     });
 
     await this.repository.save(address);
   }
 
   async findById(id: string) {
-    const address = await this.repository.findOneBy({ id });
-    return address;
+    const address = await this.repository.find({
+      where: { id },
+      relations: {
+        uf: true,
+        city: true,
+      },
+      select: {
+        city: { name: true, zip_code: true },
+        uf: { name: true, initials: true },
+      },
+    });
+
+    return address[0];
   }
 }
