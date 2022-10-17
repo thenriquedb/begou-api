@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IRoleRepository } from "@modules/accounts/repositories/IRoleRepository";
-import { AppError } from "@shared/errors/AppError";
+import { BadRequestError } from "@shared/errors/BadRequestError";
 
 interface IRequest {
   name: string;
@@ -23,7 +23,7 @@ export class CreateRoleUseCase {
     const roleAlreadyExists = await this.roleRepository.findByName(name);
 
     if (roleAlreadyExists) {
-      throw new AppError("Role already exists");
+      throw new BadRequestError("Role already exists");
     }
 
     await this.roleRepository.create({ name, description });

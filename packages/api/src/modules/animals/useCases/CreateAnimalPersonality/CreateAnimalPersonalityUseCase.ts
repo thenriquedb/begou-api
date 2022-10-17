@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IAnimalPersonalityRepository } from "@modules/animals/repositories/IAnimalPersonalityRepository";
-import { AppError } from "@shared/errors/AppError";
+import { BadRequestError } from "@shared/errors/BadRequestError";
 
 interface IRequest {
   name: string;
@@ -24,7 +24,7 @@ export class CreateAnimalPersonalityUseCase {
       await this.animalPersonalityRepository.findByName(name);
 
     if (animalSizeAlreadyExists) {
-      throw new AppError("Animal personality already exists");
+      throw new BadRequestError("Animal personality already exists");
     }
 
     await this.animalPersonalityRepository.create({ name, description });
