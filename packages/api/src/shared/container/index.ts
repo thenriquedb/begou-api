@@ -8,6 +8,8 @@ import { AnimalPersonalityRepository } from "@modules/animals/repositories/imple
 import { AnimalHealthRepository } from "@modules/animals/repositories/implementations/AnimalHealthRepository";
 import { IRoleRepository } from "@modules/accounts/repositories/IRoleRepository";
 import { RoleRepository } from "@modules/accounts/repositories/implementations/RoleRepository";
+import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
+import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
 import { IAddressRepository } from "@modules/adresses/repositories/IAddressRepository";
 import { AddressRepository } from "@modules/adresses/repositories/implementations/AddressRepository";
 import { ICityRepository } from "@modules/adresses/repositories/ICityRepository";
@@ -15,7 +17,9 @@ import { CityRepository } from "@modules/adresses/repositories/implementations/C
 import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
 import { UfRepository } from "@modules/adresses/repositories/implementations/UfRepository";
 import { IAddressService } from "@data/protocols/address-service/IAddressService";
+import { IEncoder } from "@data/protocols/cryptography/IEncoder";
 import { CepPromiseAdapter } from "@shared/infra/zip-code/CepPromiseAdapter";
+import { BCryptAdapter } from "@shared/infra/cryptography/BcryptAdapter";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -40,7 +44,13 @@ container.registerSingleton<IAddressRepository>(
 );
 
 container.registerSingleton<IRoleRepository>("RoleRepository", RoleRepository);
+container.registerSingleton<IUsersRepository>(
+  "UsersRepository",
+  UsersRepository
+);
 container.registerSingleton<IAddressService>(
   "AddressService",
   CepPromiseAdapter
 );
+
+container.registerSingleton<IEncoder>("Encoder", BCryptAdapter);
