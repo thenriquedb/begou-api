@@ -3,7 +3,6 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 import { ICreateInstitutionDTO } from "@modules/institutions/dtos/ICreateInstitutionDTO";
 import { Institution } from "@modules/institutions/entities/Institution";
-import { ICreateAddressDTO } from "@modules/adresses/dtos/ICreateAddressDTO";
 import { Address } from "@modules/adresses/entities/Address";
 
 import { IInstitutionRepository } from "../IInstitutionRepository";
@@ -24,7 +23,12 @@ export class InstitutionRepository implements IInstitutionRepository {
   async findById(id: string) {
     const institution = await this.repository.find({
       where: { id },
-      relations: { address: true },
+      relations: {
+        address: {
+          city: true,
+          uf: true,
+        },
+      },
     });
     return institution[0];
   }
@@ -34,14 +38,14 @@ export class InstitutionRepository implements IInstitutionRepository {
     return institutions;
   }
 
-  async createAddress(id: string, data: ICreateAddressDTO) {
-    const { neighborhood, street, ufInitials, zipCode, complement } = data;
+  async createAddress(id: string, data: Address) {
+    const { neighborhood, street, complement, city, uf } = data;
 
     const address = new Address();
     address.neighborhood = neighborhood;
     address.street = street;
-    address.uf_initials = ufInitials;
-    address.zip_code = zipCode;
+    address.uf = uf;
+    address.city = city;
     address.complement = complement;
 
     const instituition = await this.findById(id);
@@ -51,14 +55,14 @@ export class InstitutionRepository implements IInstitutionRepository {
     AppDataSource.manager.save(instituition);
   }
 
-  async updateAddress(id: string, data: ICreateAddressDTO) {
-    const { neighborhood, street, ufInitials, zipCode, complement } = data;
+  async updateAddress(id: string, data: Partial<Address>) {
+    const { neighborhood, street, city, complement, uf } = data;
     const instituition = await this.findById(id);
 
     instituition.address.neighborhood = neighborhood;
     instituition.address.street = street;
-    instituition.address.uf_initials = ufInitials;
-    instituition.address.zip_code = zipCode;
+    instituition.address.uf = uf;
+    instituition.address.city = city;
     instituition.address.complement = complement;
 
     AppDataSource.manager.save(instituition);

@@ -31,12 +31,10 @@ export class Address {
   @ManyToOne(() => City, (city) => city.zip_code)
   @JoinColumn({ name: "zip_code" })
   city: City;
-  zip_code: string;
 
   @ManyToOne(() => Uf, (uf) => uf.initials)
   @JoinColumn({ name: "uf_initials" })
   uf: Uf;
-  uf_initials: string;
 
   constructor() {
     if (!this.id) {

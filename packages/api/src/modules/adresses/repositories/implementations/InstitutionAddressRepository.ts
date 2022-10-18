@@ -4,9 +4,10 @@ import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
 import { Address } from "../../entities/Address";
 import { ICreateAddressDTO } from "../../dtos/ICreateAddressDTO";
-import { IAddressRepository } from "../IAddressRepository";
+import { IInstitutionAddressRepository } from "../IInstitutionAddressRepository";
 
-export class AddressRepository implements IAddressRepository {
+export class InstitutionAddressRepository
+  implements IInstitutionAddressRepository {
   private repository: Repository<Address>;
 
   constructor() {

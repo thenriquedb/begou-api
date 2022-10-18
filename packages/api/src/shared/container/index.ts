@@ -10,8 +10,8 @@ import { IRoleRepository } from "@modules/accounts/repositories/IRoleRepository"
 import { RoleRepository } from "@modules/accounts/repositories/implementations/RoleRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
 import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
-import { IAddressRepository } from "@modules/adresses/repositories/IAddressRepository";
-import { AddressRepository } from "@modules/adresses/repositories/implementations/AddressRepository";
+import { IInstitutionAddressRepository } from "@modules/adresses/repositories/IInstitutionAddressRepository";
+import { InstitutionAddressRepository } from "@modules/adresses/repositories/implementations/InstitutionAddressRepository";
 import { ICityRepository } from "@modules/adresses/repositories/ICityRepository";
 import { CityRepository } from "@modules/adresses/repositories/implementations/CityRepository";
 import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
@@ -44,9 +44,9 @@ container.registerSingleton<IAnimalHealthRepository>(
 
 container.registerSingleton<IUfRepository>("UfRepository", UfRepository);
 container.registerSingleton<ICityRepository>("CityRepository", CityRepository);
-container.registerSingleton<IAddressRepository>(
-  "AddressRepository",
-  AddressRepository
+container.registerSingleton<IInstitutionAddressRepository>(
+  "InstitutionAddressRepository",
+  InstitutionAddressRepository
 );
 
 container.registerSingleton<IRoleRepository>("RoleRepository", RoleRepository);

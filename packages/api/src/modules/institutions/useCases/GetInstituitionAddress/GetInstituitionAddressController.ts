@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { FindAddressByIdUseCase } from "./FindAddressByIdUseCase";
+import { GetInstituitionAddressUseCase } from "./GetInstituitionAddressUseCase";
 
-export class FindAddressByIdController {
+export class GetAddressByIdController {
   async handle(request: Request, response: Response) {
     const { address_id } = request.params;
 
-    const findAddressByIdUseCase = container.resolve(FindAddressByIdUseCase);
+    const findAddressByIdUseCase = container.resolve(
+      GetInstituitionAddressUseCase
+    );
 
     const address = await findAddressByIdUseCase.execute(address_id);
 

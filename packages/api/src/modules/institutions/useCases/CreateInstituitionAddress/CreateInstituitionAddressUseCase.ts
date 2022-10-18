@@ -1,12 +1,10 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAddressRepository } from "@modules/adresses/repositories/IAddressRepository";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 import { ICityRepository } from "@modules/adresses/repositories/ICityRepository";
 import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
 import { IAddressService } from "@data/protocols/address-service/IAddressService";
 import { BadRequestError } from "@shared/errors/BadRequestError";
-import { Institution } from "@modules/institutions/entities/Institution";
 
 export interface IRequest {
   complement?: string;
@@ -23,12 +21,9 @@ export class CreateInstituitionAddressUseCase {
 
   private cityRepository: ICityRepository;
   private ufRepository: IUfRepository;
-  private addressRepository: IAddressRepository;
   private addressService: IAddressService;
 
   constructor(
-    @inject("AddressRepository")
-    addressRepository: IAddressRepository,
     @inject("UfRepository")
     ufRepository: IUfRepository,
     @inject("CityRepository")
@@ -38,30 +33,30 @@ export class CreateInstituitionAddressUseCase {
     @inject("AddressService")
     addressService: IAddressService
   ) {
-    this.addressRepository = addressRepository;
     this.ufRepository = ufRepository;
     this.cityRepository = cityRepository;
     this.addressService = addressService;
     this.instituitionRepository = instituitionRepository;
   }
 
-  private async createUf(initials: string) {
+  private async getOrCreateUf(initials: string) {
     try {
       const ufName = this.addressService.getUfNameByInitials(initials);
+      let uf = await this.ufRepository.findByInitials(initials);
 
-      const ufAlreadyExists = await this.ufRepository.findByInitials(initials);
-
-      if (ufAlreadyExists) return;
+      if (uf) return uf;
 
       await this.ufRepository.create({ initials, name: ufName });
+      uf = await this.ufRepository.findByInitials(initials);
+      return uf;
     } catch (error) {
       throw new BadRequestError(error.message);
     }
   }
 
-  private async createCity(zipCode: string) {
-    const cityAlreadyExists = await this.cityRepository.findByZipCode(zipCode);
-    if (cityAlreadyExists) return;
+  private async getOrCreateCity(zipCode: string) {
+    let city = await this.cityRepository.findByZipCode(zipCode);
+    if (city) return city;
 
     const completeAddress = await this.addressService.getAddressByZipCode(
       zipCode
@@ -75,6 +70,9 @@ export class CreateInstituitionAddressUseCase {
       name: completeAddress.city,
       zipCode,
     });
+
+    city = await this.cityRepository.findByZipCode(zipCode);
+    return city;
   }
 
   async execute(data: IRequest) {
@@ -95,14 +93,14 @@ export class CreateInstituitionAddressUseCase {
       throw new BadRequestError("Instituition already has address");
     }
 
-    await this.createUf(ufInitials);
-    await this.createCity(zipCode);
+    const uf = await this.getOrCreateUf(ufInitials);
+    const city = await this.getOrCreateCity(zipCode);
 
     await this.instituitionRepository.createAddress(instituitionId, {
       neighborhood,
       street,
-      ufInitials,
-      zipCode,
+      uf,
+      city,
       complement,
     });
   }
