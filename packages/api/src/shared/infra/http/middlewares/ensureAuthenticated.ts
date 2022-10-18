@@ -1,12 +1,10 @@
 import { Request, Response, NextFunction } from "express";
-import { verify } from "jsonwebtoken";
 
 import { UnauthorizedError } from "@shared/errors/UnauthorizedError";
 import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
+import { JWTEAdapter } from "@shared/infra/cryptography/JWTAdapter";
 
-interface IPayload {
-  sub: string;
-}
+const tokenManager = new JWTEAdapter();
 
 export async function ensureAuthenticated(
   request: Request,
@@ -22,7 +20,7 @@ export async function ensureAuthenticated(
   const [, token] = authHeader.split(" ");
 
   try {
-    const { sub: user_id } = verify(token, process.env.JWT_SECRET) as IPayload;
+    const { sub: user_id } = tokenManager.decrypt(token);
 
     const usersRepository = new UsersRepository();
     const user = await usersRepository.findById(user_id);
@@ -30,6 +28,11 @@ export async function ensureAuthenticated(
     if (!user) {
       throw new UnauthorizedError("User does not exists!");
     }
+
+    request.user = {
+      id: user_id,
+      email: user.email,
+    };
 
     next();
   } catch (error) {
