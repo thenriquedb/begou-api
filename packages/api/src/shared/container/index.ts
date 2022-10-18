@@ -22,6 +22,8 @@ import { CepPromiseAdapter } from "@shared/infra/zip-code/CepPromiseAdapter";
 import { BCryptAdapter } from "@shared/infra/cryptography/BcryptAdapter";
 import { IEmailValidator } from "@validators/protocols/IEmailValidator";
 import { EmailValidator } from "@shared/infra/validators/EmailValidatorAdapter";
+import { ITokenManager } from "@data/protocols/cryptography/ITokenManager";
+import { JWTEAdapter } from "@shared/infra/cryptography/JWTAdapter";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -57,3 +59,4 @@ container.registerSingleton<IAddressService>(
 
 container.registerSingleton<IEncoder>("Encoder", BCryptAdapter);
 container.registerSingleton<IEmailValidator>("EmailValidator", EmailValidator);
+container.registerSingleton<ITokenManager>("TokenManager", JWTEAdapter);

@@ -1,10 +1,8 @@
-import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "@shared/errors/AppError";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
-import { IEmailValidator } from "@validators/protocols/IEmailValidator";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { ITokenManager } from "@data/protocols/cryptography/ITokenManager";
 
 import { IUsersRepository } from "../../repositories/IUserRepository";
 
@@ -25,28 +23,22 @@ interface IResponse {
 class AuthenticateUserUseCase {
   private usersRepository: IUsersRepository;
   private encoder: IEncoder;
-  private emailValidator: IEmailValidator;
+  private tokenManager: ITokenManager;
 
   constructor(
     @inject("UsersRepository")
     usersRepository: IUsersRepository,
     @inject("Encoder")
     encoder: IEncoder,
-    @inject("EmailValidator")
-    emailValidator: IEmailValidator
+    @inject("TokenManager")
+    tokenManager: ITokenManager
   ) {
     this.usersRepository = usersRepository;
     this.encoder = encoder;
-    this.emailValidator = emailValidator;
+    this.tokenManager = tokenManager;
   }
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
-    const emailIsValid = this.emailValidator.validate(email);
-
-    if (!emailIsValid) {
-      throw new BadRequestError("Email is invalid");
-    }
-
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
@@ -59,10 +51,7 @@ class AuthenticateUserUseCase {
       throw new AppError("Email or password incorrect");
     }
 
-    const token = sign({}, process.env.JWT_SECRET, {
-      subject: user.id,
-      expiresIn: "1d",
-    });
+    const token = this.tokenManager.encrypt({}, user.id);
 
     return {
       user: {
