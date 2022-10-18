@@ -1,14 +1,5 @@
-import {
-  Entity,
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  ManyToOne,
-  JoinColumn,
-} from "typeorm";
+import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
-
-import { Role } from "./Role";
 
 @Entity("user")
 class User {
@@ -29,11 +20,6 @@ class User {
 
   @CreateDateColumn()
   public created_at: Date;
-
-  @ManyToOne(() => Role, (role) => role.id)
-  @JoinColumn({ name: "role_id" })
-  role: Role;
-  role_id: string;
 
   constructor() {
     if (!this.id) this.id = uuidV4();
