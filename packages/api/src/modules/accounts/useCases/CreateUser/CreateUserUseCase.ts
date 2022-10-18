@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { BadRequestError } from "@shared/errors/BadRequestError";
+import { IEmailValidator } from "@validators/protocols/IEmailValidator";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
@@ -10,19 +11,29 @@ import { IUsersRepository } from "../../repositories/IUserRepository";
 class CreateUserUseCase {
   private usersRepository: IUsersRepository;
   private encoder: IEncoder;
+  private emailValidator: IEmailValidator;
 
   constructor(
     @inject("UsersRepository")
     usersRepository: IUsersRepository,
     @inject("Encoder")
-    encoder: IEncoder
+    encoder: IEncoder,
+    @inject("EmailValidator")
+    emailValidator: IEmailValidator
   ) {
     this.usersRepository = usersRepository;
     this.encoder = encoder;
+    this.emailValidator = emailValidator;
   }
 
   async execute(data: ICreateUserDTO) {
     const { email, name, password, roleId, phoneNumber } = data;
+
+    const emailIsValid = this.emailValidator.validate(email);
+
+    if (!emailIsValid) {
+      throw new BadRequestError("Email is invalid");
+    }
 
     const user = await this.usersRepository.findByEmail(email);
     if (user) {

@@ -20,6 +20,8 @@ import { IAddressService } from "@data/protocols/address-service/IAddressService
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
 import { CepPromiseAdapter } from "@shared/infra/zip-code/CepPromiseAdapter";
 import { BCryptAdapter } from "@shared/infra/cryptography/BcryptAdapter";
+import { IEmailValidator } from "@validators/protocols/IEmailValidator";
+import { EmailValidator } from "@shared/infra/validators/EmailValidatorAdapter";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -54,3 +56,4 @@ container.registerSingleton<IAddressService>(
 );
 
 container.registerSingleton<IEncoder>("Encoder", BCryptAdapter);
+container.registerSingleton<IEmailValidator>("EmailValidator", EmailValidator);
