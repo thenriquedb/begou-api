@@ -5,14 +5,7 @@ import { ICityRepository } from "@modules/adresses/repositories/ICityRepository"
 import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
 import { BadRequestError } from "@shared/errors/BadRequestError";
 import { IAddressService } from "@data/protocols/address-service/IAddressService";
-
-export interface IRequest {
-  complement?: string;
-  neighborhood: string;
-  street: string;
-  ufInitials: string;
-  zipCode: string;
-}
+import { ICreateAddressDTO } from "@modules/adresses/dtos/ICreateAddressDTO";
 
 @injectable()
 export class CreateAddressUseCase {
@@ -39,8 +32,6 @@ export class CreateAddressUseCase {
 
   private async createUf(initials: string) {
     try {
-      console.log({ addressService: this.addressService });
-
       const ufName = this.addressService.getUfNameByInitials(initials);
 
       const ufAlreadyExists = await this.ufRepository.findByInitials(initials);
@@ -71,16 +62,20 @@ export class CreateAddressUseCase {
     });
   }
 
-  async execute(data: IRequest) {
+  async create(data: ICreateAddressDTO) {
     const { neighborhood, street, ufInitials, zipCode, complement } = data;
+
     await this.createUf(ufInitials);
     await this.createCity(zipCode);
-    await this.addressRepository.create({
+
+    const address = await this.addressRepository.create({
       neighborhood,
       street,
       ufInitials,
       zipCode,
       complement,
     });
+
+    return address;
   }
 }

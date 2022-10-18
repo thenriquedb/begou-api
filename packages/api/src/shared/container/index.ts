@@ -24,6 +24,8 @@ import { IEmailValidator } from "@validators/protocols/IEmailValidator";
 import { EmailValidator } from "@shared/infra/validators/EmailValidatorAdapter";
 import { ITokenManager } from "@data/protocols/cryptography/ITokenManager";
 import { JWTEAdapter } from "@shared/infra/cryptography/JWTAdapter";
+import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
+import { InstitutionRepository } from "@modules/institutions/repositories/implementations/InstitutionRepository";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -51,6 +53,11 @@ container.registerSingleton<IRoleRepository>("RoleRepository", RoleRepository);
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
+);
+
+container.registerSingleton<IInstitutionRepository>(
+  "InstitutionRepository",
+  InstitutionRepository
 );
 container.registerSingleton<IAddressService>(
   "AddressService",
