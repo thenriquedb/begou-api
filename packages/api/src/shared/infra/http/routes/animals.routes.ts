@@ -8,6 +8,8 @@ import { ListAnimalSizesController } from "@modules/animals/useCases/ListAnimalS
 import { CreateAnimalHealthController } from "@modules/animals/useCases/CreateAnimalHealth";
 import { ListAnimalHealthController } from "@modules/animals/useCases/ListAnimalHealth";
 
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+
 const createAnimalSizeController = new CreateAnimalSizeController();
 const createAnimalPersonalityController = new CreateAnimalPersonalityController();
 const listAnimalPersonalitiesController = new ListAnimalPersonalitiesController();
@@ -17,6 +19,7 @@ const listAnimalHealthController = new ListAnimalHealthController()
 
 const animalsRoutes = Router();
 
+animalsRoutes.use(ensureAuthenticated)
 animalsRoutes.post("/size", createAnimalSizeController.handle);
 animalsRoutes.get("/size", listAnimalSizesController.handle);
 animalsRoutes.post("/personality", createAnimalPersonalityController.handle);

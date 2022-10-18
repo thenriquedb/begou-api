@@ -13,7 +13,7 @@ import { City } from "./City";
 
 @Entity("address")
 export class Address {
-  @PrimaryColumn()
+  @PrimaryColumn({ length: 36 })
   id: string;
 
   @Column()
