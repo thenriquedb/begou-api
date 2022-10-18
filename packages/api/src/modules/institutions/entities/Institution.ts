@@ -1,8 +1,17 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  CreateDateColumn,
+  OneToOne,
+  JoinColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
+import { Address } from "../../adresses/entities/Address";
+
 @Entity("institution")
-class AnimalHealth {
+export class Institution {
   @PrimaryColumn()
   id: string;
 
@@ -12,11 +21,14 @@ class AnimalHealth {
   @CreateDateColumn()
   created_at: string;
 
+  @OneToOne(() => Address)
+  @JoinColumn({ name: "address_id" })
+  address: Address;
+  address_id: string;
+
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
     }
   }
 }
-
-export { AnimalHealth };
