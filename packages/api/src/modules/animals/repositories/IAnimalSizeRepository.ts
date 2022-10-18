@@ -1,9 +1,5 @@
+import { ICreateAnimalSizeDTO } from "@modules/animals/dtos/ICreateAnimalSizeDTO";
 import { AnimalSize } from "@modules/animals/entities/AnimalSize";
-
-export interface ICreateAnimalSizeDTO {
-  name: string;
-  description: string;
-}
 
 export interface IAnimalSizesRepository {
   create: (data: ICreateAnimalSizeDTO) => Promise<void>;

@@ -3,7 +3,8 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
 import { Uf } from "../../entities/Uf";
-import { ICreateUfDTO, IUfRepository } from "../IUfRepository";
+import { ICreateUfDTO } from "../../dtos/ICreateUfDTO";
+import { IUfRepository } from "../IUfRepository";
 
 export class UfRepository implements IUfRepository {
   private repository: Repository<Uf>;

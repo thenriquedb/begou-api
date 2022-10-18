@@ -2,11 +2,9 @@ import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
+import { ICreateAnimalHealthDTO } from "../../dtos/ICreateAnimalHealthDTO";
 import { AnimalHealth } from "../../entities/AnimalHealth";
-import {
-  IAnimalHealthRepository,
-  ICreateAnimalHealthDTO,
-} from "../IAnimalHealthRepository";
+import { IAnimalHealthRepository } from "../IAnimalHealthRepository";
 
 export class AnimalHealthRepository implements IAnimalHealthRepository {
   private repository: Repository<AnimalHealth>;

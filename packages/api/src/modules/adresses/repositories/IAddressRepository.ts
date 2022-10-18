@@ -1,12 +1,5 @@
 import { Address } from "../entities/Address";
-
-export interface ICreateAddressDTO {
-  complement?: string;
-  neighborhood: string;
-  street: string;
-  ufInitials: string;
-  zipCode: string;
-}
+import { ICreateAddressDTO } from "../dtos/ICreateAddressDTO";
 
 export interface IAddressRepository {
   create: (data: ICreateAddressDTO) => Promise<void>;

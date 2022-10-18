@@ -1,9 +1,5 @@
 import { City } from "../entities/City";
-
-export interface ICreateCityDTO {
-  zipCode: string;
-  name: string;
-}
+import { ICreateCityDTO } from "../dtos/ICreateCityDTO";
 
 export interface ICityRepository {
   create: (data: ICreateCityDTO) => Promise<void>;

@@ -3,7 +3,8 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
 import { City } from "../../entities/City";
-import { ICityRepository, ICreateCityDTO } from "../ICityRepository";
+import { ICreateCityDTO } from "../../dtos/ICreateCityDTO";
+import { ICityRepository } from "../ICityRepository";
 
 export class CityRepository implements ICityRepository {
   private repository: Repository<City>;

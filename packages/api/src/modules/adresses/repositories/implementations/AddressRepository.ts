@@ -3,7 +3,8 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
 import { Address } from "../../entities/Address";
-import { IAddressRepository, ICreateAddressDTO } from "../IAddressRepository";
+import { ICreateAddressDTO } from "../../dtos/ICreateAddressDTO";
+import { IAddressRepository } from "../IAddressRepository";
 
 export class AddressRepository implements IAddressRepository {
   private repository: Repository<Address>;

@@ -1,9 +1,5 @@
+import { ICreateAnimalHealthDTO } from "@modules/animals/dtos/ICreateAnimalHealthDTO";
 import { AnimalHealth } from "@modules/animals/entities/AnimalHealth";
-
-export interface ICreateAnimalHealthDTO {
-  name: string;
-  description: string;
-}
 
 export interface IAnimalHealthRepository {
   create: (data: ICreateAnimalHealthDTO) => Promise<void>;
