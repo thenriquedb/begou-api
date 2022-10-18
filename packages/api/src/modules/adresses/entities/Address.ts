@@ -11,7 +11,7 @@ import { v4 as uuidV4 } from "uuid";
 import { Uf } from "./Uf";
 import { City } from "./City";
 
-@Entity("address")
+@Entity("institution_address")
 export class Address {
   @PrimaryColumn({ length: 36 })
   id: string;
