@@ -26,6 +26,8 @@ import { ITokenManager } from "@data/protocols/cryptography/ITokenManager";
 import { JWTEAdapter } from "@shared/infra/cryptography/JWTAdapter";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 import { InstitutionRepository } from "@modules/institutions/repositories/implementations/InstitutionRepository";
+import { IInstitutionAssociateRepository } from "@modules/institutions/repositories/IInstitutionAssociateRepository";
+import { InstitutionAssociateRepository } from "@modules/institutions/repositories/implementations/InstitutionAssociateRepository";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -59,6 +61,12 @@ container.registerSingleton<IInstitutionRepository>(
   "InstitutionRepository",
   InstitutionRepository
 );
+
+container.registerSingleton<IInstitutionAssociateRepository>(
+  "InstitutionAssociateRepository",
+  InstitutionAssociateRepository
+);
+
 container.registerSingleton<IAddressService>(
   "AddressService",
   CepPromiseAdapter
