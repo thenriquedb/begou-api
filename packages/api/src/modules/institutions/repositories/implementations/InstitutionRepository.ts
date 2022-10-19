@@ -17,6 +17,7 @@ export class InstitutionRepository implements IInstitutionRepository {
   async create(data: ICreateInstitutionDTO) {
     const { name } = data;
     const institution = this.repository.create({ name });
+
     await this.repository.save(institution);
   }
 
@@ -51,8 +52,8 @@ export class InstitutionRepository implements IInstitutionRepository {
     const instituition = await this.findById(id);
     instituition.address = address;
 
-    AppDataSource.manager.save(address);
-    AppDataSource.manager.save(instituition);
+    await AppDataSource.manager.save(address);
+    await AppDataSource.manager.save(instituition);
   }
 
   async updateAddress(id: string, data: Partial<Address>) {

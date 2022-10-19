@@ -1,4 +1,3 @@
-import { ICreateAddressDTO } from "@modules/adresses/dtos/ICreateAddressDTO";
 import { Address } from "@modules/adresses/entities/Address";
 import { ICreateInstitutionDTO } from "@modules/institutions/dtos/ICreateInstitutionDTO";
 import { Institution } from "@modules/institutions/entities/Institution";
