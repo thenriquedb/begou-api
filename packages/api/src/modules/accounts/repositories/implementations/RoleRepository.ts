@@ -28,6 +28,11 @@ export class RoleRepository implements IRoleRepository {
     return role;
   }
 
+  async findById(id: string) {
+    const role = this.repository.findOneBy({ id });
+    return role;
+  }
+
   async list() {
     const roles = await this.repository.find();
     return roles;

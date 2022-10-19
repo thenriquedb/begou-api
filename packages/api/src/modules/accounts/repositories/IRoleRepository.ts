@@ -8,5 +8,6 @@ export interface ICreateRoleDTO {
 export interface IRoleRepository {
   create: (data: ICreateRoleDTO) => Promise<void>;
   findByName: (name: string) => Promise<Role>;
+  findById: (id: string) => Promise<Role>;
   list: () => Promise<Role[]>;
 }
