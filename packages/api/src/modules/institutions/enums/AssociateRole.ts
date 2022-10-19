@@ -1,5 +1,4 @@
 export enum AssociateRole {
-  ADMIN = "admin",
   FOUNDER = "founder",
-  ASSOCIATE = "associate",
+  VOLUNTARY = "voluntary",
 }
