@@ -1,4 +1,5 @@
 import {
+  Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
@@ -15,6 +16,15 @@ import { Institution } from "@modules/institutions/entities/Institution";
 export class InstitutionAssociate {
   @PrimaryColumn({ length: 36 })
   id: string;
+
+  @Column({ length: 36 })
+  institution_id: string;
+
+  @Column({ length: 36 })
+  user_id: string;
+
+  @Column({ length: 36 })
+  role_id: string;
 
   @ManyToOne(() => Institution)
   @JoinColumn({ name: "institution_id" })
