@@ -3,29 +3,36 @@ import { Router } from "express";
 import { GetInstituitionController } from "@modules/institutions/useCases/GetInstituition";
 import { CreateInstituitionController } from "@modules/institutions/useCases/CreateInstituition";
 import { CreateInstituitionAddressController } from "@modules/institutions/useCases/CreateInstituitionAddress";
-import { GetAddressByIdController } from "@modules/institutions/useCases/GetInstituitionAddress";
+import { GetInstituitionAddressController } from "@modules/institutions/useCases/GetInstituitionAddress";
+import { CreateInstituitionAssociateController } from "@modules/institutions/useCases/CreateInstituitionAssociate";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 const createInstituitionAddressController =
   new CreateInstituitionAddressController();
-const getAddressByIdController = new GetAddressByIdController();
+const getInstituitionAddressController = new GetInstituitionAddressController();
 const createInstituitionController = new CreateInstituitionController();
 const getInstituitionController = new GetInstituitionController();
+const createInstituitionAssociateController =
+  new CreateInstituitionAssociateController();
 
 const institutionsRoutes = Router();
 
 institutionsRoutes.use(ensureAuthenticated);
 institutionsRoutes.post("/", createInstituitionController.handle);
-institutionsRoutes.get("/:instituition_id", getInstituitionController.handle);
+institutionsRoutes.get("/:institution_id", getInstituitionController.handle);
 institutionsRoutes.post(
-  "/:instituition_id/address",
+  "/:institution_id/address",
   createInstituitionAddressController.handle
+);
+institutionsRoutes.post(
+  "/:institution_id/associates",
+  createInstituitionAssociateController.handle
 );
 
 institutionsRoutes.get(
-  "/:instituition_id/address",
-  getAddressByIdController.handle
+  "/:institution_id/address",
+  getInstituitionAddressController.handle
 );
 
 export { institutionsRoutes };

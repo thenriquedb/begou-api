@@ -3,15 +3,15 @@ import { container } from "tsyringe";
 
 import { GetInstituitionAddressUseCase } from "./GetInstituitionAddressUseCase";
 
-export class GetAddressByIdController {
+export class GetInstituitionAddressController {
   async handle(request: Request, response: Response) {
-    const { address_id } = request.params;
+    const { institution_id } = request.params;
 
-    const findAddressByIdUseCase = container.resolve(
+    const getInstituitionAddressUseCase = container.resolve(
       GetInstituitionAddressUseCase
     );
 
-    const address = await findAddressByIdUseCase.execute(address_id);
+    const address = await getInstituitionAddressUseCase.execute(institution_id);
 
     return response.status(201).json(address);
   }

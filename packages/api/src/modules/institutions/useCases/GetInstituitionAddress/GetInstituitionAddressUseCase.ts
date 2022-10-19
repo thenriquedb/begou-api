@@ -1,23 +1,23 @@
 import { inject, injectable } from "tsyringe";
 
-import { IInstitutionAddressRepository } from "@modules/adresses/repositories/IInstitutionAddressRepository";
+import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 
 @injectable()
 export class GetInstituitionAddressUseCase {
-  private institutionAddressRepository: IInstitutionAddressRepository;
+  private institutionRepository: IInstitutionRepository;
 
   constructor(
-    @inject("InstitutionAddressRepository")
-    institutionAddressRepository: IInstitutionAddressRepository
+    @inject("InstitutionRepository")
+    institutionRepository: IInstitutionRepository
   ) {
-    this.institutionAddressRepository = institutionAddressRepository;
+    this.institutionRepository = institutionRepository;
   }
 
   async execute(instituitionId: string) {
-    const address = await this.institutionAddressRepository.findById(
+    const institution = await this.institutionRepository.findById(
       instituitionId
     );
 
-    return address;
+    return institution.address;
   }
 }
