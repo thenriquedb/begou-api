@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { FindOptionsWhere, Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 import { InstitutionAssociate } from "@modules/institutions/entities/InstitutionAssociate";
@@ -24,5 +24,16 @@ export class InstitutionAssociateRepository
     });
 
     await this.repository.save(institutionAssociate);
+  }
+
+  async findBy(where: FindOptionsWhere<InstitutionAssociate>) {
+    const associtate = await this.repository.findOne({
+      where,
+      relations: {
+        role: true,
+      },
+    });
+
+    return associtate;
   }
 }
