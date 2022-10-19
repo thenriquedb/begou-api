@@ -10,7 +10,8 @@
     "migration:create": "typeorm-ts-node-commonjs migration:create",
     "migration:generate": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:generate",
     "migration:run": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:run",
-    "migration:revert": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:revert"
+    "migration:revert": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:revert",
+    "seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/dist/cli/index.js -d ./src/shared/infra/http/typeorm/data-source.ts seed"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -47,6 +48,7 @@
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.3.10",
+    "typeorm-extension": "^2.1.15",
     "uuid": "^9.0.0",
     "validator": "^13.7.0"
   }
