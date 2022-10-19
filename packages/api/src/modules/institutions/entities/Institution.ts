@@ -24,7 +24,6 @@ export class Institution {
   @OneToOne(() => Address)
   @JoinColumn({ name: "address_id" })
   address: Address;
-  address_id: string;
 
   constructor() {
     if (!this.id) {
