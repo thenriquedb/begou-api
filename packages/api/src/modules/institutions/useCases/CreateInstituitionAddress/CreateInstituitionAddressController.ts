@@ -8,7 +8,7 @@ export class CreateInstituitionAddressController {
     const { neighborhood, street, ufInitials, zipCode, complement } =
       request.body;
 
-    const { instituition_id } = request.params;
+    const { institution_id } = request.params;
 
     const createInstituitionAddressUseCase = container.resolve(
       CreateInstituitionAddressUseCase
@@ -20,7 +20,7 @@ export class CreateInstituitionAddressController {
       ufInitials,
       zipCode,
       complement,
-      instituitionId: instituition_id,
+      instituitionId: institution_id,
     });
 
     return response.status(201).send();
