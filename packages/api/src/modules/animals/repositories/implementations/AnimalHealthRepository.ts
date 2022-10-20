@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { In, Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
@@ -27,6 +27,16 @@ export class AnimalHealthRepository implements IAnimalHealthRepository {
   async findByName(name: string) {
     const animalHealth = await this.repository.findOneBy({ name });
     return animalHealth;
+  }
+
+  async findById(id: string) {
+    const animalHealth = await this.repository.findOneBy({ id });
+    return animalHealth;
+  }
+
+  async findByIds(ids: string[]) {
+    const animalHealths = await this.repository.findBy({ id: In(ids) });
+    return animalHealths;
   }
 
   async list() {

@@ -4,5 +4,7 @@ import { AnimalHealth } from "@modules/animals/entities/AnimalHealth";
 export interface IAnimalHealthRepository {
   create: (data: ICreateAnimalHealthDTO) => Promise<void>;
   findByName: (name: string) => Promise<AnimalHealth>;
+  findById: (id: string) => Promise<AnimalHealth>;
+  findByIds: (id: string[]) => Promise<AnimalHealth[]>;
   list: () => Promise<AnimalHealth[]>;
 }
