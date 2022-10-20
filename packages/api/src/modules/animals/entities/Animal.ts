@@ -26,6 +26,9 @@ export class Animal {
   @Column()
   name: string;
 
+  @Column()
+  available: boolean;
+
   @Column({
     type: "enum",
     enum: AnimalGenre,
@@ -77,5 +80,7 @@ export class Animal {
     if (!this.id) {
       this.id = UUID.generate();
     }
+
+    this.available = true;
   }
 }
