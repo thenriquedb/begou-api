@@ -28,6 +28,10 @@ import { IInstitutionRepository } from "@modules/institutions/repositories/IInst
 import { InstitutionRepository } from "@modules/institutions/repositories/implementations/InstitutionRepository";
 import { IInstitutionAssociateRepository } from "@modules/institutions/repositories/IInstitutionAssociateRepository";
 import { InstitutionAssociateRepository } from "@modules/institutions/repositories/implementations/InstitutionAssociateRepository";
+import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
+import { AnimalRepository } from "@modules/animals/repositories/implementations/AnimalRepository";
+import { ISpecieRepository } from "@modules/animals/repositories/ISpecieRepository";
+import { SpecieRepository } from "@modules/animals/repositories/implementations/SpecieRepository";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -42,6 +46,11 @@ container.registerSingleton<IAnimalPersonalityRepository>(
 container.registerSingleton<IAnimalHealthRepository>(
   "AnimalHealthRepository",
   AnimalHealthRepository
+);
+
+container.registerSingleton<ISpecieRepository>(
+  "SpecieRepository",
+  SpecieRepository
 );
 
 container.registerSingleton<IUfRepository>("UfRepository", UfRepository);
@@ -65,6 +74,11 @@ container.registerSingleton<IInstitutionRepository>(
 container.registerSingleton<IInstitutionAssociateRepository>(
   "InstitutionAssociateRepository",
   InstitutionAssociateRepository
+);
+
+container.registerSingleton<IAnimalRepository>(
+  "AnimalRepository",
+  AnimalRepository
 );
 
 container.registerSingleton<IAddressService>(
