@@ -48,8 +48,8 @@ export class Animal {
   specie: Specie;
 
   @ManyToOne(() => StageOfLife)
-  @JoinColumn({ name: "stage_of_life" })
-  stageOfLife: StageOfLife;
+  @JoinColumn({ name: "stage_of_life_id" })
+  stage_of_life: StageOfLife;
 
   @ManyToMany(() => AnimalHealth)
   @JoinTable({

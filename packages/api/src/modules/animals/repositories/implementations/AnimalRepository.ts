@@ -23,6 +23,7 @@ export class AnimalRepository implements IAnimalRepository {
       size,
       specie,
       description,
+      stageOfLife,
     } = data;
 
     const animal = this.repository.create({
@@ -34,13 +35,24 @@ export class AnimalRepository implements IAnimalRepository {
       size,
       specie,
       description,
+      stageOfLife,
     });
 
     await this.repository.save(animal);
   }
 
   async findById(id: string) {
-    const animal = await this.repository.findOneBy({ id });
+    const animal = await this.repository.findOne({
+      where: { id },
+      relations: {
+        healths: true,
+        personalities: true,
+        stage_of_life: true,
+        size: true,
+        specie: true,
+      },
+    });
+
     return animal;
   }
 }

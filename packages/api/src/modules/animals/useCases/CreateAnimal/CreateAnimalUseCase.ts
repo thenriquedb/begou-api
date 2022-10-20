@@ -8,6 +8,7 @@ import { AnimalGenre } from "@modules/animals/enums/Genre";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 import { BadRequestError } from "@shared/errors/BadRequestError";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
+import { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
 
 interface IRequest {
   name: string;
@@ -17,6 +18,7 @@ interface IRequest {
   specie_id: string;
   size_id: string;
   health_ids?: string[];
+  stage_of_life_id?: string;
   personality_ids?: string[];
 }
 
@@ -28,6 +30,7 @@ export class CreateAnimalUseCase {
   private specieRepository: ISpecieRepository;
   private institutionRepository: IInstitutionRepository;
   private animalRepository: IAnimalRepository;
+  private stageOfLifeRepository: IStageOfLifeRepository;
 
   constructor(
     @inject("AnimalHealthRepository")
@@ -40,6 +43,8 @@ export class CreateAnimalUseCase {
     specieRepository: ISpecieRepository,
     @inject("InstitutionRepository")
     institutionRepository: IInstitutionRepository,
+    @inject("StageOfLifeRepository")
+    stageOfLifeRepository: IStageOfLifeRepository,
     @inject("AnimalRepository")
     animalRepository: IAnimalRepository
   ) {
@@ -49,6 +54,7 @@ export class CreateAnimalUseCase {
     this.specieRepository = specieRepository;
     this.institutionRepository = institutionRepository;
     this.animalRepository = animalRepository;
+    this.stageOfLifeRepository = stageOfLifeRepository;
   }
 
   private async getInstitution(institution_id: string) {
@@ -87,6 +93,7 @@ export class CreateAnimalUseCase {
       specie_id,
       health_ids = [],
       personality_ids = [],
+      stage_of_life_id,
     } = data;
 
     const genre = AnimalGenre[genreRaw];
@@ -103,10 +110,14 @@ export class CreateAnimalUseCase {
     const personalities = await this.animalPersonalityRepository.findByIds(
       personality_ids
     );
+    const stageOfLife = await this.stageOfLifeRepository.findById(
+      stage_of_life_id
+    );
 
     await this.animalRepository.create({
       description,
       genre: genreRaw,
+      stage_of_life: stageOfLife,
       healths,
       institution,
       name,

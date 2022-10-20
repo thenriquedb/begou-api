@@ -6,12 +6,14 @@ import { CreateInstituitionAddressController } from "@modules/institutions/useCa
 import { GetInstituitionAddressController } from "@modules/institutions/useCases/GetInstituitionAddress";
 import { CreateInstituitionAssociateController } from "@modules/institutions/useCases/CreateInstituitionAssociate";
 import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
+import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { canBe } from "../middlewares/canBe";
 
 const createAnimalController = new CreateAnimalController();
+const getAnimalController = new GetAnimalController();
 const createInstituitionAddressController =
   new CreateInstituitionAddressController();
 const getInstituitionAddressController = new GetInstituitionAddressController();
@@ -44,6 +46,11 @@ institutionsRoutes.post(
   "/:institution_id/animals",
   canBe([AssociateRole.FOUNDER]),
   createAnimalController.handle
+);
+
+institutionsRoutes.get(
+  "/:institution_id/animals/:animal_id",
+  getAnimalController.handle
 );
 
 institutionsRoutes.get(

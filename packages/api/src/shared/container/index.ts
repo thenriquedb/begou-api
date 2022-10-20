@@ -32,6 +32,8 @@ import { IAnimalRepository } from "@modules/animals/repositories/IAnimalReposito
 import { AnimalRepository } from "@modules/animals/repositories/implementations/AnimalRepository";
 import { ISpecieRepository } from "@modules/animals/repositories/ISpecieRepository";
 import { SpecieRepository } from "@modules/animals/repositories/implementations/SpecieRepository";
+import { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
+import { StageOfLifeRepository } from "@modules/animals/repositories/implementations/StageOfLifeRepository";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -51,6 +53,11 @@ container.registerSingleton<IAnimalHealthRepository>(
 container.registerSingleton<ISpecieRepository>(
   "SpecieRepository",
   SpecieRepository
+);
+
+container.registerSingleton<IStageOfLifeRepository>(
+  "StageOfLifeRepository",
+  StageOfLifeRepository
 );
 
 container.registerSingleton<IUfRepository>("UfRepository", UfRepository);
