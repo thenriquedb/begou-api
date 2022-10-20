@@ -4,6 +4,7 @@ import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 import { ICreateInstitutionDTO } from "@modules/institutions/dtos/ICreateInstitutionDTO";
 import { Institution } from "@modules/institutions/entities/Institution";
 import { Address } from "@modules/adresses/entities/Address";
+import { IFindInstitutionDTO } from "@modules/institutions/dtos/IFindInstitutionDTO";
 
 import { IInstitutionRepository } from "../IInstitutionRepository";
 
@@ -22,7 +23,7 @@ export class InstitutionRepository implements IInstitutionRepository {
   }
 
   async findById(id: string) {
-    const institution = await this.repository.find({
+    const institution = await this.repository.findOne({
       where: { id },
       relations: {
         address: {
@@ -31,11 +32,20 @@ export class InstitutionRepository implements IInstitutionRepository {
         },
       },
     });
-    return institution[0];
+    return institution;
   }
 
-  async list() {
-    const institutions = await this.repository.find();
+  async find({ zip_code }: IFindInstitutionDTO) {
+    const institutions = await this.repository.find({
+      where: {
+        address: {
+          city: {
+            zip_code,
+          },
+        },
+      },
+    });
+
     return institutions;
   }
 
