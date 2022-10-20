@@ -9,6 +9,7 @@ import { AnimalHealthSeeder } from "./AnimalHealthSeeder";
 import { AnimalPersonalitySeeder } from "./AnimalPersonalitySeeder";
 import { AnimalSizeSeeder } from "./AnimalSizeSeeder";
 import { SpecieSeeder } from "./SpecieSeeder";
+import { StageOfLifeSeeder } from "./StageOfLifeSeeder";
 
 export class MainSeeder implements Seeder {
   async run(dataSource: DataSource, factoryManager: SeederFactoryManager) {
@@ -20,5 +21,6 @@ export class MainSeeder implements Seeder {
     await runSeeder(dataSource, AnimalPersonalitySeeder);
     await runSeeder(dataSource, AnimalSizeSeeder);
     await runSeeder(dataSource, SpecieSeeder);
+    await runSeeder(dataSource, StageOfLifeSeeder);
   }
 }
