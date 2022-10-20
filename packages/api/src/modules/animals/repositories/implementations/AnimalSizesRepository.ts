@@ -29,6 +29,11 @@ export class AnimalSizesRepository implements IAnimalSizesRepository {
     return animalSize;
   }
 
+  async findById(id: string) {
+    const animalSize = await this.repository.findOneBy({ id });
+    return animalSize;
+  }
+
   async list() {
     const animalSizes = this.repository.find();
     return animalSizes;
