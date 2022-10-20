@@ -7,6 +7,7 @@ import { GetInstituitionAddressController } from "@modules/institutions/useCases
 import { CreateInstituitionAssociateController } from "@modules/institutions/useCases/CreateInstituitionAssociate";
 import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
 import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
+import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
@@ -21,6 +22,8 @@ const createInstituitionController = new CreateInstituitionController();
 const getInstituitionController = new GetInstituitionController();
 const createInstituitionAssociateController =
   new CreateInstituitionAssociateController();
+const listAnimalsByInstitutionController =
+  new ListAnimalsByInstitutionController();
 
 const institutionsRoutes = Router();
 
@@ -46,6 +49,10 @@ institutionsRoutes.post(
   "/:institution_id/animals",
   canBe([AssociateRole.FOUNDER]),
   createAnimalController.handle
+);
+institutionsRoutes.get(
+  "/:institution_id/animals",
+  listAnimalsByInstitutionController.handle
 );
 
 institutionsRoutes.get(

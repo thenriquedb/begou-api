@@ -43,6 +43,9 @@ export class Animal {
   @JoinColumn({ name: "institution_id" })
   institution: Institution;
 
+  @Column()
+  institution_id: string;
+
   @ManyToOne(() => Specie)
   @JoinColumn({ name: "specie_id" })
   specie: Specie;
