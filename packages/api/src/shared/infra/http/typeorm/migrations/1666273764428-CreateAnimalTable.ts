@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 import { AnimalGenre } from "@modules/animals/enums/Genre";
 
-export class CreateAnimalTable1666229779450 implements MigrationInterface {
+export class CreateAnimalTable1666273764428 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
