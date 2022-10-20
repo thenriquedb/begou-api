@@ -6,7 +6,8 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
+
+import { UUID } from "@shared/infra/cryptography/UUID";
 
 import { Address } from "../../adresses/entities/Address";
 
@@ -27,7 +28,7 @@ export class Institution {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4();
+      this.id = UUID.generate();
     }
   }
 }

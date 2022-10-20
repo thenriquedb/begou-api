@@ -1,5 +1,6 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
+
+import { UUID } from "@shared/infra/cryptography/UUID";
 
 @Entity("user")
 class User {
@@ -22,7 +23,7 @@ class User {
   public created_at: Date;
 
   constructor() {
-    if (!this.id) this.id = uuidV4();
+    if (!this.id) this.id = UUID.generate();
   }
 }
 

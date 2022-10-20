@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryColumn, CreateDateColumn } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
+
+import { UUID } from "@shared/infra/cryptography/UUID";
 
 @Entity("specie")
 export class Specie {
@@ -14,7 +15,7 @@ export class Specie {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4();
+      this.id = UUID.generate();
     }
   }
 }

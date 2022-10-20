@@ -8,8 +8,8 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
 
+import { UUID } from "@shared/infra/cryptography/UUID";
 import { AnimalSize } from "@modules/animals/entities/AnimalSize";
 import { Institution } from "@modules/institutions/entities/Institution";
 import { Specie } from "@modules/animals/entities/Specie";
@@ -75,7 +75,7 @@ export class Animal {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4();
+      this.id = UUID.generate();
     }
   }
 }

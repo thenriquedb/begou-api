@@ -6,8 +6,8 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
 
+import { UUID } from "@shared/infra/cryptography/UUID";
 import { User } from "@modules/accounts/entities/User";
 import { Role } from "@modules/accounts/entities/Role";
 import { Institution } from "@modules/institutions/entities/Institution";
@@ -43,7 +43,7 @@ export class InstitutionAssociate {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4();
+      this.id = UUID.generate();
     }
   }
 }
