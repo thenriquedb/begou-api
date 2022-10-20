@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { In, Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 
@@ -28,6 +28,16 @@ export class AnimalPersonalityRepository
   async findByName(name: string) {
     const animalPersonality = await this.repository.findOneBy({ name });
     return animalPersonality;
+  }
+
+  async findById(id: string) {
+    const animalPersonality = await this.repository.findOneBy({ id });
+    return animalPersonality;
+  }
+
+  async findByIds(ids: string[]) {
+    const animalPersonalitys = this.repository.findBy({ id: In(ids) });
+    return animalPersonalitys;
   }
 
   async list() {
