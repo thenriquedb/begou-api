@@ -16,6 +16,7 @@ import { Specie } from "@modules/animals/entities/Specie";
 import { AnimalHealth } from "@modules/animals/entities/AnimalHealth";
 import { AnimalPersonality } from "@modules/animals/entities/AnimalPersonality";
 import { AnimalGenre } from "@modules/animals/enums/Genre";
+import { StageOfLife } from "@modules/animals/entities/StageOfLife";
 
 @Entity("animal")
 export class Animal {
@@ -45,6 +46,10 @@ export class Animal {
   @ManyToOne(() => Specie)
   @JoinColumn({ name: "specie_id" })
   specie: Specie;
+
+  @ManyToOne(() => StageOfLife)
+  @JoinColumn({ name: "stage_of_life" })
+  stageOfLife: StageOfLife;
 
   @ManyToMany(() => AnimalHealth)
   @JoinTable({
