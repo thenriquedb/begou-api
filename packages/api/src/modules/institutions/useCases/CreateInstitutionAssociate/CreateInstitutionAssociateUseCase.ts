@@ -15,7 +15,7 @@ interface IRequest {
 }
 
 @injectable()
-export class CreateInstituitionAssociateUseCase {
+export class CreateInstitutionAssociateUseCase {
   private instituitionRepository: IInstitutionRepository;
   private usersRepository: IUsersRepository;
   private roleRepository: IRoleRepository;
@@ -42,7 +42,7 @@ export class CreateInstituitionAssociateUseCase {
     );
 
     if (!instituition) {
-      throw new BadRequestError("Instituition not found");
+      throw new BadRequestError("Institution not found");
     }
 
     associates.map(async (associate) => {

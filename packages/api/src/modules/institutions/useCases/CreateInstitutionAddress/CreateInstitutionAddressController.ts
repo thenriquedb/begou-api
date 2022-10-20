@@ -1,20 +1,20 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateInstituitionAddressUseCase } from "./CreateInstituitionAddressUseCase";
+import { CreateInstitutionAddressUseCase } from "./CreateInstitutionAddressUseCase";
 
-export class CreateInstituitionAddressController {
+export class CreateInstitutionAddressController {
   async handle(request: Request, response: Response) {
     const { neighborhood, street, ufInitials, zipCode, complement } =
       request.body;
 
     const { institution_id } = request.params;
 
-    const createInstituitionAddressUseCase = container.resolve(
-      CreateInstituitionAddressUseCase
+    const createInstitutionAddressUseCase = container.resolve(
+      CreateInstitutionAddressUseCase
     );
 
-    await createInstituitionAddressUseCase.execute({
+    await createInstitutionAddressUseCase.execute({
       neighborhood,
       street,
       ufInitials,

@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 
 @injectable()
-export class GetInstituitionAddressUseCase {
+export class GetInstitutionAddressUseCase {
   private institutionRepository: IInstitutionRepository;
 
   constructor(

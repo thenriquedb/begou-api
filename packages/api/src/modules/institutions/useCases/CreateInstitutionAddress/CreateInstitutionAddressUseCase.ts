@@ -16,7 +16,7 @@ export interface IRequest {
 }
 
 @injectable()
-export class CreateInstituitionAddressUseCase {
+export class CreateInstitutionAddressUseCase {
   private instituitionRepository: IInstitutionRepository;
 
   private cityRepository: ICityRepository;
@@ -90,7 +90,7 @@ export class CreateInstituitionAddressUseCase {
     );
 
     if (instituition.address) {
-      throw new BadRequestError("Instituition already has address");
+      throw new BadRequestError("Institution already has address");
     }
 
     const uf = await this.getOrCreateUf(ufInitials);

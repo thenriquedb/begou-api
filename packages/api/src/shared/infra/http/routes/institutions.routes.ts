@@ -1,10 +1,11 @@
 import { Router } from "express";
 
-import { GetInstituitionController } from "@modules/institutions/useCases/GetInstituition";
-import { CreateInstituitionController } from "@modules/institutions/useCases/CreateInstituition";
-import { CreateInstituitionAddressController } from "@modules/institutions/useCases/CreateInstituitionAddress";
-import { GetInstituitionAddressController } from "@modules/institutions/useCases/GetInstituitionAddress";
-import { CreateInstituitionAssociateController } from "@modules/institutions/useCases/CreateInstituitionAssociate";
+import { GetInstitutionController } from "@modules/institutions/useCases/GetInstitution";
+import { ListInstitutionsController } from "@modules/institutions/useCases/ListInstitutions";
+import { CreateInstitutionController } from "@modules/institutions/useCases/CreateInstitution";
+import { CreateInstitutionAddressController } from "@modules/institutions/useCases/CreateInstitutionAddress";
+import { GetInstitutionAddressController } from "@modules/institutions/useCases/GetInstitutionAddress";
+import { CreateInstitutionAssociateController } from "@modules/institutions/useCases/CreateInstitutionAssociate";
 import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
 import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
 import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
@@ -15,34 +16,36 @@ import { canBe } from "../middlewares/canBe";
 
 const createAnimalController = new CreateAnimalController();
 const getAnimalController = new GetAnimalController();
-const createInstituitionAddressController =
-  new CreateInstituitionAddressController();
-const getInstituitionAddressController = new GetInstituitionAddressController();
-const createInstituitionController = new CreateInstituitionController();
-const getInstituitionController = new GetInstituitionController();
-const createInstituitionAssociateController =
-  new CreateInstituitionAssociateController();
+const createInstitutionAddressController =
+  new CreateInstitutionAddressController();
+const getInstitutionAddressController = new GetInstitutionAddressController();
+const createInstitutionController = new CreateInstitutionController();
+const getInstitutionController = new GetInstitutionController();
+const createInstitutionAssociateController =
+  new CreateInstitutionAssociateController();
 const listAnimalsByInstitutionController =
   new ListAnimalsByInstitutionController();
+const listInstitutionsController = new ListInstitutionsController();
 
 const institutionsRoutes = Router();
 
 institutionsRoutes.use(ensureAuthenticated);
 
-institutionsRoutes.post("/", createInstituitionController.handle);
+institutionsRoutes.post("/", createInstitutionController.handle);
+institutionsRoutes.get("/", listInstitutionsController.handle);
 
-institutionsRoutes.get("/:institution_id", getInstituitionController.handle);
+institutionsRoutes.get("/:institution_id", getInstitutionController.handle);
 
 institutionsRoutes.post(
   "/:institution_id/address",
   canBe([AssociateRole.FOUNDER]),
-  createInstituitionAddressController.handle
+  createInstitutionAddressController.handle
 );
 
 institutionsRoutes.post(
   "/:institution_id/associates",
   canBe([AssociateRole.FOUNDER]),
-  createInstituitionAssociateController.handle
+  createInstitutionAssociateController.handle
 );
 
 institutionsRoutes.post(
@@ -63,7 +66,7 @@ institutionsRoutes.get(
 institutionsRoutes.get(
   "/:institution_id/address",
   canBe([AssociateRole.FOUNDER, AssociateRole.VOLUNTARY]),
-  getInstituitionAddressController.handle
+  getInstitutionAddressController.handle
 );
 
 export { institutionsRoutes };

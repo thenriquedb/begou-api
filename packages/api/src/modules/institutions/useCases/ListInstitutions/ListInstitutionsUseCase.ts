@@ -1,9 +1,12 @@
 import { inject, injectable } from "tsyringe";
 
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
+import { IFindInstitutionDTO } from "@modules/institutions/dtos/IFindInstitutionDTO";
+
+type IRequest = IFindInstitutionDTO;
 
 @injectable()
-export class GetInstituitionUseCase {
+export class ListInstitutionsUseCase {
   private instituitionRepository: IInstitutionRepository;
 
   constructor(
@@ -13,8 +16,8 @@ export class GetInstituitionUseCase {
     this.instituitionRepository = instituitionRepository;
   }
 
-  async execute(id: string) {
-    const instituition = await this.instituitionRepository.findById(id);
-    return instituition;
+  async execute({ zip_code }: IRequest) {
+    const instituitions = await this.instituitionRepository.find({ zip_code });
+    return instituitions;
   }
 }

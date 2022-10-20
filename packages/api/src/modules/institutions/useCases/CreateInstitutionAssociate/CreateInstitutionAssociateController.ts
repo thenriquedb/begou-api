@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateInstituitionAssociateUseCase } from "./CreateInstituitionAssociateUseCase";
+import { CreateInstitutionAssociateUseCase } from "./CreateInstitutionAssociateUseCase";
 
-export class CreateInstituitionAssociateController {
+export class CreateInstitutionAssociateController {
   async handle(request: Request, response: Response) {
     const { associates } = request.body;
     const { institution_id } = request.params;
 
-    const createInstituitionUseCase = container.resolve(
-      CreateInstituitionAssociateUseCase
+    const createInstitutionUseCase = container.resolve(
+      CreateInstitutionAssociateUseCase
     );
 
-    await createInstituitionUseCase.execute({
+    await createInstitutionUseCase.execute({
       institution_id,
       associates,
     });

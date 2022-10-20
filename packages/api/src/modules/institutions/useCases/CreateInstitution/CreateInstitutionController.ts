@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateInstituitionUseCase } from "./CreateInstituitionUseCase";
+import { CreateInstitutionUseCase } from "./CreateInstitutionUseCase";
 
-export class CreateInstituitionController {
+export class CreateInstitutionController {
   async handle(request: Request, response: Response) {
     const { address_id, name } = request.body;
 
-    const createInstituitionUseCase = container.resolve(
-      CreateInstituitionUseCase
+    const createInstitutionUseCase = container.resolve(
+      CreateInstitutionUseCase
     );
 
-    await createInstituitionUseCase.execute({
+    await createInstitutionUseCase.execute({
       address_id,
       name,
     });

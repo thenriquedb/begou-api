@@ -2,13 +2,8 @@ import { inject, injectable } from "tsyringe";
 
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 
-interface IRequest {
-  name: string;
-  address_id: string;
-}
-
 @injectable()
-export class CreateInstituitionUseCase {
+export class GetInstitutionUseCase {
   private instituitionRepository: IInstitutionRepository;
 
   constructor(
@@ -18,10 +13,8 @@ export class CreateInstituitionUseCase {
     this.instituitionRepository = instituitionRepository;
   }
 
-  async execute({ name, address_id }: IRequest) {
-    await this.instituitionRepository.create({
-      name,
-      address_id,
-    });
+  async execute(id: string) {
+    const instituition = await this.instituitionRepository.findById(id);
+    return instituition;
   }
 }
