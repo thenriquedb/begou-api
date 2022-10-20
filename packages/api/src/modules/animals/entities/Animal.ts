@@ -49,12 +49,16 @@ export class Animal {
   @ManyToMany(() => AnimalHealth)
   @JoinTable({
     name: "animal_has_health",
+    joinColumn: { name: "animal_id" },
+    inverseJoinColumn: { name: "health_id" },
   })
   healths: AnimalHealth[];
 
-  @ManyToMany(() => AnimalHealth)
+  @ManyToMany(() => AnimalPersonality)
   @JoinTable({
     name: "animal_has_personality",
+    joinColumn: { name: "animal_id" },
+    inverseJoinColumn: { name: "personality_id" },
   })
   personalities: AnimalPersonality[];
 

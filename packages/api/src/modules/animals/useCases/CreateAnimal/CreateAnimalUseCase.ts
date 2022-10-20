@@ -99,11 +99,8 @@ export class CreateAnimalUseCase {
     const institution = await this.getInstitution(institution_id);
     const specie = await this.getSpecie(specie_id);
     const size = await this.animalSizesRepository.findById(size_id);
-    const healths = await this.animalPersonalityRepository.findByIds(
-      health_ids
-    );
-
-    const personalities = await this.animalHealthRepository.findByIds(
+    const healths = await this.animalHealthRepository.findByIds(health_ids);
+    const personalities = await this.animalPersonalityRepository.findByIds(
       personality_ids
     );
 
