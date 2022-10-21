@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
 import { ICreateAnimalDTO } from "@modules/animals/dtos/ICreateAnimalDTO";
+import { IFindAnimalDTO } from "@modules/animals/dtos/IFindAnimalDTO";
 
 import { Animal } from "../../entities/Animal";
 import { IAnimalRepository } from "../IAnimalRepository";
@@ -56,9 +57,25 @@ export class AnimalRepository implements IAnimalRepository {
     return animal;
   }
 
-  async listByIdInstitutionId(institution_id: string) {
+  async findByInstitutionId(institution_id: string, data: IFindAnimalDTO) {
+    const { available, size_id, specie_id } = data;
+
     const animals = await this.repository.find({
-      where: { institution_id },
+      where: {
+        institution_id,
+        available,
+        size: {
+          id: size_id,
+        },
+        specie: {
+          id: specie_id,
+        },
+      },
+      order: {
+        created_at: {
+          direction: "ASC",
+        },
+      },
       relations: {
         healths: true,
         personalities: true,
@@ -67,6 +84,7 @@ export class AnimalRepository implements IAnimalRepository {
         specie: true,
       },
     });
+
     return animals;
   }
 }

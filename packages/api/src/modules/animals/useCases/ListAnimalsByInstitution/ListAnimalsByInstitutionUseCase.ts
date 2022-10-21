@@ -1,10 +1,9 @@
 import { inject, injectable } from "tsyringe";
 
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
+import { IFindAnimalDTO } from "@modules/animals/dtos/IFindAnimalDTO";
 
-interface IRequest {
-  institution_id: string;
-}
+type IRequest = IFindAnimalDTO & { institution_id?: string };
 
 @injectable()
 export class ListAnimalsByInstitutionUseCase {
@@ -17,9 +16,12 @@ export class ListAnimalsByInstitutionUseCase {
     this.animalRepository = animalRepository;
   }
 
-  async execute({ institution_id }: IRequest) {
-    const animals = await this.animalRepository.listByIdInstitutionId(
-      institution_id
+  async execute(data: IRequest) {
+    const { institution_id, available, size_id, specie_id } = data;
+
+    const animals = await this.animalRepository.findByInstitutionId(
+      institution_id,
+      { available, size_id, specie_id }
     );
 
     return animals;
