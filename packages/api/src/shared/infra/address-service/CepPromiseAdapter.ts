@@ -1,12 +1,13 @@
 import cepPromise from "cep-promise";
 
 import {
-  IAddressService,
   IAddressData,
+  AddressService,
 } from "@data/protocols/address-service/IAddressService";
-import { BrazilUfs } from "@shared/infra/zip-code/ufs";
 
-export class CepPromiseAdapter implements IAddressService {
+import { BrazilUfs } from "./ufs";
+
+export class CepPromiseAdapter extends AddressService {
   async getAddressByZipCode(zipCode: string): Promise<IAddressData> {
     try {
       const address = await cepPromise(zipCode);

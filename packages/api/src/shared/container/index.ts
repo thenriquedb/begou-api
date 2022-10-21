@@ -18,7 +18,7 @@ import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
 import { UfRepository } from "@modules/adresses/repositories/implementations/UfRepository";
 import { IAddressService } from "@data/protocols/address-service/IAddressService";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
-import { CepPromiseAdapter } from "@shared/infra/zip-code/CepPromiseAdapter";
+import { CepPromiseAdapter } from "@shared/infra/address-service/CepPromiseAdapter";
 import { BCryptAdapter } from "@shared/infra/cryptography/BcryptAdapter";
 import { IEmailValidator } from "@validators/protocols/IEmailValidator";
 import { EmailValidator } from "@shared/infra/validators/EmailValidatorAdapter";

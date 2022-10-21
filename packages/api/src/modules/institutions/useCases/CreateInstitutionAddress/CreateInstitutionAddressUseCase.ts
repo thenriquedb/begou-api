@@ -85,6 +85,11 @@ export class CreateInstitutionAddressUseCase {
       instituitionId,
     } = data;
 
+    const zipCodeIsValid = this.addressService.zipCodeIsValid(zipCode);
+    if (!zipCodeIsValid) {
+      throw new Error("Zip code must contain exactly 8 characters");
+    }
+
     const instituition = await this.instituitionRepository.findById(
       instituitionId
     );
