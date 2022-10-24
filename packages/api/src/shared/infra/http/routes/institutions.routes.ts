@@ -1,18 +1,18 @@
 import { Router } from "express";
 
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
-import { CreateAdoptionRequestController } from "@modules/adoption/useCases/CreateAdoptionRequest";
+import { CreateAdoptionRequestController } from "@modules/adoptions/useCases/CreateAdoptionRequest";
 import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
 import { CreateInstitutionAddressController } from "@modules/institutions/useCases/CreateInstitutionAddress";
 import { CreateInstitutionAssociateController } from "@modules/institutions/useCases/CreateInstitutionAssociate";
 import { CreateInstitutionController } from "@modules/institutions/useCases/CreateInstitution";
-import { GetAdoptionRequestController } from "@modules/adoption/useCases/GetAdoptionRequest ";
+import { GetAdoptionRequestController } from "@modules/adoptions/useCases/GetAdoptionRequest ";
 import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
 import { GetInstitutionController } from "@modules/institutions/useCases/GetInstitution";
-import { ListAdoptionRequestByInstitutionController } from "@modules/adoption/useCases/ListAdoptionRequestByInstitution";
+import { ListAdoptionRequestByInstitutionController } from "@modules/adoptions/useCases/ListAdoptionRequestByInstitution";
 import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
 import { ListInstitutionsController } from "@modules/institutions/useCases/ListInstitutions";
-import { UpdateAdoptionRequestController } from "@modules/adoption/useCases/UpdateAdoptionRequestStatus";
+import { UpdateAdoptionRequestController } from "@modules/adoptions/useCases/UpdateAdoptionRequestStatus";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { canBe } from "../middlewares/canBe";
