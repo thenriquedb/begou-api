@@ -5,8 +5,9 @@ import { Animal } from "@modules/animals/entities/Animal";
 export interface IAnimalRepository {
   create: (data: ICreateAnimalDTO) => Promise<void>;
   findById: (id: string) => Promise<Animal>;
-  findByInstitutionId: (
+  listByInstitutionId: (
     institutionId: string,
     data?: IFindAnimalDTO
   ) => Promise<Animal[]>;
+  update: (id: string, data: Partial<Animal>) => Promise<Animal>;
 }

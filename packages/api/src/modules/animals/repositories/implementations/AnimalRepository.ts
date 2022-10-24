@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { FindOptionsWhere, Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 import { ICreateAnimalDTO } from "@modules/animals/dtos/ICreateAnimalDTO";
@@ -57,7 +57,7 @@ export class AnimalRepository implements IAnimalRepository {
     return animal;
   }
 
-  async findByInstitutionId(institution_id: string, data: IFindAnimalDTO) {
+  async listByInstitutionId(institution_id: string, data: IFindAnimalDTO) {
     const { available, size_id, specie_id } = data;
 
     const animals = await this.repository.find({
@@ -86,5 +86,15 @@ export class AnimalRepository implements IAnimalRepository {
     });
 
     return animals;
+  }
+
+  async update(id: string, data: Partial<Animal>) {
+    const animal = this.findById(id);
+
+    Object.assign(animal, data);
+
+    await this.repository.update({ id } as FindOptionsWhere<Animal>, data);
+
+    return animal;
   }
 }
