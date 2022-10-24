@@ -4,6 +4,7 @@ import { ICreateAdoptionDTO } from "@modules/adoption/dtos/ICreateAdoptionDTO";
 import { AdoptionRequest } from "@modules/adoption/entities/AdoptionRequest";
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 import { IFindAdoptionRequest } from "@modules/adoption/dtos/IFindAdoptionRequest";
+import { AdoptionStatus } from "@modules/adoption/entities/AdoptionStatus";
 
 import { IAdoptionRequestRepository } from "../IAdoptionRequestRepository";
 
@@ -25,6 +26,30 @@ export class AdoptionRequestRepository implements IAdoptionRequestRepository {
     });
 
     await this.repository.save(adoptionRequest);
+  }
+
+  async findById(id: string) {
+    const adoptionRequest = await this.repository.findOne({
+      where: { id },
+      relations: {
+        animal: true,
+        user: true,
+        institution: true,
+        status: true,
+      },
+    });
+
+    return adoptionRequest;
+  }
+
+  async updateStatus(id: string, newStatus: AdoptionStatus) {
+    const adoptionRequest = await this.findById(id);
+
+    adoptionRequest.status = newStatus;
+
+    this.repository.save(adoptionRequest);
+
+    return adoptionRequest;
   }
 
   async findBy(data: IFindAdoptionRequest) {
