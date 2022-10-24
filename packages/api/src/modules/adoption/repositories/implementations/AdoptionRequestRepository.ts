@@ -3,6 +3,7 @@ import { Repository } from "typeorm";
 import { ICreateAdoptionDTO } from "@modules/adoption/dtos/ICreateAdoptionDTO";
 import { AdoptionRequest } from "@modules/adoption/entities/AdoptionRequest";
 import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
+import { IFindAdoptionRequest } from "@modules/adoption/dtos/IFindAdoptionRequest";
 
 import { IAdoptionRequestRepository } from "../IAdoptionRequestRepository";
 
@@ -26,10 +27,20 @@ export class AdoptionRequestRepository implements IAdoptionRequestRepository {
     await this.repository.save(adoptionRequest);
   }
 
-  async findById(id: string) {
+  async findBy(data: IFindAdoptionRequest) {
+    const { animal_id, institution_id, user_id } = data;
+
     const adoptionRequest = await this.repository.findOne({
       where: {
-        id,
+        user: {
+          id: user_id,
+        },
+        animal: {
+          id: animal_id,
+        },
+        institution: {
+          id: institution_id,
+        },
       },
       relations: {
         animal: true,
@@ -41,28 +52,19 @@ export class AdoptionRequestRepository implements IAdoptionRequestRepository {
     return adoptionRequest;
   }
 
-  async findByInstitutionId(institutionId: string) {
-    const adoptionRequests = await this.repository.find({
-      where: {
-        institution: {
-          id: institutionId,
-        },
-      },
-      relations: {
-        animal: true,
-        institution: true,
-        status: true,
-      },
-    });
+  async listBy(data: IFindAdoptionRequest) {
+    const { animal_id, institution_id, user_id } = data;
 
-    return adoptionRequests;
-  }
-
-  async findByUserId(userId: string) {
-    const adoptionRequests = await this.repository.find({
+    const adoptionRequest = await this.repository.find({
       where: {
         user: {
-          id: userId,
+          id: user_id,
+        },
+        animal: {
+          id: animal_id,
+        },
+        institution: {
+          id: institution_id,
         },
       },
       relations: {
@@ -72,6 +74,6 @@ export class AdoptionRequestRepository implements IAdoptionRequestRepository {
       },
     });
 
-    return adoptionRequests;
+    return adoptionRequest;
   }
 }

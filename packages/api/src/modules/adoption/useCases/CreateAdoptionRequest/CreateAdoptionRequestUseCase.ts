@@ -8,6 +8,7 @@ import { BadRequestError } from "@shared/errors/BadRequestError";
 import { IAdoptionStatusRepository } from "@modules/adoption/repositories/IAdoptionStatusRepository";
 import { AdoptionStatusValue } from "@modules/adoption/enums/AdoptionStatusValue";
 import { Animal } from "@modules/animals/entities/Animal";
+import { ConflictError } from "@shared/errors/ConflictError";
 
 interface IRequest {
   animal_id: string;
@@ -48,7 +49,7 @@ export class CreateAdoptionRequestUseCase {
     );
 
     if (!institution) {
-      throw new BadRequestError("Invalid institution id");
+      throw new BadRequestError("Invalid does not exist");
     }
 
     return institution;
@@ -58,7 +59,7 @@ export class CreateAdoptionRequestUseCase {
     const user = await this.userRepository.findById(user_id);
 
     if (!user) {
-      throw new BadRequestError("Invalid user id");
+      throw new BadRequestError("User does not exist");
     }
 
     return user;
@@ -68,7 +69,7 @@ export class CreateAdoptionRequestUseCase {
     const animal = await this.animalRepository.findById(animal_id);
 
     if (!animal) {
-      throw new BadRequestError("Invalid animal id");
+      throw new BadRequestError("Animal does not exist");
     }
 
     await this.verifyIfAnimalIsAvailable(animal);
@@ -78,7 +79,7 @@ export class CreateAdoptionRequestUseCase {
 
   private async verifyIfAnimalIsAvailable(animal: Animal) {
     if (!animal.available) {
-      throw new BadRequestError("animal is not available");
+      throw new BadRequestError("Animal has already been adopted");
     }
   }
 
@@ -92,6 +93,15 @@ export class CreateAdoptionRequestUseCase {
 
   async execute(data: IRequest) {
     const { animal_id, user_id, institution_id } = data;
+
+    const requestAlreadyExists = await this.adoptionRequestRepository.findBy({
+      animal_id,
+      user_id,
+    });
+
+    if (requestAlreadyExists) {
+      throw new ConflictError("Adoption request already exists");
+    }
 
     const user = await this.getUser(user_id);
     const animal = await this.getAnimal(animal_id);
