@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { container } from "tsyringe";
 
-import { AdoptionRequestRepository } from "@modules/adoption/repositories/implementations/AdoptionRequestRepository";
-import { AdoptionStatusRepository } from "@modules/adoption/repositories/implementations/AdoptionStatusRepository";
+import { AdoptionRequestRepository } from "@modules/adoptions/repositories/implementations/AdoptionRequestRepository";
+import { AdoptionStatusRepository } from "@modules/adoptions/repositories/implementations/AdoptionStatusRepository";
 import { AnimalHealthRepository } from "@modules/animals/repositories/implementations/AnimalHealthRepository";
 import { AnimalPersonalityRepository } from "@modules/animals/repositories/implementations/AnimalPersonalityRepository";
 import { AnimalRepository } from "@modules/animals/repositories/implementations/AnimalRepository";
@@ -19,8 +19,8 @@ import { SpecieRepository } from "@modules/animals/repositories/implementations/
 import { StageOfLifeRepository } from "@modules/animals/repositories/implementations/StageOfLifeRepository";
 import { UfRepository } from "@modules/adresses/repositories/implementations/UfRepository";
 import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
-import type { IAdoptionRequestRepository } from "@modules/adoption/repositories/IAdoptionRequestRepository";
-import type { IAdoptionStatusRepository } from "@modules/adoption/repositories/IAdoptionStatusRepository";
+import type { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
+import type { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
 import type { IAnimalHealthRepository } from "@modules/animals/repositories/IAnimalHealthRepository";
 import type { IAnimalPersonalityRepository } from "@modules/animals/repositories/IAnimalPersonalityRepository";
 import type { IAnimalSizesRepository } from "@modules/animals/repositories/IAnimalSizeRepository";

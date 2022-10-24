@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAdoptionRequestRepository } from "@modules/adoption/repositories/IAdoptionRequestRepository";
+import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
 import { BadRequestError } from "@shared/errors/BadRequestError";
-import { IAdoptionStatusRepository } from "@modules/adoption/repositories/IAdoptionStatusRepository";
-import { AdoptionStatusValue } from "@modules/adoption/enums/AdoptionStatusValue";
+import { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
+import { AdoptionStatusValue } from "@modules/adoptions/enums/AdoptionStatusValue";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
-import { AdoptionRequest } from "@modules/adoption/entities/AdoptionRequest";
+import { AdoptionRequest } from "@modules/adoptions/entities/AdoptionRequest";
 
 interface IRequest {
   adoption_id: string;

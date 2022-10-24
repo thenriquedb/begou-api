@@ -3,10 +3,10 @@ import { inject, injectable } from "tsyringe";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
-import { IAdoptionRequestRepository } from "@modules/adoption/repositories/IAdoptionRequestRepository";
+import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
 import { BadRequestError } from "@shared/errors/BadRequestError";
-import { IAdoptionStatusRepository } from "@modules/adoption/repositories/IAdoptionStatusRepository";
-import { AdoptionStatusValue } from "@modules/adoption/enums/AdoptionStatusValue";
+import { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
+import { AdoptionStatusValue } from "@modules/adoptions/enums/AdoptionStatusValue";
 import { Animal } from "@modules/animals/entities/Animal";
 import { ConflictError } from "@shared/errors/ConflictError";
 
@@ -44,9 +44,7 @@ export class CreateAdoptionRequestUseCase {
   }
 
   private async getInstitution(institution_id: string) {
-    const institution = await this.institutionRepository.findById(
-      institution_id
-    );
+    const institution = await this.institutionRepository.findById(institution_id);
 
     if (!institution) {
       throw new BadRequestError("Invalid does not exist");

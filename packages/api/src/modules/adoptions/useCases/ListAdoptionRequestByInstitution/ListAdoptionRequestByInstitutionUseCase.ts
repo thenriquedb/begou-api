@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAdoptionRequestRepository } from "@modules/adoption/repositories/IAdoptionRequestRepository";
+import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
 import { BadRequestError } from "@shared/errors/BadRequestError";
 
 interface IRequest {

@@ -1,16 +1,10 @@
-import {
-  Entity,
-  PrimaryColumn,
-  JoinColumn,
-  ManyToOne,
-  CreateDateColumn,
-} from "typeorm";
+import { Entity, PrimaryColumn, JoinColumn, ManyToOne, CreateDateColumn } from "typeorm";
 
 import { UUID } from "@shared/infra/cryptography/UUID";
 import { User } from "@modules/accounts/entities/User";
 import { Animal } from "@modules/animals/entities/Animal";
 import { Institution } from "@modules/institutions/entities/Institution";
-import { AdoptionStatus } from "@modules/adoption/entities/AdoptionStatus";
+import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
 
 @Entity("adoption_request")
 export class AdoptionRequest {

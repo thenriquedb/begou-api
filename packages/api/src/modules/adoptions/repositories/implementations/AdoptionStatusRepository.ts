@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AdoptionStatus } from "@modules/adoption/entities/AdoptionStatus";
+import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 
 import { IAdoptionStatusRepository } from "../IAdoptionStatusRepository";

@@ -55,7 +55,7 @@ institutionsRoutes.get(
 );
 
 institutionsRoutes.put(
-  "/:institution_id/adoptions/:adoption_id",
+  "/:institution_id/adoptions/:adoption_id/status",
   canBe([AssociateRole.FOUNDER, AssociateRole.VOLUNTARY]),
   updateAdoptionRequestController.handle
 );

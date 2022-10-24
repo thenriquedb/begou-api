@@ -1,6 +1,6 @@
-import { ICreateAdoptionDTO } from "@modules/adoption/dtos/ICreateAdoptionDTO";
-import { IFindAdoptionRequest } from "@modules/adoption/dtos/IFindAdoptionRequest";
-import { AdoptionStatus } from "@modules/adoption/entities/AdoptionStatus";
+import { ICreateAdoptionDTO } from "@modules/adoptions/dtos/ICreateAdoptionDTO";
+import { IFindAdoptionRequest } from "@modules/adoptions/dtos/IFindAdoptionRequest";
+import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
 
 import { AdoptionRequest } from "../entities/AdoptionRequest";
 

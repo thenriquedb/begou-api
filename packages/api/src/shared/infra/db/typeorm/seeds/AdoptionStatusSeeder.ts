@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { AdoptionStatus } from "@modules/adoption/entities/AdoptionStatus";
+import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
 
 enum AdoptionStatusValue {
   PENDING = "pendente",
