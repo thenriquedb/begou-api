@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { BadRequestError } from "@shared/errors/BadRequestError";
 import { IEmailValidator } from "@validators/protocols/IEmailValidator";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
+import { ConflictError } from "@shared/errors/ConflictError";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../repositories/IUserRepository";
@@ -37,7 +38,7 @@ class CreateUserUseCase {
 
     const user = await this.usersRepository.findByEmail(email);
     if (user) {
-      throw new BadRequestError("User already exits");
+      throw new ConflictError("User already exits");
     }
 
     const passwordHash = await this.encoder.encode(password, 8);
