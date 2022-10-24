@@ -14,14 +14,13 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async create(data: ICreateUserDTO) {
-    const { email, name, password, roleId, phoneNumber } = data;
+    const { email, name, password, phone_number } = data;
 
     const user = this.repository.create({
       email,
       name,
       password,
-      role_id: roleId,
-      phone_number: phoneNumber,
+      phone_number,
     });
 
     await this.repository.save(user);

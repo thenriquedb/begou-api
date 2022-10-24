@@ -9,7 +9,7 @@ class CreateUserController {
     request: Request<void, void, ICreateUserDTO>,
     response: Response
   ) {
-    const { email, name, password, roleId, phoneNumber } = request.body;
+    const { email, name, password, phone_number } = request.body;
 
     const createUserUseCase = container.resolve(CreateUserUseCase);
 
@@ -17,8 +17,7 @@ class CreateUserController {
       email,
       name,
       password,
-      roleId,
-      phoneNumber,
+      phone_number,
     });
 
     return response.status(201).send();

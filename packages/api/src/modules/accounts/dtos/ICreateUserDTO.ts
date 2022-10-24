@@ -2,8 +2,7 @@ interface ICreateUserDTO {
   email: string;
   name: string;
   password: string;
-  roleId: string;
-  phoneNumber?: string;
+  phone_number?: string;
 }
 
 export { ICreateUserDTO };

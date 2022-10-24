@@ -27,7 +27,7 @@ class CreateUserUseCase {
   }
 
   async execute(data: ICreateUserDTO) {
-    const { email, name, password, roleId, phoneNumber } = data;
+    const { email, name, password, phone_number } = data;
 
     const emailIsValid = this.emailValidator.validate(email);
 
@@ -46,8 +46,7 @@ class CreateUserUseCase {
       email,
       name,
       password: passwordHash,
-      roleId,
-      phoneNumber,
+      phone_number,
     });
   }
 }
