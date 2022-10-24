@@ -1,31 +1,34 @@
 import { Router } from "express";
 
-import { GetInstitutionController } from "@modules/institutions/useCases/GetInstitution";
-import { ListInstitutionsController } from "@modules/institutions/useCases/ListInstitutions";
-import { CreateInstitutionController } from "@modules/institutions/useCases/CreateInstitution";
-import { CreateInstitutionAddressController } from "@modules/institutions/useCases/CreateInstitutionAddress";
-import { CreateInstitutionAssociateController } from "@modules/institutions/useCases/CreateInstitutionAssociate";
-import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
-import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
-import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
 import { CreateAdoptionRequestController } from "@modules/adoption/useCases/CreateAdoptionRequest";
+import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
+import { CreateInstitutionAddressController } from "@modules/institutions/useCases/CreateInstitutionAddress";
+import { CreateInstitutionAssociateController } from "@modules/institutions/useCases/CreateInstitutionAssociate";
+import { CreateInstitutionController } from "@modules/institutions/useCases/CreateInstitution";
+import { GetAdoptionRequestController } from "@modules/adoption/useCases/GetAdoptionRequest ";
+import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
+import { GetInstitutionController } from "@modules/institutions/useCases/GetInstitution";
+import { ListAdoptionRequestByInstitutionController } from "@modules/adoption/useCases/ListAdoptionRequestByInstitution";
+import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
+import { ListInstitutionsController } from "@modules/institutions/useCases/ListInstitutions";
+import { UpdateAdoptionRequestController } from "@modules/adoption/useCases/UpdateAdoptionRequestStatus";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { canBe } from "../middlewares/canBe";
 
-const createAnimalController = new CreateAnimalController();
-const getAnimalController = new GetAnimalController();
-const createInstitutionAddressController =
-  new CreateInstitutionAddressController();
-const createInstitutionController = new CreateInstitutionController();
-const getInstitutionController = new GetInstitutionController();
-const createInstitutionAssociateController =
-  new CreateInstitutionAssociateController();
-const listAnimalsByInstitutionController =
-  new ListAnimalsByInstitutionController();
-const listInstitutionsController = new ListInstitutionsController();
 const createAdoptionRequestController = new CreateAdoptionRequestController();
+const createAnimalController = new CreateAnimalController();
+const createInstitutionAddressController = new CreateInstitutionAddressController();
+const createInstitutionAssociateController = new CreateInstitutionAssociateController();
+const createInstitutionController = new CreateInstitutionController();
+const getAdoptionRequestController = new GetAdoptionRequestController();
+const getAnimalController = new GetAnimalController();
+const getInstitutionController = new GetInstitutionController();
+const listAdoptionRequestsController = new ListAdoptionRequestByInstitutionController();
+const listAnimalsByInstitutionController = new ListAnimalsByInstitutionController();
+const listInstitutionsController = new ListInstitutionsController();
+const updateAdoptionRequestController = new UpdateAdoptionRequestController();
 
 const institutionsRoutes = Router();
 
@@ -33,7 +36,6 @@ institutionsRoutes.use(ensureAuthenticated);
 
 institutionsRoutes.post("/", createInstitutionController.handle);
 institutionsRoutes.get("/", listInstitutionsController.handle);
-
 institutionsRoutes.get("/:institution_id", getInstitutionController.handle);
 
 institutionsRoutes.post(
@@ -45,6 +47,22 @@ institutionsRoutes.post(
 institutionsRoutes.post(
   "/:institution_id/adoptions",
   createAdoptionRequestController.handle
+);
+
+institutionsRoutes.get(
+  "/:institution_id/adoptions",
+  listAdoptionRequestsController.handle
+);
+
+institutionsRoutes.put(
+  "/:institution_id/adoptions/:adoption_id",
+  canBe([AssociateRole.FOUNDER, AssociateRole.VOLUNTARY]),
+  updateAdoptionRequestController.handle
+);
+
+institutionsRoutes.get(
+  "/:institution_id/adoptions/:adoption_id",
+  getAdoptionRequestController.handle
 );
 
 institutionsRoutes.post(
@@ -63,9 +81,6 @@ institutionsRoutes.get(
   listAnimalsByInstitutionController.handle
 );
 
-institutionsRoutes.get(
-  "/:institution_id/animals/:animal_id",
-  getAnimalController.handle
-);
+institutionsRoutes.get("/:institution_id/animals/:animal_id", getAnimalController.handle);
 
 export { institutionsRoutes };

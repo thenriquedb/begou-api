@@ -19,10 +19,11 @@ export class ListAnimalsByInstitutionUseCase {
   async execute(data: IRequest) {
     const { institution_id, available, size_id, specie_id } = data;
 
-    const animals = await this.animalRepository.findByInstitutionId(
-      institution_id,
-      { available, size_id, specie_id }
-    );
+    const animals = await this.animalRepository.listByInstitutionId(institution_id, {
+      available,
+      size_id,
+      specie_id,
+    });
 
     return animals;
   }
