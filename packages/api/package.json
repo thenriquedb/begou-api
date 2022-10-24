@@ -8,9 +8,9 @@
     "test": "jest",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli ",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
-    "migration:generate": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:generate",
-    "migration:run": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:run",
-    "migration:revert": "yarn typeorm -d ./src/shared/infra/http/typeorm/data-source.ts migration:revert",
+    "migration:generate": "yarn typeorm -d ./src/shared/infra/db/typeorm/data-source.ts migration:generate",
+    "migration:run": "yarn typeorm -d ./src/shared/infra/db/typeorm/data-source.ts migration:run",
+    "migration:revert": "yarn typeorm -d ./src/shared/infra/db/typeorm/data-source.ts migration:revert",
     "seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/dist/cli/index.js -d ./src/shared/infra/http/typeorm/data-source.ts seed"
   },
   "devDependencies": {

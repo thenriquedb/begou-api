@@ -3,7 +3,7 @@ import "dotenv/config";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 
-import { MainSeeder } from "@shared/infra/http/typeorm/seeds/MainSeeder";
+import { MainSeeder } from "@shared/infra/db/typeorm/seeds/MainSeeder";
 
 const options: DataSourceOptions & SeederOptions = {
   type: "mysql",

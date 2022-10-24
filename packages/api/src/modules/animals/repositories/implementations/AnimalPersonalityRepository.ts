@@ -1,6 +1,6 @@
 import { In, Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 
 import { AnimalPersonality } from "../../entities/AnimalPersonality";
 import { IAnimalPersonalityRepository } from "../IAnimalPersonalityRepository";

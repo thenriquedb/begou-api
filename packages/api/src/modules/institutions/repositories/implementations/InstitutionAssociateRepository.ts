@@ -1,6 +1,6 @@
 import { FindOptionsWhere, Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 import { InstitutionAssociate } from "@modules/institutions/entities/InstitutionAssociate";
 import { ICreateInstitutionAssociateDTO } from "@modules/institutions/dtos/ICreateInstitutionAssociateDTO";
 

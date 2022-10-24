@@ -1,6 +1,6 @@
 import { In, Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 
 import { ICreateAnimalHealthDTO } from "../../dtos/ICreateAnimalHealthDTO";
 import { AnimalHealth } from "../../entities/AnimalHealth";

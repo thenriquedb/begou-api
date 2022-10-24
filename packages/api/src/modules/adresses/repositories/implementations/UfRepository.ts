@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/http/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 
 import { Uf } from "../../entities/Uf";
 import { ICreateUfDTO } from "../../dtos/ICreateUfDTO";
