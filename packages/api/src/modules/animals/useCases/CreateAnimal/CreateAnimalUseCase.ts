@@ -96,7 +96,6 @@ export class CreateAnimalUseCase {
       stage_of_life_id,
     } = data;
 
-    const genre = AnimalGenre[genreRaw];
     const genreIsValid = this.isValidGenre(genreRaw);
 
     if (!genreIsValid) {

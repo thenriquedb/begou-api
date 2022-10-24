@@ -4,12 +4,12 @@ import { GetInstitutionController } from "@modules/institutions/useCases/GetInst
 import { ListInstitutionsController } from "@modules/institutions/useCases/ListInstitutions";
 import { CreateInstitutionController } from "@modules/institutions/useCases/CreateInstitution";
 import { CreateInstitutionAddressController } from "@modules/institutions/useCases/CreateInstitutionAddress";
-import { GetInstitutionAddressController } from "@modules/institutions/useCases/GetInstitutionAddress";
 import { CreateInstitutionAssociateController } from "@modules/institutions/useCases/CreateInstitutionAssociate";
 import { CreateAnimalController } from "@modules/animals/useCases/CreateAnimal";
 import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
 import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
+import { CreateAdoptionRequestController } from "@modules/adoption/useCases/CreateAdoptionRequest";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { canBe } from "../middlewares/canBe";
@@ -18,7 +18,6 @@ const createAnimalController = new CreateAnimalController();
 const getAnimalController = new GetAnimalController();
 const createInstitutionAddressController =
   new CreateInstitutionAddressController();
-const getInstitutionAddressController = new GetInstitutionAddressController();
 const createInstitutionController = new CreateInstitutionController();
 const getInstitutionController = new GetInstitutionController();
 const createInstitutionAssociateController =
@@ -26,6 +25,7 @@ const createInstitutionAssociateController =
 const listAnimalsByInstitutionController =
   new ListAnimalsByInstitutionController();
 const listInstitutionsController = new ListInstitutionsController();
+const createAdoptionRequestController = new CreateAdoptionRequestController();
 
 const institutionsRoutes = Router();
 
@@ -40,6 +40,11 @@ institutionsRoutes.post(
   "/:institution_id/address",
   canBe([AssociateRole.FOUNDER]),
   createInstitutionAddressController.handle
+);
+
+institutionsRoutes.post(
+  "/:institution_id/adoptions",
+  createAdoptionRequestController.handle
 );
 
 institutionsRoutes.post(
@@ -61,12 +66,6 @@ institutionsRoutes.get(
 institutionsRoutes.get(
   "/:institution_id/animals/:animal_id",
   getAnimalController.handle
-);
-
-institutionsRoutes.get(
-  "/:institution_id/address",
-  canBe([AssociateRole.FOUNDER, AssociateRole.VOLUNTARY]),
-  getInstitutionAddressController.handle
 );
 
 export { institutionsRoutes };
