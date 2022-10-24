@@ -34,6 +34,10 @@ import { ISpecieRepository } from "@modules/animals/repositories/ISpecieReposito
 import { SpecieRepository } from "@modules/animals/repositories/implementations/SpecieRepository";
 import { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
 import { StageOfLifeRepository } from "@modules/animals/repositories/implementations/StageOfLifeRepository";
+import { IAdoptionRequestRepository } from "@modules/adoption/repositories/IAdoptionRequestRepository";
+import { AdoptionRequestRepository } from "@modules/adoption/repositories/implementations/AdoptionRequestRepository";
+import { IAdoptionStatusRepository } from "@modules/adoption/repositories/IAdoptionStatusRepository";
+import { AdoptionStatusRepository } from "@modules/adoption/repositories/implementations/AdoptionStatusRepository";
 
 container.registerSingleton<IAnimalSizesRepository>(
   "AnimalSizesRepository",
@@ -86,6 +90,16 @@ container.registerSingleton<IInstitutionAssociateRepository>(
 container.registerSingleton<IAnimalRepository>(
   "AnimalRepository",
   AnimalRepository
+);
+
+container.registerSingleton<IAdoptionRequestRepository>(
+  "AdoptionRequestRepository",
+  AdoptionRequestRepository
+);
+
+container.registerSingleton<IAdoptionStatusRepository>(
+  "AdoptionStatusRepository",
+  AdoptionStatusRepository
 );
 
 container.registerSingleton<IAddressService>(

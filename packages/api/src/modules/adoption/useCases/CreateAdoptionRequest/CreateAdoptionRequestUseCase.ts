@@ -17,15 +17,15 @@ interface IRequest {
 
 @injectable()
 export class CreateAdoptionRequestUseCase {
+  private adoptionRequestRepository: IAdoptionRequestRepository;
   private animalRepository: IAnimalRepository;
   private adoptionStatusRepository: IAdoptionStatusRepository;
   private institutionRepository: IInstitutionRepository;
   private userRepository: IUsersRepository;
-  private animalAdoptionRequestRepository: IAdoptionRequestRepository;
 
   constructor(
     @inject("AdoptionRequestRepository")
-    animalAdoptionRequestRepository: IAdoptionRequestRepository,
+    adoptionRequestRepository: IAdoptionRequestRepository,
     @inject("AdoptionStatusRepository")
     adoptionStatusRepository: IAdoptionStatusRepository,
     @inject("AnimalRepository")
@@ -35,7 +35,7 @@ export class CreateAdoptionRequestUseCase {
     @inject("UsersRepository")
     userRepository: IUsersRepository
   ) {
-    this.animalAdoptionRequestRepository = animalAdoptionRequestRepository;
+    this.adoptionRequestRepository = adoptionRequestRepository;
     this.animalRepository = animalRepository;
     this.institutionRepository = institutionRepository;
     this.userRepository = userRepository;
@@ -98,7 +98,7 @@ export class CreateAdoptionRequestUseCase {
     const institution = await this.getInstitution(institution_id);
     const status = await this.getDefaultStatus();
 
-    await this.animalAdoptionRequestRepository.create({
+    await this.adoptionRequestRepository.create({
       animal,
       institution,
       status,

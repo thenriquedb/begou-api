@@ -16,4 +16,9 @@ export class AdoptionStatusRepository implements IAdoptionStatusRepository {
     const adoptionStatus = await this.repository.findOneBy({ id });
     return adoptionStatus;
   }
+
+  async findByName(name: string) {
+    const adoptionStatus = await this.repository.findOneBy({ name });
+    return adoptionStatus;
+  }
 }
