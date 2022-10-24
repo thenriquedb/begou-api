@@ -14,7 +14,7 @@ interface IRequest {
   name: string;
   description: string;
   institution_id: string;
-  genre: string;
+  genre: AnimalGenre;
   specie_id: string;
   size_id: string;
   health_ids?: string[];
@@ -83,11 +83,15 @@ export class CreateAnimalUseCase {
     return Object.values(AnimalGenre as any).includes(genreRaw);
   }
 
+  private removeDuplicateIds(items: string[]) {
+    return Array.from(new Set(items));
+  }
+
   async execute(data: IRequest) {
     const {
       name,
       description,
-      genre: genreRaw,
+      genre,
       size_id,
       institution_id,
       specie_id,
@@ -96,7 +100,7 @@ export class CreateAnimalUseCase {
       stage_of_life_id,
     } = data;
 
-    const genreIsValid = this.isValidGenre(genreRaw);
+    const genreIsValid = this.isValidGenre(genre);
 
     if (!genreIsValid) {
       throw new BadRequestError("Invalid genre value");
@@ -105,17 +109,22 @@ export class CreateAnimalUseCase {
     const institution = await this.getInstitution(institution_id);
     const specie = await this.getSpecie(specie_id);
     const size = await this.animalSizesRepository.findById(size_id);
-    const healths = await this.animalHealthRepository.findByIds(health_ids);
-    const personalities = await this.animalPersonalityRepository.findByIds(
-      personality_ids
+
+    const healths = await this.animalHealthRepository.findByIds(
+      this.removeDuplicateIds(health_ids)
     );
+
+    const personalities = await this.animalPersonalityRepository.findByIds(
+      this.removeDuplicateIds(personality_ids)
+    );
+
     const stageOfLife = await this.stageOfLifeRepository.findById(
       stage_of_life_id
     );
 
     await this.animalRepository.create({
       description,
-      genre: genreRaw,
+      genre,
       stage_of_life: stageOfLife,
       healths,
       institution,
