@@ -21,7 +21,13 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {},
+      {
+        "usePrettierrc": true
+      }
+    ],
     "camelcase": "off",
     "import/no-unresolved": "error",
     "@typescript-eslint/naming-convention": [
@@ -50,6 +56,11 @@
       {
         "ts": "never"
       }
+    ],
+    "max-len": [
+      1,
+      160,
+      2
     ],
     "import-helpers/order-imports": [
       "warn",
