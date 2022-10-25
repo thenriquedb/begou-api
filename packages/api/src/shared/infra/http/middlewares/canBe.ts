@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
 import { InstitutionAssociateRepository } from "@modules/institutions/repositories/implementations/InstitutionAssociateRepository";
-import { UnauthorizedError } from "@shared/errors/UnauthorizedError";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
 import { ForbiddenError } from "@shared/errors/ForbiddenError";
 
@@ -18,7 +17,7 @@ export function canBe(userRoles: AssociateRole[]) {
     });
 
     if (!associate) {
-      throw new UnauthorizedError("User is not a associate of the institution");
+      throw new ForbiddenError("User is not a associate of the institution");
     }
 
     const hasPermission = userRoles.some((role) => associate.role.name === role);

@@ -9,6 +9,8 @@ import { ListAdoptionRequestFromAnimalController } from "@modules/adoptions/useC
 import { ListAnimalHealthController } from "@modules/animals/useCases/ListAnimalHealth";
 import { ListAnimalPersonalitiesController } from "@modules/animals/useCases/ListAnimalPersonalities";
 import { ListAnimalSizesController } from "@modules/animals/useCases/ListAnimalSizes";
+import { canBe } from "@shared/infra/http/middlewares/canBe";
+import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
@@ -25,7 +27,11 @@ const deleteAnimalController = new DeleteAnimalController();
 const animalsRoutes = Router();
 
 animalsRoutes.use(ensureAuthenticated);
-animalsRoutes.delete("/:animal_id", deleteAnimalController.handle);
+animalsRoutes.delete(
+  "/:animal_id",
+  canBe([AssociateRole.FOUNDER, AssociateRole.VOLUNTARY]),
+  deleteAnimalController.handle
+);
 animalsRoutes.get("/:animal_id", getAnimalController.handle);
 animalsRoutes.get("/:animal_id/adoptions", listAdoptionRequestFromAnimal.handle);
 animalsRoutes.get("/healths", listAnimalHealthController.handle);

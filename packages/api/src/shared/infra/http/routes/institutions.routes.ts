@@ -74,7 +74,7 @@ institutionsRoutes.post(
 
 institutionsRoutes.post(
   "/:institution_id/animals",
-  canBe([AssociateRole.FOUNDER]),
+  canBe([AssociateRole.FOUNDER, AssociateRole.VOLUNTARY]),
   createAnimalController.handle
 );
 institutionsRoutes.get(
