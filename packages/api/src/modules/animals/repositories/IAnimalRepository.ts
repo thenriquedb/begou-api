@@ -5,6 +5,7 @@ import { Animal } from "@modules/animals/entities/Animal";
 export interface IAnimalRepository {
   create: (data: ICreateAnimalDTO) => Promise<void>;
   findById: (id: string) => Promise<Animal>;
+  deleteById: (id: string) => Promise<void>;
   listByInstitutionId: (
     institutionId: string,
     data?: IFindAnimalDTO

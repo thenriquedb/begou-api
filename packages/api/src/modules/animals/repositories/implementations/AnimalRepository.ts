@@ -42,6 +42,10 @@ export class AnimalRepository implements IAnimalRepository {
     await this.repository.save(animal);
   }
 
+  async deleteById(id: string) {
+    await this.repository.delete({ id } as FindOptionsWhere<Animal>);
+  }
+
   async findById(id: string) {
     const animal = await this.repository.findOne({
       where: { id },
