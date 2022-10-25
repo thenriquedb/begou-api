@@ -9,7 +9,7 @@ import { CreateInstitutionController } from "@modules/institutions/useCases/Crea
 import { GetAdoptionRequestController } from "@modules/adoptions/useCases/GetAdoptionRequest ";
 import { GetAnimalController } from "@modules/animals/useCases/GetAnimal";
 import { GetInstitutionController } from "@modules/institutions/useCases/GetInstitution";
-import { ListAdoptionRequestByInstitutionController } from "@modules/adoptions/useCases/ListAdoptionRequestByInstitution";
+import { ListAdoptionRequestFromInstitutionController } from "@modules/adoptions/useCases/ListAdoptionRequestFromInstitution";
 import { ListAnimalsByInstitutionController } from "@modules/animals/useCases/ListAnimalsByInstitution";
 import { ListInstitutionsController } from "@modules/institutions/useCases/ListInstitutions";
 import { UpdateAdoptionRequestController } from "@modules/adoptions/useCases/UpdateAdoptionRequestStatus";
@@ -25,7 +25,8 @@ const createInstitutionController = new CreateInstitutionController();
 const getAdoptionRequestController = new GetAdoptionRequestController();
 const getAnimalController = new GetAnimalController();
 const getInstitutionController = new GetInstitutionController();
-const listAdoptionRequestsController = new ListAdoptionRequestByInstitutionController();
+const listAdoptionFromInstitutionController =
+  new ListAdoptionRequestFromInstitutionController();
 const listAnimalsByInstitutionController = new ListAnimalsByInstitutionController();
 const listInstitutionsController = new ListInstitutionsController();
 const updateAdoptionRequestController = new UpdateAdoptionRequestController();
@@ -51,7 +52,7 @@ institutionsRoutes.post(
 
 institutionsRoutes.get(
   "/:institution_id/adoptions",
-  listAdoptionRequestsController.handle
+  listAdoptionFromInstitutionController.handle
 );
 
 institutionsRoutes.put(

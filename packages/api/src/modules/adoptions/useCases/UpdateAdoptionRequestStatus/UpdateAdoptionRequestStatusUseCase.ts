@@ -33,7 +33,7 @@ export class UpdateAdoptionRequestUseCase {
 
   private async updateAnimalAvailable(adoptionRequest: AdoptionRequest) {
     return this.animalRepository.update(adoptionRequest.animal.id, {
-      available: true,
+      available: false,
     });
   }
 
@@ -51,10 +51,10 @@ export class UpdateAdoptionRequestUseCase {
       throw new BadRequestError("Invalid adoption status id");
     }
 
+    await this.adoptionRequestRepository.updateStatus(adoption_id, status);
+
     if (status.name === AdoptionStatusValue.ACCEPTED) {
       await this.updateAnimalAvailable(adoptionRequest);
     }
-
-    await this.adoptionRequestRepository.updateStatus(adoption_id, status);
   }
 }

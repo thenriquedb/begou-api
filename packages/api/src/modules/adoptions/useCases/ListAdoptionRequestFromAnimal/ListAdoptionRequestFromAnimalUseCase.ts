@@ -1,14 +1,13 @@
 import { inject, injectable } from "tsyringe";
 
 import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
 
 interface IRequest {
-  institution_id: string;
+  animal_id: string;
 }
 
 @injectable()
-export class ListAdoptionRequestByInstitutionUseCase {
+export class ListAdoptionRequestFromAnimalUseCase {
   private adoptionRequestRepository: IAdoptionRequestRepository;
 
   constructor(
@@ -19,12 +18,12 @@ export class ListAdoptionRequestByInstitutionUseCase {
   }
 
   async execute(data: IRequest) {
-    const { institution_id } = data;
+    const { animal_id } = data;
 
-    const adoptionRequest = await this.adoptionRequestRepository.listBy({
-      institution_id,
+    const adoptionRequests = await this.adoptionRequestRepository.listBy({
+      animal_id,
     });
 
-    return adoptionRequest;
+    return adoptionRequests;
   }
 }
