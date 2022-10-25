@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { InstitutionAssociateRepository } from "@modules/institutions/repositories/implementations/InstitutionAssociateRepository";
 import { UnauthorizedError } from "@shared/errors/UnauthorizedError";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
+import { ForbiddenError } from "@shared/errors/ForbiddenError";
 
 const institutionAssociateRepository = new InstitutionAssociateRepository();
 
@@ -20,14 +21,10 @@ export function canBe(userRoles: AssociateRole[]) {
       throw new UnauthorizedError("User is not a associate of the institution");
     }
 
-    const hasPermission = userRoles.some(
-      (role) => associate.role.name === role
-    );
+    const hasPermission = userRoles.some((role) => associate.role.name === role);
 
     if (!hasPermission) {
-      throw new UnauthorizedError(
-        "You do not have permission to execute this action"
-      );
+      throw new ForbiddenError("You do not have permission to execute this action");
     }
 
     next();
