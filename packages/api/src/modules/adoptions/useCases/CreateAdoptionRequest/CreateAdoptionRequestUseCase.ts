@@ -4,11 +4,11 @@ import { IAnimalRepository } from "@modules/animals/repositories/IAnimalReposito
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
 import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
 import { AdoptionStatusValue } from "@modules/adoptions/enums/AdoptionStatusValue";
 import { Animal } from "@modules/animals/entities/Animal";
-import { ConflictError } from "@shared/errors/ConflictError";
+import { ConflictError } from "@shared/core/errors/ConflictError";
 
 interface IRequest {
   animal_id: string;

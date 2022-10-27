@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
 import { AdoptionStatusValue } from "@modules/adoptions/enums/AdoptionStatusValue";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";

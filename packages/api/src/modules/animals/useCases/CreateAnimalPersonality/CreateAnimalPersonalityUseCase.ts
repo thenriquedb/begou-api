@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IAnimalPersonalityRepository } from "@modules/animals/repositories/IAnimalPersonalityRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 interface IRequest {
   name: string;

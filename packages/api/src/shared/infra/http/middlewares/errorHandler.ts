@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextFunction, Request, Response } from "express";
 
-import { AppError } from "@shared/errors/AppError";
+import { AppError } from "@shared/core/errors/AppError";
 
 export function errorHandler(
   err: Error,
@@ -12,6 +12,7 @@ export function errorHandler(
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({
       message: err.message,
+      data: err.data,
     });
   }
 

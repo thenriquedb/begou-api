@@ -4,7 +4,7 @@ import { IInstitutionRepository } from "@modules/institutions/repositories/IInst
 import { IInstitutionAssociateRepository } from "@modules/institutions/repositories/IInstitutionAssociateRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
 import { IRoleRepository } from "@modules/accounts/repositories/IRoleRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 interface IRequest {
   institution_id: string;
@@ -37,9 +37,7 @@ export class CreateInstitutionAssociateUseCase {
   }
 
   async execute({ institution_id, associates }: IRequest) {
-    const instituition = await this.instituitionRepository.findById(
-      institution_id
-    );
+    const instituition = await this.instituitionRepository.findById(institution_id);
 
     if (!instituition) {
       throw new BadRequestError("Institution not found");
@@ -48,9 +46,7 @@ export class CreateInstitutionAssociateUseCase {
     associates.map(async (associate) => {
       const user = await this.usersRepository.findById(associate.user_id);
       const role = await this.roleRepository.findById(associate.role_id);
-      const institution = await this.instituitionRepository.findById(
-        institution_id
-      );
+      const institution = await this.instituitionRepository.findById(institution_id);
 
       await this.institutionAssociateRepository.create({
         institution,

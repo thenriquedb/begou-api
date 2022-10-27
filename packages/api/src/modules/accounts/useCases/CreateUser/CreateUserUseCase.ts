@@ -1,9 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { BadRequestError } from "@shared/errors/BadRequestError";
-import { IEmailValidator } from "@validators/protocols/IEmailValidator";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
-import { ConflictError } from "@shared/errors/ConflictError";
+import { ConflictError } from "@shared/core/errors/ConflictError";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../repositories/IUserRepository";
@@ -12,29 +10,19 @@ import { IUsersRepository } from "../../repositories/IUserRepository";
 class CreateUserUseCase {
   private usersRepository: IUsersRepository;
   private encoder: IEncoder;
-  private emailValidator: IEmailValidator;
 
   constructor(
     @inject("UsersRepository")
     usersRepository: IUsersRepository,
     @inject("Encoder")
-    encoder: IEncoder,
-    @inject("EmailValidator")
-    emailValidator: IEmailValidator
+    encoder: IEncoder
   ) {
     this.usersRepository = usersRepository;
     this.encoder = encoder;
-    this.emailValidator = emailValidator;
   }
 
   async execute(data: ICreateUserDTO) {
     const { email, name, password, phone_number } = data;
-
-    const emailIsValid = this.emailValidator.validate(email);
-
-    if (!emailIsValid) {
-      throw new BadRequestError("Email is invalid");
-    }
 
     const user = await this.usersRepository.findByEmail(email);
     if (user) {
@@ -43,7 +31,7 @@ class CreateUserUseCase {
 
     const passwordHash = await this.encoder.encode(password, 8);
 
-    this.usersRepository.create({
+    await this.usersRepository.create({
       email,
       name,
       password: passwordHash,

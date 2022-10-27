@@ -4,7 +4,7 @@ import { IInstitutionRepository } from "@modules/institutions/repositories/IInst
 import { ICityRepository } from "@modules/adresses/repositories/ICityRepository";
 import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
 import { IAddressService } from "@data/protocols/address-service/IAddressService";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 export interface IRequest {
   complement?: string;
@@ -58,9 +58,7 @@ export class CreateInstitutionAddressUseCase {
     let city = await this.cityRepository.findByZipCode(zipCode);
     if (city) return city;
 
-    const completeAddress = await this.addressService.getAddressByZipCode(
-      zipCode
-    );
+    const completeAddress = await this.addressService.getAddressByZipCode(zipCode);
 
     if (!completeAddress) {
       throw new BadRequestError("Invalid zip code");
@@ -76,23 +74,15 @@ export class CreateInstitutionAddressUseCase {
   }
 
   async execute(data: IRequest) {
-    const {
-      neighborhood,
-      street,
-      ufInitials,
-      zipCode,
-      complement,
-      instituitionId,
-    } = data;
+    const { neighborhood, street, ufInitials, zipCode, complement, instituitionId } =
+      data;
 
     const zipCodeIsValid = this.addressService.zipCodeIsValid(zipCode);
     if (!zipCodeIsValid) {
       throw new Error("Zip code must contain exactly 8 characters");
     }
 
-    const instituition = await this.instituitionRepository.findById(
-      instituitionId
-    );
+    const instituition = await this.instituitionRepository.findById(instituitionId);
 
     if (instituition.address) {
       throw new BadRequestError("Institution already has address");

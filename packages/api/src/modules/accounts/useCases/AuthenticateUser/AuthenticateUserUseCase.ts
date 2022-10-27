@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "@shared/errors/AppError";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
 import { ITokenManager } from "@data/protocols/cryptography/ITokenManager";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 import { IUsersRepository } from "../../repositories/IUserRepository";
 
@@ -42,13 +42,13 @@ class AuthenticateUserUseCase {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError("Email or password incorrect");
+      throw new BadRequestError("Email or password incorrect");
     }
 
     const passwordMatch = await this.encoder.compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new AppError("Email or password incorrect");
+      throw new BadRequestError("Email or password incorrect");
     }
 
     const token = this.tokenManager.encrypt({}, user.id);

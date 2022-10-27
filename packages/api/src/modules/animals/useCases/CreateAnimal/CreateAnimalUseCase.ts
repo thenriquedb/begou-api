@@ -6,9 +6,10 @@ import { IAnimalSizesRepository } from "@modules/animals/repositories/IAnimalSiz
 import { ISpecieRepository } from "@modules/animals/repositories/ISpecieRepository";
 import { AnimalGenre } from "@modules/animals/enums/Genre";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
 import { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
+import { CreateAnimalRequestDTO } from "@modules/animals/dtos/CreateAnimalRequestDTO";
 
 interface IRequest {
   name: string;
@@ -58,9 +59,7 @@ export class CreateAnimalUseCase {
   }
 
   private async getInstitution(institution_id: string) {
-    const institution = await this.institutionRepository.findById(
-      institution_id
-    );
+    const institution = await this.institutionRepository.findById(institution_id);
 
     if (!institution) {
       throw new BadRequestError("Invalid institution id");
@@ -87,7 +86,7 @@ export class CreateAnimalUseCase {
     return Array.from(new Set(items));
   }
 
-  async execute(data: IRequest) {
+  async execute(data: CreateAnimalRequestDTO) {
     const {
       name,
       description,
@@ -95,8 +94,8 @@ export class CreateAnimalUseCase {
       size_id,
       institution_id,
       specie_id,
-      health_ids = [],
-      personality_ids = [],
+      health_ids,
+      personality_ids,
       stage_of_life_id,
     } = data;
 
@@ -118,9 +117,7 @@ export class CreateAnimalUseCase {
       this.removeDuplicateIds(personality_ids)
     );
 
-    const stageOfLife = await this.stageOfLifeRepository.findById(
-      stage_of_life_id
-    );
+    const stageOfLife = await this.stageOfLifeRepository.findById(stage_of_life_id);
 
     await this.animalRepository.create({
       description,

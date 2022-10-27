@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IRoleRepository } from "@modules/accounts/repositories/IRoleRepository";
-import { BadRequestError } from "@shared/errors/BadRequestError";
+import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 interface IRequest {
   name: string;
