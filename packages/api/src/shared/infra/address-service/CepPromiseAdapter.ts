@@ -20,7 +20,6 @@ export class CepPromiseAdapter extends AddressService {
         zipCode: address.cep,
       };
     } catch (error) {
-      console.log({ error });
       return null;
     }
   }

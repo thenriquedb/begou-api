@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
 import { ConflictError } from "@shared/core/errors/ConflictError";
 
-import { CreateUserRequestDto } from "./CreateUserRequestDTO";
+import { CreateUserRequestDto } from "../../dtos/CreateUser";
 import { IUsersRepository } from "../../repositories/IUserRepository";
 
 @injectable()
