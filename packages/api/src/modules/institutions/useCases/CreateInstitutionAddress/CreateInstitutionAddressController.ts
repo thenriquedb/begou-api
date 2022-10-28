@@ -5,8 +5,7 @@ import { CreateInstitutionAddressUseCase } from "./CreateInstitutionAddressUseCa
 
 export class CreateInstitutionAddressController {
   async handle(request: Request, response: Response) {
-    const { neighborhood, street, ufInitials, zipCode, complement } =
-      request.body;
+    const { neighborhood, street, ufInitials, zipCode, complement } = request.body;
 
     const { institution_id } = request.params;
 

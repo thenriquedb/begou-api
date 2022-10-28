@@ -6,8 +6,7 @@ import { ICreateInstitutionAssociateDTO } from "@modules/institutions/dtos/ICrea
 
 import { IInstitutionAssociateRepository } from "../IInstitutionAssociateRepository";
 
-export class InstitutionAssociateRepository
-  implements IInstitutionAssociateRepository {
+export class InstitutionAssociateRepository implements IInstitutionAssociateRepository {
   private repository: Repository<InstitutionAssociate>;
 
   constructor() {

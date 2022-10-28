@@ -7,9 +7,7 @@ export class CreateInstitutionController {
   async handle(request: Request, response: Response) {
     const { address_id, name } = request.body;
 
-    const createInstitutionUseCase = container.resolve(
-      CreateInstitutionUseCase
-    );
+    const createInstitutionUseCase = container.resolve(CreateInstitutionUseCase);
 
     await createInstitutionUseCase.execute({
       address_id,

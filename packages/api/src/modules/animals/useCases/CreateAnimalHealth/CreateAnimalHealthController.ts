@@ -7,9 +7,7 @@ export class CreateAnimalHealthController {
   async handle(request: Request, response: Response) {
     const { name, description } = request.body;
 
-    const createAnimalHealthUseCase = container.resolve(
-      CreateAnimalHealthUseCase
-    );
+    const createAnimalHealthUseCase = container.resolve(CreateAnimalHealthUseCase);
 
     await createAnimalHealthUseCase.execute({ name, description });
 

@@ -20,8 +20,7 @@ export class CreateAnimalHealthUseCase {
   }
 
   async execute({ name, description }: IRequest) {
-    const animalSizeAlreadyExists =
-      await this.animalHealthRepository.findByName(name);
+    const animalSizeAlreadyExists = await this.animalHealthRepository.findByName(name);
 
     if (animalSizeAlreadyExists) {
       throw new BadRequestError("Animal health already exists");

@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, TableColumn } from "typeorm";
 
-export class AlterInstitutionUserTable1666211625335
-  implements MigrationInterface {
+export class AlterInstitutionUserTable1666211625335 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.renameTable("institution_user", "institution_associate");
 

@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateAnimalHasPersonalityTable1666273838991
-  implements MigrationInterface {
+export class CreateAnimalHasPersonalityTable1666273838991 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({

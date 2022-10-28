@@ -8,9 +8,7 @@ export class CreateInstitutionAssociateController {
     const { associates } = request.body;
     const { institution_id } = request.params;
 
-    const createInstitutionUseCase = container.resolve(
-      CreateInstitutionAssociateUseCase
-    );
+    const createInstitutionUseCase = container.resolve(CreateInstitutionAssociateUseCase);
 
     await createInstitutionUseCase.execute({
       institution_id,

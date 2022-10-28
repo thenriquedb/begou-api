@@ -8,9 +8,7 @@ export class CreateAdoptionRequestController {
     const { animal_id, user_id } = request.body;
     const { institution_id } = request.params;
 
-    const createAdoptionRequestUseCase = container.resolve(
-      CreateAdoptionRequestUseCase
-    );
+    const createAdoptionRequestUseCase = container.resolve(CreateAdoptionRequestUseCase);
 
     await createAdoptionRequestUseCase.execute({
       institution_id,

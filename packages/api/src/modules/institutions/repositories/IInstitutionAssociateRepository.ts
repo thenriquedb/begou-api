@@ -5,7 +5,5 @@ import { InstitutionAssociate } from "@modules/institutions/entities/Institution
 
 export interface IInstitutionAssociateRepository {
   create: (data: ICreateInstitutionAssociateDTO) => Promise<void>;
-  findBy: (
-    data: FindOptionsWhere<InstitutionAssociate>
-  ) => Promise<InstitutionAssociate>;
+  findBy: (data: FindOptionsWhere<InstitutionAssociate>) => Promise<InstitutionAssociate>;
 }

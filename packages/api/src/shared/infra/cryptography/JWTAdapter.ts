@@ -1,9 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import {
-  ITokenManager,
-  IPayload,
-} from "@data/protocols/cryptography/ITokenManager";
+import { ITokenManager, IPayload } from "@data/protocols/cryptography/ITokenManager";
 
 export class JWTEAdapter implements ITokenManager {
   private secret: string;

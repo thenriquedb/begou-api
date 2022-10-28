@@ -6,8 +6,7 @@ import { Address } from "../../entities/Address";
 import { ICreateAddressDTO } from "../../dtos/ICreateAddressDTO";
 import { IInstitutionAddressRepository } from "../IInstitutionAddressRepository";
 
-export class InstitutionAddressRepository
-  implements IInstitutionAddressRepository {
+export class InstitutionAddressRepository implements IInstitutionAddressRepository {
   private repository: Repository<Address>;
 
   constructor() {

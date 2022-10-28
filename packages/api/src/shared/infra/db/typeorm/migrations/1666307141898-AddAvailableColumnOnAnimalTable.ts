@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, TableColumn } from "typeorm";
 
-export class AddAvailableColumnOnAnimalTable1666307141898
-  implements MigrationInterface {
+export class AddAvailableColumnOnAnimalTable1666307141898 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn(
       "animal",

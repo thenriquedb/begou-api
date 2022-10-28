@@ -6,8 +6,7 @@ import { AnimalPersonality } from "../../entities/AnimalPersonality";
 import { IAnimalPersonalityRepository } from "../IAnimalPersonalityRepository";
 import { ICreateAnimalPersonalityDTO } from "../../dtos/ICreateAnimalPersonalityDTO";
 
-export class AnimalPersonalityRepository
-  implements IAnimalPersonalityRepository {
+export class AnimalPersonalityRepository implements IAnimalPersonalityRepository {
   private repository: Repository<AnimalPersonality>;
 
   constructor() {
