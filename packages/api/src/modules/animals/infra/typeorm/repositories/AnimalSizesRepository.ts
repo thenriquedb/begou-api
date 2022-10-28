@@ -1,10 +1,9 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
-
-import { AnimalSize } from "../../entities/AnimalSize";
-import { IAnimalSizesRepository } from "../IAnimalSizeRepository";
-import { ICreateAnimalSizeDTO } from "../../dtos/ICreateAnimalSizeDTO";
+import { IAnimalSizesRepository } from "@modules/animals/repositories/IAnimalSizeRepository";
+import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
+import { ICreateAnimalSizeDTO } from "@modules/animals/dtos/ICreateAnimalSizeDTO";
 
 export class AnimalSizesRepository implements IAnimalSizesRepository {
   private repository: Repository<AnimalSize>;

@@ -1,6 +1,5 @@
 import { Repository } from "typeorm";
 
-import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 
 import { User } from "../../entities/User";
@@ -13,7 +12,7 @@ export class UsersRepository implements IUsersRepository {
     this.repository = AppDataSource.getRepository(User);
   }
 
-  async create(data: ICreateUserDTO) {
+  async create(data: Partial<User>) {
     const { email, name, password, phone_number } = data;
 
     const user = this.repository.create({

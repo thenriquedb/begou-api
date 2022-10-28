@@ -3,10 +3,10 @@ import { container } from "tsyringe";
 
 import { AdoptionRequestRepository } from "@modules/adoptions/repositories/implementations/AdoptionRequestRepository";
 import { AdoptionStatusRepository } from "@modules/adoptions/repositories/implementations/AdoptionStatusRepository";
-import { AnimalHealthRepository } from "@modules/animals/repositories/implementations/AnimalHealthRepository";
-import { AnimalPersonalityRepository } from "@modules/animals/repositories/implementations/AnimalPersonalityRepository";
-import { AnimalRepository } from "@modules/animals/repositories/implementations/AnimalRepository";
-import { AnimalSizesRepository } from "@modules/animals/repositories/implementations/AnimalSizesRepository";
+import { AnimalHealthRepository } from "@modules/animals/infra/typeorm/repositories/AnimalHealthRepository";
+import { AnimalPersonalityRepository } from "@modules/animals/infra/typeorm/repositories/AnimalPersonalityRepository";
+import { AnimalRepository } from "@modules/animals/infra/typeorm/repositories/AnimalRepository";
+import { AnimalSizesRepository } from "@modules/animals/infra/typeorm/repositories/AnimalSizesRepository";
 import { CityRepository } from "@modules/adresses/repositories/implementations/CityRepository";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
 import { InstitutionAddressRepository } from "@modules/adresses/repositories/implementations/InstitutionAddressRepository";
@@ -15,8 +15,8 @@ import { InstitutionRepository } from "@modules/institutions/repositories/implem
 import { ISpecieRepository } from "@modules/animals/repositories/ISpecieRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
 import { RoleRepository } from "@modules/accounts/repositories/implementations/RoleRepository";
-import { SpecieRepository } from "@modules/animals/repositories/implementations/SpecieRepository";
-import { StageOfLifeRepository } from "@modules/animals/repositories/implementations/StageOfLifeRepository";
+import { SpecieRepository } from "@modules/animals/infra/typeorm/repositories/SpecieRepository";
+import { StageOfLifeRepository } from "@modules/animals/infra/typeorm/repositories/StageOfLifeRepository";
 import { UfRepository } from "@modules/adresses/repositories/implementations/UfRepository";
 import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
 import type { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";

@@ -8,7 +8,7 @@ export interface IAnimalRepository {
   deleteById: (id: string) => Promise<void>;
   listByInstitutionId: (
     institutionId: string,
-    data?: IFindAnimalDTO
+    filterBy?: IFindAnimalDTO
   ) => Promise<Animal[]>;
   update: (id: string, data: Partial<Animal>) => Promise<Animal>;
 }

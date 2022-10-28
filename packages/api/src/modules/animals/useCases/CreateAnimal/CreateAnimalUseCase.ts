@@ -10,7 +10,7 @@ import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
 import { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
 
-import { CreateAnimalRequestDTO } from "./CreateAnimalRequestDTO";
+import { CreateAnimalRequestDTO } from "../../dtos/CreateAnimal";
 
 @injectable()
 export class CreateAnimalUseCase {

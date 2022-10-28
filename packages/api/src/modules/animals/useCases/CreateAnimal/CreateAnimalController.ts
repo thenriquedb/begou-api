@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateAnimalRequestDTO } from "@modules/animals/dtos/CreateAnimalRequestDTO";
+import { CreateAnimalRequestDTO } from "@modules/animals/dtos/CreateAnimal";
 
 import { CreateAnimalUseCase } from "./CreateAnimalUseCase";
 

@@ -3,9 +3,8 @@ import { FindOptionsWhere, Repository } from "typeorm";
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
 import { ICreateAnimalDTO } from "@modules/animals/dtos/ICreateAnimalDTO";
 import { IFindAnimalDTO } from "@modules/animals/dtos/IFindAnimalDTO";
-
-import { Animal } from "../../entities/Animal";
-import { IAnimalRepository } from "../IAnimalRepository";
+import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
+import { Animal } from "@modules/animals/infra/typeorm/entities/Animal";
 
 export class AnimalRepository implements IAnimalRepository {
   private repository: Repository<Animal>;

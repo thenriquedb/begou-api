@@ -1,5 +1,5 @@
 import { ICreateAnimalPersonalityDTO } from "@modules/animals/dtos/ICreateAnimalPersonalityDTO";
-import { AnimalPersonality } from "@modules/animals/entities/AnimalPersonality";
+import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";
 
 export interface IAnimalPersonalityRepository {
   create: (data: ICreateAnimalPersonalityDTO) => Promise<void>;

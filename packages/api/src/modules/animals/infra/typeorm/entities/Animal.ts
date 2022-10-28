@@ -10,13 +10,13 @@ import {
 } from "typeorm";
 
 import { UUID } from "@shared/infra/cryptography/UUID";
-import { AnimalSize } from "@modules/animals/entities/AnimalSize";
+import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
 import { Institution } from "@modules/institutions/entities/Institution";
-import { Specie } from "@modules/animals/entities/Specie";
-import { AnimalHealth } from "@modules/animals/entities/AnimalHealth";
-import { AnimalPersonality } from "@modules/animals/entities/AnimalPersonality";
+import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";
+import { AnimalHealth } from "@modules/animals/infra/typeorm/entities/AnimalHealth";
+import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";
+import { StageOfLife } from "@modules/animals/infra/typeorm/entities/StageOfLife";
 import { AnimalGenre } from "@modules/animals/enums/Genre";
-import { StageOfLife } from "@modules/animals/entities/StageOfLife";
 
 @Entity("animal")
 export class Animal {

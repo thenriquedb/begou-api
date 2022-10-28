@@ -1,10 +1,9 @@
 import { In, Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
-
-import { AnimalPersonality } from "../../entities/AnimalPersonality";
-import { IAnimalPersonalityRepository } from "../IAnimalPersonalityRepository";
-import { ICreateAnimalPersonalityDTO } from "../../dtos/ICreateAnimalPersonalityDTO";
+import { IAnimalPersonalityRepository } from "@modules/animals/repositories/IAnimalPersonalityRepository";
+import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";
+import { ICreateAnimalPersonalityDTO } from "@modules/animals/dtos/ICreateAnimalPersonalityDTO";
 
 export class AnimalPersonalityRepository implements IAnimalPersonalityRepository {
   private repository: Repository<AnimalPersonality>;
