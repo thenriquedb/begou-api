@@ -30,9 +30,6 @@
       "@database/*": [
         "./src/database/*"
       ],
-      "@data/*": [
-        "./src/data/*"
-      ],
       "@modules/*": [
         "./src/modules/*"
       ],

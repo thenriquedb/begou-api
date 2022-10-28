@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import "express-async-errors";
 import express from "express";
-import "../../container";
 
 import { errorHandler } from "@shared/infra/http/middlewares/errorHandler";
 
+import "../../config/dependency-injection";
 import { AppDataSource } from "../db/typeorm/data-source";
 import { router } from "./routes";
 

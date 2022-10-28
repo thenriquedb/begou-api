@@ -3,18 +3,22 @@ import "dotenv/config";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 
-import { MainSeeder } from "@shared/infra/db/typeorm/seeds/MainSeeder";
+import config from "@shared/config/database";
+
+import { MainSeeder } from "./seeds/MainSeeder";
+
+const basePath = `${__dirname}/../../../..`;
 
 const options: DataSourceOptions & SeederOptions = {
   type: "mysql",
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: config.host,
+  port: config.port,
+  username: config.username,
+  password: config.password,
+  database: config.database,
   charset: "utf8_general_ci",
-  entities: [`${__dirname}/../../../../**/entities/*.ts`],
-  migrations: [`${__dirname}/../../../../**/migrations/*.ts`],
+  entities: [`${basePath}/**/entities/*.ts`],
+  migrations: [`${basePath}/**/migrations/*.ts`],
   seeds: [MainSeeder],
 };
 

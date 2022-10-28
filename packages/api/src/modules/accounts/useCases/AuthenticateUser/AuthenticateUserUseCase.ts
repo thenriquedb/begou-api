@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { IEncoder } from "@data/protocols/cryptography/IEncoder";
-import { ITokenManager } from "@data/protocols/cryptography/ITokenManager";
+import { IEncoder } from "@shared/ports/cryptography/IEncoder";
+import { ITokenManager } from "@shared/ports/cryptography/ITokenManager";
 import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 import { IUsersRepository } from "../../repositories/IUserRepository";

@@ -3,7 +3,7 @@ import cepPromise from "cep-promise";
 import {
   IAddressData,
   AddressService,
-} from "@data/protocols/address-service/IAddressService";
+} from "@shared/ports/address-service/IAddressService";
 
 import { BrazilUfs } from "./ufs";
 
