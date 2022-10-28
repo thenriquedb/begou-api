@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { IEncoder } from "@data/protocols/cryptography/IEncoder";
 import { ConflictError } from "@shared/core/errors/ConflictError";
 
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
+import { CreateUserRequestDto } from "./CreateUserRequestDTO";
 import { IUsersRepository } from "../../repositories/IUserRepository";
 
 @injectable()
@@ -21,7 +21,7 @@ class CreateUserUseCase {
     this.encoder = encoder;
   }
 
-  async execute(data: ICreateUserDTO) {
+  async execute(data: CreateUserRequestDto) {
     const { email, name, password, phone_number } = data;
 
     const user = await this.usersRepository.findByEmail(email);
