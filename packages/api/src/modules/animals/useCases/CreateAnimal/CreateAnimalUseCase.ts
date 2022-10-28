@@ -9,19 +9,8 @@ import { IInstitutionRepository } from "@modules/institutions/repositories/IInst
 import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
 import { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
-import { CreateAnimalRequestDTO } from "@modules/animals/dtos/CreateAnimalRequestDTO";
 
-interface IRequest {
-  name: string;
-  description: string;
-  institution_id: string;
-  genre: AnimalGenre;
-  specie_id: string;
-  size_id: string;
-  health_ids?: string[];
-  stage_of_life_id?: string;
-  personality_ids?: string[];
-}
+import { CreateAnimalRequestDTO } from "./CreateAnimalRequestDTO";
 
 @injectable()
 export class CreateAnimalUseCase {

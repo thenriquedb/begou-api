@@ -2,7 +2,7 @@ import { plainToInstance, Type, Expose } from "class-transformer";
 import { IsNotEmpty, ArrayUnique, IsOptional, IsEnum } from "class-validator";
 
 import { AnimalGenre } from "@modules/animals/enums/Genre";
-import { BaseDTO } from "@shared/core/BaseDTO";
+import { BaseDTO } from "@shared/core/dto/BaseDTO";
 
 @Expose()
 export class CreateAnimalRequestDTO extends BaseDTO {
