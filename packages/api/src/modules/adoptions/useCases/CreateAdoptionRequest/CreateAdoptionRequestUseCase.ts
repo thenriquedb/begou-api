@@ -47,7 +47,7 @@ export class CreateAdoptionRequestUseCase {
     const institution = await this.institutionRepository.findById(institution_id);
 
     if (!institution) {
-      throw new BadRequestError("Invalid does not exist");
+      throw new BadRequestError("Institution does not exist");
     }
 
     return institution;

@@ -51,7 +51,7 @@ export class CreateAnimalUseCase {
     const institution = await this.institutionRepository.findById(institution_id);
 
     if (!institution) {
-      throw new BadRequestError("Invalid institution id");
+      throw new BadRequestError("Institution does not exist");
     }
 
     return institution;
@@ -61,10 +61,20 @@ export class CreateAnimalUseCase {
     const specie = this.specieRepository.findById(specie_id);
 
     if (!specie) {
-      throw new BadRequestError("Invalid specie id");
+      throw new BadRequestError("Specie does not exist");
     }
 
     return specie;
+  }
+
+  private async getStageOfLife(stage_of_life_id: string) {
+    const stageOfLife = await this.stageOfLifeRepository.findById(stage_of_life_id);
+
+    if (!stageOfLife) {
+      throw new BadRequestError("Stage of life does not exist");
+    }
+
+    return stageOfLife;
   }
 
   private isValidGenre(genreRaw: string) {
@@ -106,7 +116,7 @@ export class CreateAnimalUseCase {
       this.removeDuplicateIds(personality_ids)
     );
 
-    const stageOfLife = await this.stageOfLifeRepository.findById(stage_of_life_id);
+    const stageOfLife = await this.getStageOfLife(stage_of_life_id);
 
     await this.animalRepository.create({
       description,
