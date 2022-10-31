@@ -1,7 +1,7 @@
-import { plainToInstance } from "class-transformer";
 import { IsEmail, IsNotEmpty, IsString, Length } from "class-validator";
 
 import { BaseDTO } from "@shared/core/dto/BaseDTO";
+import { ClassTransformer } from "@shared/infra/util/ClassTransformer";
 
 export class AuthenticateUserRequestDTO extends BaseDTO {
   @IsNotEmpty()
@@ -14,6 +14,6 @@ export class AuthenticateUserRequestDTO extends BaseDTO {
   password: string;
 
   public create(data: Partial<this>) {
-    return plainToInstance(AuthenticateUserRequestDTO, data);
+    return ClassTransformer.create(AuthenticateUserRequestDTO, data);
   }
 }
