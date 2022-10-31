@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 import { IAnimalSizesRepository } from "@modules/animals/repositories/IAnimalSizeRepository";
 import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
 import { ICreateAnimalSizeDTO } from "@modules/animals/dtos/ICreateAnimalSizeDTO";

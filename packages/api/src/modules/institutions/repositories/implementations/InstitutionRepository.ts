@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 import { ICreateInstitutionDTO } from "@modules/institutions/dtos/ICreateInstitutionDTO";
 import { Institution } from "@modules/institutions/entities/Institution";
 import { Address } from "@modules/adresses/entities/Address";

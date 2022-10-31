@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 
 import { ICreateAdoptionDTO } from "@modules/adoptions/dtos/ICreateAdoptionDTO";
 import { AdoptionRequest } from "@modules/adoptions/entities/AdoptionRequest";
-import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 import { IFindAdoptionRequest } from "@modules/adoptions/dtos/IFindAdoptionRequest";
 import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
 

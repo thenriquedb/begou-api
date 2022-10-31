@@ -1,6 +1,6 @@
 import { FindOptionsWhere, Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 import { ICreateAnimalDTO } from "@modules/animals/dtos/ICreateAnimalDTO";
 import { IFindAnimalDTO } from "@modules/animals/dtos/IFindAnimalDTO";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";

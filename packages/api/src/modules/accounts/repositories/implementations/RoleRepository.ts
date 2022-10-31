@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 
-import { AppDataSource } from "@shared/infra/db/typeorm/data-source";
+import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 
 import { Role } from "../../entities/Role";
 import { IRoleRepository, ICreateRoleDTO } from "../IRoleRepository";
