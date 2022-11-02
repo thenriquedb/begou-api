@@ -22,9 +22,9 @@ module.exports = {
         "eslint-plugin-import-helpers",
         "prettier"
     ],
-    "rules": {
+    rules: {
         "camelcase": "off",
-        "import/no-unresolved": "error",
+        "import/no-unresolved": "off",
         "import/prefer-default-export": "off",
         "no-shadow": "off",
         "no-console": "off",
@@ -120,4 +120,9 @@ module.exports = {
             }
         ],
     },
+    settings: {
+        "import/resolver": {
+            "typescript": {}
+        }
+    }
 }
