@@ -18,7 +18,7 @@ export class ListAnimalsByInstitutionController {
       ListAnimalsByInstitutionUseCase
     );
 
-    const availableCasted = available === "true";
+    const availableCasted = available ? available === "true" : true;
 
     const animals = await listAnimalsByInstitutionUseCase.execute({
       institution_id,

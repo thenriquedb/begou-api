@@ -23,7 +23,7 @@ export class ListAnimalsByInstitutionUseCase {
   }
 
   async execute(data: IRequest) {
-    const { institution_id, available, size_id, specie_id } = data;
+    const { institution_id, available = true, size_id, specie_id } = data;
 
     const institutionExist = await this.institutionRepository.findById(institution_id);
 
