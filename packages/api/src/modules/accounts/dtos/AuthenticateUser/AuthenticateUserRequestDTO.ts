@@ -13,6 +13,6 @@ export class AuthenticateUserRequestDTO extends BaseDTO {
   password: string;
 
   public create(data: Partial<this>) {
-    return ClassTransformer.create(AuthenticateUserRequestDTO, data);
+    return ClassTransformer.plainToInstance(AuthenticateUserRequestDTO, data);
   }
 }

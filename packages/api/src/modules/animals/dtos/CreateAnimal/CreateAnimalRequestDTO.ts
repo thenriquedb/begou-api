@@ -38,6 +38,6 @@ export class CreateAnimalRequestDTO extends BaseDTO {
   personality_ids: string[];
 
   public create(data: Partial<this>) {
-    return ClassTransformer.create(CreateAnimalRequestDTO, data);
+    return ClassTransformer.plainToInstance(CreateAnimalRequestDTO, data);
   }
 }

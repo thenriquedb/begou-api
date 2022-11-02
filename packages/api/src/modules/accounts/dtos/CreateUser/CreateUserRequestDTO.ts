@@ -28,6 +28,6 @@ export class CreateUserRequestDto extends BaseDTO {
   phone_number: string;
 
   public create(data: Partial<this>) {
-    return ClassTransformer.create(CreateUserRequestDto, data);
+    return ClassTransformer.plainToInstance(CreateUserRequestDto, data);
   }
 }
