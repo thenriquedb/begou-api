@@ -10,7 +10,6 @@ export class AuthenticateUserRequestDTO extends BaseDTO {
 
   @IsNotEmpty()
   @IsString()
-  @Length(6, 100)
   password: string;
 
   public create(data: Partial<this>) {

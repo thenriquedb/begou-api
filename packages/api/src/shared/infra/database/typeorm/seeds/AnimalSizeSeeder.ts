@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { AnimalSize } from "@modules/animals/entities/AnimalSize";
+import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
 
 enum AnimalSizeValue {
   MINI = "mini",

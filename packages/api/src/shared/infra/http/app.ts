@@ -5,7 +5,7 @@ import express from "express";
 import { errorHandler } from "@shared/infra/http/middlewares/errorHandler";
 
 import "../../config/dependency-injection";
-import { AppDataSource } from "../db/typeorm/data-source";
+import { AppDataSource } from "../database/typeorm/data-source";
 import { router } from "./routes";
 
 export class App {

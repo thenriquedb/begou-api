@@ -1,16 +1,12 @@
 import jwt from "jsonwebtoken";
 
-import { ITokenManager } from "@shared/ports/cryptography/ITokenManager";
+import { IPayload, ITokenManager } from "@shared/ports/cryptography/ITokenManager";
 import config from "@shared/config/cryptography";
 
-export class JWTEAdapter implements ITokenManager {
-  private secret: string;
+export class JWTAdapter implements ITokenManager {
+  private secret: string = config.secret;
 
-  constructor(secret?: string) {
-    this.secret = secret ?? config.secret;
-  }
-
-  encrypt(info: object, subject: string, expiresIn = "1d") {
+  encrypt(info: object, subject: string, expiresIn = "1d"): string {
     return jwt.sign(info, this.secret, {
       subject,
       expiresIn,

@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { StageOfLife } from "@modules/animals/entities/StageOfLife";
+import { StageOfLife } from "@modules/animals/infra/typeorm/entities/StageOfLife";
 
 enum StageOfLifeValue {
   PUPPY = "filhote",

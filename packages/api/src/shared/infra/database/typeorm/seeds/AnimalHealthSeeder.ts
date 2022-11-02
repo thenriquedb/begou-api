@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { AnimalHealth } from "@modules/animals/entities/AnimalHealth";
+import { AnimalHealth } from "@modules/animals/infra/typeorm/entities/AnimalHealth";
 
 enum AnimalHealthValue {
   VACCINATED = "vacinado",
