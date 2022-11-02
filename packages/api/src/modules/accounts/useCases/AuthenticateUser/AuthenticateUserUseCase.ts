@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
 import { IEncoder } from "@shared/ports/cryptography/IEncoder";
-import { ITokenManager } from "@shared/ports/cryptography/ITokenManager";
 import { BadRequestError } from "@shared/core/errors/BadRequestError";
+import { ITokenManager } from "@shared/ports/cryptography/ITokenManager";
 
 import { IUsersRepository } from "../../repositories/IUserRepository";
 import {
@@ -19,10 +19,10 @@ class AuthenticateUserUseCase {
   constructor(
     @inject("UsersRepository")
     usersRepository: IUsersRepository,
-    @inject("Encoder")
-    encoder: IEncoder,
     @inject("TokenManager")
-    tokenManager: ITokenManager
+    tokenManager: ITokenManager,
+    @inject("Encoder")
+    encoder: IEncoder
   ) {
     this.usersRepository = usersRepository;
     this.encoder = encoder;

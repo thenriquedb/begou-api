@@ -1,4 +1,7 @@
-import "dotenv/config";
+import * as dotenv from "dotenv";
+
+const root = `${__dirname}/../../../../../..`;
+dotenv.config({ path: `${root}/.env` });
 
 export default {
   host: process.env.DB_HOST,

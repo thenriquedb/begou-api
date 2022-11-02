@@ -1,6 +1,6 @@
 import { User } from "@modules/accounts/entities/User";
 import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
-import { Animal } from "@modules/animals/entities/Animal";
+import { Animal } from "@modules/animals/infra/typeorm/entities/Animal";
 import { Institution } from "@modules/institutions/entities/Institution";
 
 export interface ICreateAdoptionDTO {

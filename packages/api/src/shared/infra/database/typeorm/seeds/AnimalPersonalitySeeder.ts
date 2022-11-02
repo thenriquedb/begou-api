@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { AnimalPersonality } from "@modules/animals/entities/AnimalPersonality";
+import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";
 
 enum AnimalPersonalityValue {
   AGGRESSIVE = "agressivo",

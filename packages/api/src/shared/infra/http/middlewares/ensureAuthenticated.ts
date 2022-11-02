@@ -2,9 +2,9 @@ import { Request, Response, NextFunction } from "express";
 
 import { UnauthorizedError } from "@shared/core/errors/UnauthorizedError";
 import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
-import { JWTEAdapter } from "@shared/infra/cryptography/JWTAdapter";
+import { JWTAdapter } from "@shared/infra/cryptography/JWTAdapter";
 
-const tokenManager = new JWTEAdapter();
+const tokenManager = new JWTAdapter();
 
 export async function ensureAuthenticated(
   request: Request,

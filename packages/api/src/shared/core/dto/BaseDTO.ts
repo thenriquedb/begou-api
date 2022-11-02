@@ -6,7 +6,8 @@ export abstract class BaseDTO {
 
   public async validate() {
     const errors = await ClassValidator.validate(this);
-    if (errors) {
+
+    if (errors.errors.length > 0) {
       throw new ValidationError(errors);
     }
   }

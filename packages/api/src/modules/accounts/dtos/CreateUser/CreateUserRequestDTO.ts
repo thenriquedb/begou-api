@@ -1,4 +1,3 @@
-import { plainToInstance } from "class-transformer";
 import {
   IsEmail,
   IsNotEmpty,
@@ -9,6 +8,7 @@ import {
 } from "class-validator";
 
 import { BaseDTO } from "@shared/core/dto/BaseDTO";
+import { ClassTransformer } from "@shared/infra/util/ClassTransformer";
 
 export class CreateUserRequestDto extends BaseDTO {
   @IsNotEmpty()
@@ -28,6 +28,6 @@ export class CreateUserRequestDto extends BaseDTO {
   phone_number: string;
 
   public create(data: Partial<this>) {
-    return plainToInstance(CreateUserRequestDto, data);
+    return ClassTransformer.plainToInstance(CreateUserRequestDto, data);
   }
 }

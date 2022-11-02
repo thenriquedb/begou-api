@@ -7,7 +7,7 @@ import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdo
 import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
 import { AdoptionStatusValue } from "@modules/adoptions/enums/AdoptionStatusValue";
-import { Animal } from "@modules/animals/entities/Animal";
+import { Animal } from "@modules/animals/infra/typeorm/entities/Animal";
 import { ConflictError } from "@shared/core/errors/ConflictError";
 
 interface IRequest {

@@ -1,8 +1,8 @@
-import { AnimalHealth } from "@modules/animals/entities/AnimalHealth";
-import { AnimalPersonality } from "@modules/animals/entities/AnimalPersonality";
-import { AnimalSize } from "@modules/animals/entities/AnimalSize";
-import { Specie } from "@modules/animals/entities/Specie";
-import { StageOfLife } from "@modules/animals/entities/StageOfLife";
+import { AnimalHealth } from "@modules/animals/infra/typeorm/entities/AnimalHealth";
+import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";
+import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
+import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";
+import { StageOfLife } from "@modules/animals/infra/typeorm/entities/StageOfLife";
 import { AnimalGenre } from "@modules/animals/enums/Genre";
 import { Institution } from "@modules/institutions/entities/Institution";
 

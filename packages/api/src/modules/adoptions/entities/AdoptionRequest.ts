@@ -2,7 +2,7 @@ import { Entity, PrimaryColumn, JoinColumn, ManyToOne, CreateDateColumn } from "
 
 import { UUID } from "@shared/infra/cryptography/UUID";
 import { User } from "@modules/accounts/entities/User";
-import { Animal } from "@modules/animals/entities/Animal";
+import { Animal } from "@modules/animals/infra/typeorm/entities/Animal";
 import { Institution } from "@modules/institutions/entities/Institution";
 import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
 

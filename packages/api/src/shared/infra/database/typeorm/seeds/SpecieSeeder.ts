@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { Specie } from "@modules/animals/entities/Specie";
+import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";
 
 enum SpecieValue {
   CAT = "gato",
