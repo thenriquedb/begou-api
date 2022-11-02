@@ -43,7 +43,6 @@ module.exports = {
                         "sibling",
                         "index",
                     ],
-                    "/scss$/"
                 ],
             }
         ],
@@ -52,8 +51,9 @@ module.exports = {
             {
                 "devDependencies": [
                     "**/*.spec.ts",
+                    "**/*.seeder.ts",
                     "**/*.spec.tsx",
-                    "**/*.stories.tsx"
+                    "**/*.stories.tsx",
                 ]
             }
         ],

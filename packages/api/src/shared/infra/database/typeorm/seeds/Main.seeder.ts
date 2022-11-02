@@ -6,17 +6,18 @@ import {
   SeederFactoryManager,
 } from "typeorm-extension";
 
-import { AnimalHealthSeeder } from "./AnimalHealthSeeder";
-import { AnimalPersonalitySeeder } from "./AnimalPersonalitySeeder";
-import { AnimalSizeSeeder } from "./AnimalSizeSeeder";
-import { AssociateRoleSeeder } from "./AssociateRoleSeeder";
-import { InstitutionAddressSeeder } from "./InstitutionAddressSeeder";
-import { InstitutionAssociateSeeder } from "./InstitutionAssociateSeeder";
-import { InstitutionSeeder } from "./InstitutionSeeder";
-import { SpecieSeeder } from "./SpecieSeeder";
-import { StageOfLifeSeeder } from "./StageOfLifeSeeder";
-import { UserRoleSeeder } from "./UserSeeder";
-import { AdoptionStatusSeeder } from "./AdoptionStatusSeeder";
+import { AnimalHealthSeeder } from "./AnimalHealth.seeder";
+import { AnimalPersonalitySeeder } from "./AnimalPersonality.seeder";
+import { AnimalSizeSeeder } from "./AnimalSize.seeder";
+import { AssociateRoleSeeder } from "./AssociateRole.seeder";
+import { InstitutionAddressSeeder } from "./InstitutionAddress.seeder";
+import { InstitutionAssociateSeeder } from "./InstitutionAssociate.seeder";
+import { InstitutionSeeder } from "./Institution.seeder";
+import { SpecieSeeder } from "./Specie.seeder";
+import { StageOfLifeSeeder } from "./StageOfLife.seeder";
+import { UserRoleSeeder } from "./User.seeder";
+import { AdoptionStatusSeeder } from "./AdoptionStatus.seeder";
+import { AnimalSeeder } from "./Animal.seeder";
 
 export class MainSeeder implements Seeder {
   private dataSource: DataSource;
@@ -52,11 +53,16 @@ export class MainSeeder implements Seeder {
     await this.runSeeder(AdoptionStatusSeeder);
   }
 
+  private async runAnimalSeeder() {
+    await this.runSeeder(AnimalSeeder);
+  }
+
   async run(dataSource: DataSource, factoryManager: SeederFactoryManager) {
     this.setDataSource(dataSource);
     await this.runUserSeeders();
     await this.runAnimalSeeders();
     await this.runInstitutionSeeders();
     await this.runAdoptionSeeders();
+    await this.runAnimalSeeder();
   }
 }

@@ -5,7 +5,7 @@ import { SeederOptions } from "typeorm-extension";
 
 import config from "@shared/config/database";
 
-import { MainSeeder } from "./seeds/MainSeeder";
+import { MainSeeder } from "./seeds/Main.seeder";
 
 const basePath = `${__dirname}/../../../..`;
 
