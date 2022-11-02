@@ -3,9 +3,20 @@
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "nohoist": [
+      "**/typeorm",
+      "**/typeorm/**",
+      "**/typeorm-extension",
+      "**/typeorm-extension/**"
+    ],
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "start:api": "yarn workspace @begou/api dev"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
