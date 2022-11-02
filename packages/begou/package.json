@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@types/react": "^18.0.24",
+    "@types/react-native": "^0.70.6",
     "find-yarn-workspace-root": "^2.0.0"
   },
   "private": true

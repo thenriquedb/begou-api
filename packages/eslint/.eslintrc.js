@@ -5,6 +5,7 @@ module.exports = {
         "jest": true
     },
     extends: [
+        "@react-native-community",
         "airbnb-base",
         "plugin:@typescript-eslint/recommended",
         "prettier",
@@ -17,10 +18,10 @@ module.exports = {
         project: 'tsconfig.json',
     },
     plugins: [
-        "react",
         "@typescript-eslint",
         "eslint-plugin-import-helpers",
-        "prettier"
+        "prettier",
+        "jest",
     ],
     rules: {
         "camelcase": "off",
@@ -28,6 +29,7 @@ module.exports = {
         "import/prefer-default-export": "off",
         "no-shadow": "off",
         "no-console": "off",
+        'no-use-before-define': "off",
         "no-useless-constructor": "off",
         "no-empty-function": "off",
         "lines-between-class-members": "off",
@@ -57,18 +59,6 @@ module.exports = {
                 ]
             }
         ],
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "ts": "never",
-                "tsx": "never"
-            }
-        ],
-        "react/jsx-filename-extension": [
-            1,
-            { "extensions": ["tsx"] }
-        ],
         "prettier/prettier": [
             "error",
             {},
@@ -96,7 +86,8 @@ module.exports = {
             "error",
             "ignorePackages",
             {
-                "ts": "never"
+                "ts": "never",
+                "tsx": "never",
             }
         ],
         "max-len": [
@@ -123,6 +114,6 @@ module.exports = {
     settings: {
         "import/resolver": {
             "typescript": {}
-        }
+        },
     }
 }
