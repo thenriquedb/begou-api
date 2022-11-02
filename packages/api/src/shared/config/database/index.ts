@@ -1,7 +1,8 @@
 import * as dotenv from "dotenv";
+import findWorkspaceRoot from "find-yarn-workspace-root";
 
-const root = `${__dirname}/../../../../../..`;
-dotenv.config({ path: `${root}/.env` });
+const workspaceRoot = findWorkspaceRoot(__dirname);
+dotenv.config({ path: `${workspaceRoot}/.env` });
 
 export default {
   host: process.env.DB_HOST,
