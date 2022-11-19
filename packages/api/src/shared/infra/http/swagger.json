@@ -51,25 +51,10 @@
           },
           "400": {
             "description": "Invalid infos",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/400BadRequest"
           },
           "409": {
-            "description": "User already exists",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/401Unauthorized"
           }
         }
       }
@@ -166,15 +151,135 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/animal/scecies": {
+      "get": {
+        "description": "List all animal species",
+        "summary": "List all animal species",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Animal"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/Error"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Specie"
+                  }
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/animal/sizes": {
+      "get": {
+        "description": "List all animal sizes",
+        "summary": "List all animal sizes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Animal"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimalSize"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/animal/personalities": {
+      "get": {
+        "description": "List all animal personalities",
+        "summary": "List all animal personalities",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Animal"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimalPersonality"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/animal/healths": {
+      "get": {
+        "description": "List all animal healths",
+        "summary": "List all animal healths",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Animal"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimalHealth"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
           }
         }
       }
@@ -183,6 +288,123 @@
   "components": {
     "schemas": {
       "Role": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Specie": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Animal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "genre": {
+            "type": "string",
+            "enum": [
+              "F",
+              "M"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "institution_id": {
+            "type": "string"
+          },
+          "healths": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnimalHealth"
+            }
+          },
+          "personalities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnimalPersonality"
+            }
+          },
+          "stage_of_life": {
+            "type": "object",
+            "$ref": "#/components/schemas/StageOfLife"
+          },
+          "specie": {
+            "type": "object",
+            "$ref": "#/components/schemas/Specie"
+          }
+        }
+      },
+      "AnimalHealth": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "AnimalPersonality": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "AnimalSize": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "StageOfLife": {
         "type": "object",
         "properties": {
           "name": {
@@ -226,6 +448,41 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "400BadRequest": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "401Unauthorized": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "409Conflict": {
+        "description": "Conflict",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Error"
             }
           }
         }
