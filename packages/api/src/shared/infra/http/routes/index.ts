@@ -6,7 +6,7 @@ import { accountsRoutes } from "./accounts.routes";
 import { institutionsRoutes } from "./institutions.routes";
 import { authenticateRoutes } from "./authenticate.routes";
 import { usersRoutes } from "./user.routes";
-import swaggerDocument from "./swagger.json";
+import swaggerDocument from "../swagger.json";
 
 const router = Router();
 
