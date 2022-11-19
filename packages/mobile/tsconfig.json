@@ -4,7 +4,39 @@
   "compilerOptions": {
     "jsx": "react-native",
     "strict": true,
-    "baseUrl": "./",
     "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@modules/*": [
+        "./src/modules/*"
+      ],
+      "@routes/*": [
+        "./src/routes/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@contexts/*": [
+        "src/contexts/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@hocs/*": [
+        "src/hocs/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@templates/*": [
+        "src/templates/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+    }
   }
 }

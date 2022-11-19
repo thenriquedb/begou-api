@@ -8,7 +8,7 @@ const projectRoot = __dirname;
 const workspaceRoot = findWorkspaceRoot(__dirname);
 
 const config = getDefaultConfig(projectRoot);
-
+console.log({ projectRoot, workspaceRoot });
 // 1. Watch all files within the monorepo
 config.watchFolders = [workspaceRoot];
 // 2. Let Metro know where to resolve packages and in what order

@@ -82,14 +82,6 @@ module.exports = {
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",
         "lines-between-class-members": "off",
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "ts": "never",
-                "tsx": "never",
-            }
-        ],
         "max-len": [
             1,
             160,
