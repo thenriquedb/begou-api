@@ -10,7 +10,7 @@ const listRolesController = new ListRolesController();
 
 const accountsRoutes = Router();
 
-accountsRoutes.post("/role", ensureAuthenticated, createRoleController.handle);
-accountsRoutes.get("/role", ensureAuthenticated, listRolesController.handle);
+accountsRoutes.post("/roles", ensureAuthenticated, createRoleController.handle);
+accountsRoutes.get("/roles", ensureAuthenticated, listRolesController.handle);
 
 export { accountsRoutes };

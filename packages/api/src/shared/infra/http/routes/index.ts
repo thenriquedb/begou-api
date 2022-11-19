@@ -1,12 +1,17 @@
 import { Router } from "express";
+import swaggerUi from "swagger-ui-express";
 
 import { animalsRoutes } from "./animals.routes";
 import { accountsRoutes } from "./accounts.routes";
 import { institutionsRoutes } from "./institutions.routes";
 import { authenticateRoutes } from "./authenticate.routes";
 import { usersRoutes } from "./user.routes";
+import swaggerDocument from "./swagger.json";
 
 const router = Router();
+
+router.use("/api-docs", swaggerUi.serve);
+router.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 router.use("/sessions", authenticateRoutes);
 router.use("/users", usersRoutes);

@@ -9,6 +9,6 @@ export class ListRolesController {
 
     const roles = await listRolesUseCase.execute();
 
-    return response.status(201).json(roles);
+    return response.status(200).json(roles);
   }
 }
