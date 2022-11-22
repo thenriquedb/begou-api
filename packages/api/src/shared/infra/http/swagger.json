@@ -156,6 +156,48 @@
         }
       }
     },
+    "/animal/{animal_id}": {
+      "get": {
+        "description": "Get infos from specific animal",
+        "summary": "Get infos from specific animal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Animal"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "institution_id",
+            "description": "Animal unique uuid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "nullable": true,
+                  "$ref": "#/components/schemas/Animal"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
     "/animal/scecies": {
       "get": {
         "description": "List all animal species",
@@ -273,6 +315,140 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/AnimalHealth"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/institutions": {
+      "get": {
+        "description": "List all institutions",
+        "summary": "List all institutions",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Institution"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "zip_code",
+            "description": "Filter institutions by filter. Format: 99999999",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Institution"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/institutions/{institution_id}": {
+      "get": {
+        "description": "Get infos from specific Institution",
+        "summary": "Get infos from specific Institution",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Institution"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/institution_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Institution"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          }
+        }
+      }
+    },
+    "/institutions/{institution_id}/animals": {
+      "get": {
+        "description": "List all animals by specific institutions",
+        "summary": "List all animals by specific institutions",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/institution_id"
+          },
+          {
+            "name": "available",
+            "description": "True by default",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "specie_id",
+            "in": "query",
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size_id",
+            "in": "query",
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Institution"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Institution"
                   }
                 }
               }
@@ -404,6 +580,20 @@
           }
         }
       },
+      "Institution": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        }
+      },
       "StageOfLife": {
         "type": "object",
         "properties": {
@@ -485,6 +675,17 @@
               "$ref": "#/components/schemas/Error"
             }
           }
+        }
+      }
+    },
+    "parameters": {
+      "institution_id": {
+        "in": "path",
+        "name": "institution_id",
+        "description": "Institution unique uuid",
+        "required": true,
+        "schema": {
+          "type": "string"
         }
       }
     },
