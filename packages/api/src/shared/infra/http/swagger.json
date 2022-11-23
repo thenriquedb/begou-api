@@ -53,8 +53,11 @@
             "description": "Invalid infos",
             "$ref": "#/components/responses/400BadRequest"
           },
-          "409": {
+          "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
@@ -152,11 +155,14 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
     },
-    "/animal/{animal_id}": {
+    "/animals/{animal_id}": {
       "get": {
         "description": "Get infos from specific animal",
         "summary": "Get infos from specific animal",
@@ -194,11 +200,47 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete specific animal",
+        "summary": "Delete specific animal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Animal"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "animal_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
     },
-    "/animal/scecies": {
+    "/animals/scecies": {
       "get": {
         "description": "List all animal species",
         "summary": "List all animal species",
@@ -226,11 +268,14 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
     },
-    "/animal/sizes": {
+    "/animals/sizes": {
       "get": {
         "description": "List all animal sizes",
         "summary": "List all animal sizes",
@@ -262,7 +307,7 @@
         }
       }
     },
-    "/animal/personalities": {
+    "/animals/personalities": {
       "get": {
         "description": "List all animal personalities",
         "summary": "List all animal personalities",
@@ -290,11 +335,14 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
     },
-    "/animal/healths": {
+    "/animals/healths": {
       "get": {
         "description": "List all animal healths",
         "summary": "List all animal healths",
@@ -322,6 +370,9 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
@@ -361,6 +412,9 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
@@ -400,6 +454,73 @@
       }
     },
     "/institutions/{institution_id}/animals": {
+      "post": {
+        "description": "Register new animal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Institution",
+          "Animal"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "size_id": {
+                    "type": "string"
+                  },
+                  "stage_of_life_id": {
+                    "type": "string"
+                  },
+                  "genre": {
+                    "type": "string",
+                    "enum": [
+                      "F",
+                      "M"
+                    ]
+                  },
+                  "health_ids": {
+                    "type": "array",
+                    "minItems": 0,
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "personality_ids": {
+                    "type": "array",
+                    "minItems": 0,
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
+          }
+        }
+      },
       "get": {
         "description": "List all animals by specific institutions",
         "summary": "List all animals by specific institutions",
@@ -456,6 +577,9 @@
           },
           "401": {
             "$ref": "#/components/responses/401Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/403Forbidden"
           }
         }
       }
@@ -656,7 +780,18 @@
         }
       },
       "401Unauthorized": {
-        "description": "Unauthorized",
+        "description": "User is not authenticated",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "403Forbidden": {
+        "description": "User does not have permission to execute operation",
         "content": {
           "application/json": {
             "schema": {
