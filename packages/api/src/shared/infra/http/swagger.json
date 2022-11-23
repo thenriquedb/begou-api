@@ -3,11 +3,12 @@
   "info": {
     "title": "Begou Docs",
     "description": "Aplicativo que tem como objetivo auxiliar a equipe dos abrigos e Organização Não Governamental (ONGs) a divulgar e arrecadar verba para animais que se encontram em condição de fragilidade.",
+    "version": "1.0.0",
     "contact": {
       "email": "thenrique2012@gmail.com",
-      "name": "Thiago Domingues"
-    },
-    "version": "1.0.0"
+      "name": "Thiago Domingues",
+      "url": "https://www.linkedin.com/in/thenriquedomingues/"
+    }
   },
   "servers": [
     {

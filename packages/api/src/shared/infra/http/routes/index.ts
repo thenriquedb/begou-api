@@ -11,7 +11,19 @@ import swaggerDocument from "../swagger.json";
 const router = Router();
 
 router.use("/api-docs", swaggerUi.serve);
-router.get("/api-docs", swaggerUi.setup(swaggerDocument));
+router.get(
+  "/api-docs",
+  swaggerUi.setup(swaggerDocument, {
+    customCssUrl: "",
+    swaggerOptions: {
+      tagsSorter: "alpha",
+      syntaxHighlight: {
+        activate: true,
+        theme: "monokai",
+      },
+    },
+  })
+);
 
 router.use("/sessions", authenticateRoutes);
 router.use("/users", usersRoutes);
