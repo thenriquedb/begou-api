@@ -35,7 +35,7 @@ export class CreateAdoptionRequestTable1666378336771 implements MigrationInterfa
           {
             name: "created_at",
             type: "timestamp",
-            default: "CURRENT_TIMESTAMP()",
+            default: "CURRENT_TIMESTAMP",
           },
         ],
         foreignKeys: [

@@ -5,9 +5,9 @@ import { SeederOptions } from "typeorm-extension";
 
 import config from "@shared/config/database";
 
-import { MainSeeder } from "./seeds/Main.seeder";
+import { MainSeeder } from "../seeds/Main.seeder";
 
-const basePath = `${__dirname}/../../../..`;
+const basePath = `${__dirname}/../../../../..`;
 
 const options: DataSourceOptions & SeederOptions = {
   type: "mysql",

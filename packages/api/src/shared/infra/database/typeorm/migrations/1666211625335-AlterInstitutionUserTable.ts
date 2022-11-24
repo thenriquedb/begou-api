@@ -9,7 +9,7 @@ export class AlterInstitutionUserTable1666211625335 implements MigrationInterfac
       new TableColumn({
         name: "created_at",
         type: "timestamp",
-        default: "now()",
+        default: "CURRENT_TIMESTAMP",
       })
     );
   }

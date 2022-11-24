@@ -24,7 +24,8 @@ export class CreateAnimalTable1666273764428 implements MigrationInterface {
           },
           {
             name: "genre",
-            type: "enum",
+            type: "varchar",
+            length: "1",
             enum: [AnimalGenre.FEMALE, AnimalGenre.MALE],
           },
           {
@@ -48,7 +49,7 @@ export class CreateAnimalTable1666273764428 implements MigrationInterface {
           {
             name: "created_at",
             type: "timestamp",
-            default: "CURRENT_TIMESTAMP()",
+            default: "CURRENT_TIMESTAMP",
           },
         ],
         foreignKeys: [

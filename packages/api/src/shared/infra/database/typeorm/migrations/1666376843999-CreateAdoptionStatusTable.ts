@@ -24,7 +24,7 @@ export class CreateAdoptionStatusTable1666376843999 implements MigrationInterfac
           {
             name: "created_at",
             type: "timestamp",
-            default: "CURRENT_TIMESTAMP()",
+            default: "CURRENT_TIMESTAMP",
           },
         ],
       })

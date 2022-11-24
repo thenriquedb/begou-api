@@ -24,7 +24,7 @@ export class CreateAnimalHealthTable1665779405142 implements MigrationInterface 
           {
             name: "created_at",
             type: "timestamp",
-            default: "CURRENT_TIMESTAMP()",
+            default: "CURRENT_TIMESTAMP",
           },
         ],
       })
