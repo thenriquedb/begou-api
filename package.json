@@ -15,7 +15,8 @@
     ]
   },
   "scripts": {
-    "start:api": "yarn workspace @begou/api dev",
+    "dev:api": "yarn workspace @begou/api dev",
+    "start:api": "yarn workspace @begou/api start",
     "build:api": "yarn workspace @begou/api build"
   },
   "devDependencies": {

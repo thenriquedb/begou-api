@@ -10,4 +10,4 @@ COPY packages/api .
 
 EXPOSE 3333
 
-CMD ["yarn", "start:api"]
+CMD ["yarn", "dev:api"]
