@@ -41,7 +41,7 @@ export class CreateUserTable1666049256799 implements MigrationInterface {
           {
             name: "created_at",
             type: "timestamp",
-            default: "now()",
+            default: "CURRENT_TIMESTAMP",
           },
         ],
         foreignKeys: [

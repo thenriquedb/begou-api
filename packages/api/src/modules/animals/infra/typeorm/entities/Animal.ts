@@ -30,7 +30,7 @@ export class Animal {
   available: boolean;
 
   @Column({
-    type: "enum",
+    type: "varchar",
     enum: AnimalGenre,
   })
   genre: AnimalGenre;

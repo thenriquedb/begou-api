@@ -19,7 +19,7 @@ export class CreateCityTable1665864486422 implements MigrationInterface {
           {
             name: "created_at",
             type: "timestamp",
-            default: "CURRENT_TIMESTAMP()",
+            default: "CURRENT_TIMESTAMP",
           },
         ],
       })
