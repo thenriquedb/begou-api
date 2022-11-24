@@ -15,7 +15,8 @@
     ]
   },
   "scripts": {
-    "start:api": "yarn workspace @begou/api dev"
+    "start:api": "yarn workspace @begou/api dev",
+    "build:api": "yarn workspace @begou/api build"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
