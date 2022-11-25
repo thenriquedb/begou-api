@@ -17,8 +17,8 @@ const options: DataSourceOptions & SeederOptions = {
   password: config.password,
   database: config.database,
   charset: "utf8_general_ci",
-  entities: [`${basePath}/**/entities/*.ts`],
-  migrations: [`${basePath}/**/migrations/*.ts`],
+  entities: [`${basePath}/**/entities/*.{js,ts}`],
+  migrations: [`${basePath}/**/migrations/*.{js,ts}`],
   seeds: [MainSeeder],
 };
 
