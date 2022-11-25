@@ -26,7 +26,7 @@ export class CreateAnimalTable1666273764428 implements MigrationInterface {
             name: "genre",
             type: "varchar",
             length: "1",
-            enum: [AnimalGenre.FEMALE, AnimalGenre.MALE],
+            // enum: [AnimalGenre.FEMALE, AnimalGenre.MALE],
           },
           {
             name: "specie_id",
