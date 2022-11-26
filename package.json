@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn -r tsconfig-paths/register src/shared/infra/http/server.ts",
     "test": "jest",
+    "bootsrap": "docker compose up -d database && yarn migration:run && yarn seed",
     "start": "node dist/shared/infra/http/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli ",
@@ -59,7 +60,6 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
-    "find-yarn-workspace-root": "*",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
