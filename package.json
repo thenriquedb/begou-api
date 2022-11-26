@@ -1,35 +1,73 @@
 {
-  "name": "begou",
+  "name": "@begou/api",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "**/typeorm",
-      "**/typeorm/**",
-      "**/typeorm-extension",
-      "**/typeorm-extension/**"
-    ],
-    "packages": [
-      "packages/*"
-    ]
-  },
   "scripts": {
-    "dev:api": "yarn workspace @begou/api dev",
-    "start:api": "yarn workspace @begou/api start",
-    "build:api": "yarn workspace @begou/api build"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn -r tsconfig-paths/register src/shared/infra/http/server.ts",
+    "test": "jest",
+    "start": "node dist/shared/infra/http/server.js",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli ",
+    "migration:create": "typeorm-ts-node-commonjs migration:create",
+    "migration:generate": "yarn typeorm -d ./src/shared/infra/database/typeorm/data-source.ts migration:generate",
+    "migration:run": "yarn typeorm -d ./src/shared/infra/database/typeorm/data-source.ts migration:run",
+    "migration:revert": "yarn typeorm -d ./src/shared/infra/database/typeorm/data-source.ts migration:revert",
+    "seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/dist/cli/index.js -d ./src/shared/infra/database/typeorm/data-source.ts seed"
   },
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/node": "^7.20.2",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "*",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.14",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^18.8.4",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import-helpers": "^1.2.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint": "^8.25.0",
     "husky": "^8.0.1",
     "jest": "^29.1.2",
     "prettier": "^2.7.1",
+    "ts-node-dev": "^2.0.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "find-yarn-workspace-root": "^2.0.0"
+    "bcryptjs": "^2.4.3",
+    "cep-promise": "^4.2.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "find-yarn-workspace-root": "*",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.1.2",
+    "swagger-ui-express": "^4.6.0",
+    "tsyringe": "^4.7.0",
+    "typeorm": "^0.3.10",
+    "typeorm-extension": "^2.1.15",
+    "uuid": "^9.0.0"
   }
 }

@@ -2,12 +2,12 @@ FROM node
 
 WORKDIR /usr/app
 
-COPY packages/api/package.json ./
+COPY . ./
 
 RUN yarn
 
-COPY packages/api . 
+COPY . . 
 
 EXPOSE 3333
 
-CMD ["yarn", "dev:api"]
+CMD ["yarn", "dev"]
