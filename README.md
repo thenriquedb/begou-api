@@ -1,9 +1,10 @@
 # Begou
-<center>
-  <img src="images/logo.png">
-</center>
 
-<center>
+<p align="center">
+  <img align="center" src="images/logo.png">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
   <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"/>
@@ -12,9 +13,20 @@
   <img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white"/>
   <img src="https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=whit"/>
   <img src="https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white"/>
-</center>
+</p>
 
-**Sumário**
+## Índice
+- [Begou](#begou)
+  - [Índice](#índice)
+  - [1. Introdução](#1-introdução)
+  - [2. Motivação](#2-motivação)
+    - [3. Objetivos](#3-objetivos)
+  - [4. Configurando o projeto](#4-configurando-o-projeto)
+    - [4.1 Depedências globais](#41-depedências-globais)
+    - [4.2 Comandos](#42-comandos)
+    - [4.3 Usuários pré-cadastrados](#43-usuários-pré-cadastrados)
+
+
 ## 1. Introdução
 Aplicativo que tem como objetivo auxiliar a equipe dos abrigos e Organização Não Governamental (ONGs) a divulgar e arrecadar verba para animais que se encontram em condição de fragilidade.
 
