@@ -9,13 +9,21 @@ export class UserRoleSeeder implements Seeder {
     const repository = dataSource.getRepository(User);
     const bCryptAdapter = new BCryptAdapter();
 
+    const founder = repository.create({
+      email: "founder@email.com",
+      password: await bCryptAdapter.encode("123456", 8),
+      name: "founder",
+      phone_number: "9999999999",
+    });
+
     const user = repository.create({
-      email: "admin@email.com",
-      password: await bCryptAdapter.encode("admin", 8),
+      email: "user@email.com",
+      password: await bCryptAdapter.encode("123456", 8),
       name: "admin",
       phone_number: "9999999999",
     });
 
+    await repository.save(founder);
     await repository.save(user);
   }
 }
