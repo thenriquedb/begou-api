@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn -r tsconfig-paths/register src/shared/infra/http/server.ts",
     "test": "jest",
-    "bootsrap": "docker compose up -d database && yarn migration:run && yarn seed",
+    "bootstrap": "docker compose up -d database && yarn migration:run && yarn seed",
     "start": "node dist/shared/infra/http/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli ",
