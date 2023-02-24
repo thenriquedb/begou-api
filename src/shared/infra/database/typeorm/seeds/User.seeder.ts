@@ -20,7 +20,7 @@ export class UserRoleSeeder implements Seeder {
       email: "user@email.com",
       password: await bCryptAdapter.encode("123456", 8),
       name: "admin",
-      phone_number: "9999999999",
+      phone_number: "9999999998",
     });
 
     await repository.save(founder);

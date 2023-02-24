@@ -19,7 +19,7 @@ export class InstitutionAssociateSeeder implements Seeder {
     });
 
     const user = await userRepository.findOneBy({
-      email: "admin@email.com",
+      email: "founder@email.com",
     });
 
     const role = await roleRepository.findOneBy({
