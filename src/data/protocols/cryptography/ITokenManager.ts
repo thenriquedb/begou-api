@@ -3,6 +3,6 @@ export interface IPayload {
 }
 
 export interface ITokenManager {
-  encrypt(info: object, subject: string, expiresIn?: string): string;
+  encrypt(subject: string, expiresIn?: string): string;
   decrypt(token: string): IPayload;
 }

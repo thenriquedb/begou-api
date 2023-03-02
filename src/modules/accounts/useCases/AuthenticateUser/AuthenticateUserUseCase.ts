@@ -45,7 +45,7 @@ class AuthenticateUserUseCase {
       throw new BadRequestError("Email or password incorrect");
     }
 
-    const token = this.tokenManager.encrypt({}, user.id);
+    const token = this.tokenManager.encrypt(user.id);
 
     return {
       token,

@@ -4,13 +4,10 @@ import config from "@shared/config/cryptography";
 import { IPayload, ITokenManager } from "@data/protocols/cryptography/ITokenManager";
 
 export class JWTAdapter implements ITokenManager {
-  private secret: string = config.secret;
+  private readonly secret: string = config.secret;
 
-  encrypt(info: object, subject: string, expiresIn = "1d"): string {
-    return jwt.sign(info, this.secret, {
-      subject,
-      expiresIn,
-    });
+  encrypt(subject: string, expiresIn = "1d"): string {
+    return jwt.sign({ subject, expiresIn }, this.secret);
   }
 
   decrypt(token: string): IPayload {
