@@ -7,7 +7,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 
-import { UUID } from "@shared/infra/cryptography/UUID";
+import { UUID } from "@shared/infra/uuid/UUID";
 import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 import { Role } from "@modules/accounts/infra/typeorm/entities/Role";
 import { User } from "@modules/accounts/infra/typeorm/entities/User";

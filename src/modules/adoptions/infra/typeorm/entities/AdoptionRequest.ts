@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, JoinColumn, ManyToOne, CreateDateColumn } from "typeorm";
 
-import { UUID } from "@shared/infra/cryptography/UUID";
+import { UUID } from "@shared/infra/uuid/UUID";
 import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { Animal } from "@modules/animals/infra/typeorm/entities/Animal";
 import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";

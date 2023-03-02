@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
 import { ICityRepository } from "@modules/adresses/repositories/ICityRepository";
 import { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
-import { IAddressService } from "@shared/ports/address-service/IAddressService";
+import { IAddressService } from "@data/protocols/address-service/IAddressService";
 import { BadRequestError } from "@shared/core/errors/BadRequestError";
 
 export interface IRequest {
