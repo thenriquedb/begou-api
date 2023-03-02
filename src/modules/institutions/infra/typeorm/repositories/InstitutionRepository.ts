@@ -2,11 +2,10 @@ import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 import { ICreateInstitutionDTO } from "@modules/institutions/dtos/ICreateInstitutionDTO";
-import { Institution } from "@modules/institutions/entities/Institution";
-import { Address } from "@modules/adresses/entities/Address";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 import { IFindInstitutionDTO } from "@modules/institutions/dtos/IFindInstitutionDTO";
-
-import { IInstitutionRepository } from "../IInstitutionRepository";
+import { IInstitutionRepository } from "@modules/institutions/repositories/IInstitutionRepository";
+import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
 
 export class InstitutionRepository implements IInstitutionRepository {
   private repository: Repository<Institution>;

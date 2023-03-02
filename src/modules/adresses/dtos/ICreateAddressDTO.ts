@@ -1,7 +1,3 @@
-export interface ICreateAddressDTO {
-  complement?: string;
-  neighborhood: string;
-  street: string;
-  ufInitials: string;
-  zipCode: string;
-}
+import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
+
+export type ICreateAddressDTO = Partial<Address>;

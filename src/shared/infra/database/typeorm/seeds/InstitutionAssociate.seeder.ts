@@ -1,11 +1,11 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { User } from "@modules/accounts/entities/User";
-import { Institution } from "@modules/institutions/entities/Institution";
-import { Role } from "@modules/accounts/entities/Role";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
-import { InstitutionAssociate } from "@modules/institutions/entities/InstitutionAssociate";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
+import { Role } from "@modules/accounts/infra/typeorm/entities/Role";
+import { InstitutionAssociate } from "@modules/institutions/infra/typeorm/entities/InstitutionAssociate";
 
 export class InstitutionAssociateSeeder implements Seeder {
   async run(dataSource: DataSource, factoryManager: SeederFactoryManager) {

@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-import { InstitutionAssociateRepository } from "@modules/institutions/repositories/implementations/InstitutionAssociateRepository";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
 import { ForbiddenError } from "@shared/core/errors/ForbiddenError";
+import { InstitutionAssociateRepository } from "@modules/institutions/infra/typeorm/repositories/InstitutionAssociateRepository";
 
 const institutionAssociateRepository = new InstitutionAssociateRepository();
 

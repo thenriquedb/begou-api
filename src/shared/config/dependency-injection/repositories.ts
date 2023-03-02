@@ -1,24 +1,16 @@
 /* eslint-disable prettier/prettier */
 import { container } from "tsyringe";
 
-import { AdoptionRequestRepository } from "@modules/adoptions/repositories/implementations/AdoptionRequestRepository";
-import { AdoptionStatusRepository } from "@modules/adoptions/repositories/implementations/AdoptionStatusRepository";
+
 import { AnimalHealthRepository } from "@modules/animals/infra/typeorm/repositories/AnimalHealthRepository";
 import { AnimalPersonalityRepository } from "@modules/animals/infra/typeorm/repositories/AnimalPersonalityRepository";
 import { AnimalRepository } from "@modules/animals/infra/typeorm/repositories/AnimalRepository";
 import { AnimalSizesRepository } from "@modules/animals/infra/typeorm/repositories/AnimalSizesRepository";
-import { CityRepository } from "@modules/adresses/repositories/implementations/CityRepository";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
-import { InstitutionAddressRepository } from "@modules/adresses/repositories/implementations/InstitutionAddressRepository";
-import { InstitutionAssociateRepository } from "@modules/institutions/repositories/implementations/InstitutionAssociateRepository";
-import { InstitutionRepository } from "@modules/institutions/repositories/implementations/InstitutionRepository";
 import { ISpecieRepository } from "@modules/animals/repositories/ISpecieRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
-import { RoleRepository } from "@modules/accounts/repositories/implementations/RoleRepository";
 import { SpecieRepository } from "@modules/animals/infra/typeorm/repositories/SpecieRepository";
 import { StageOfLifeRepository } from "@modules/animals/infra/typeorm/repositories/StageOfLifeRepository";
-import { UfRepository } from "@modules/adresses/repositories/implementations/UfRepository";
-import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
 import type { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
 import type { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
 import type { IAnimalHealthRepository } from "@modules/animals/repositories/IAnimalHealthRepository";
@@ -31,6 +23,15 @@ import type { IInstitutionRepository } from "@modules/institutions/repositories/
 import type { IRoleRepository } from "@modules/accounts/repositories/IRoleRepository";
 import type { IStageOfLifeRepository } from "@modules/animals/repositories/IStageOfLifeRepository";
 import type { IUfRepository } from "@modules/adresses/repositories/IUfRepository";
+import { AdoptionRequestRepository } from "@modules/adoptions/infra/typeorm/repositories/AdoptionRequestRepository";
+import { AdoptionStatusRepository } from "@modules/adoptions/infra/typeorm/repositories/AdoptionStatusRepository";
+import { InstitutionAddressRepository } from "@modules/adresses/infra/repositories/InstitutionAddressRepository";
+import { InstitutionAssociateRepository } from "@modules/institutions/infra/typeorm/repositories/InstitutionAssociateRepository";
+import { CityRepository } from "@modules/adresses/infra/repositories/CityRepository";
+import { InstitutionRepository } from "@modules/institutions/infra/typeorm/repositories/InstitutionRepository";
+import { RoleRepository } from "@modules/accounts/infra/typeorm/repositories/RoleRepository";
+import { UfRepository } from "@modules/adresses/infra/repositories/UfRepository";
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UserRepository";
 
 container.registerSingleton<IAdoptionRequestRepository>("AdoptionRequestRepository", AdoptionRequestRepository);
 container.registerSingleton<IAdoptionStatusRepository>("AdoptionStatusRepository", AdoptionStatusRepository);

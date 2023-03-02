@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { Institution } from "@modules/institutions/entities/Institution";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 
 export class InstitutionSeeder implements Seeder {
   async run(dataSource: DataSource, factoryManager: SeederFactoryManager) {

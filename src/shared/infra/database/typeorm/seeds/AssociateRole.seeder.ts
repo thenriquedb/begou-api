@@ -1,8 +1,8 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { Role } from "@modules/accounts/entities/Role";
 import { AssociateRole } from "@modules/institutions/enums/AssociateRole";
+import { Role } from "@modules/accounts/infra/typeorm/entities/Role";
 
 export class AssociateRoleSeeder implements Seeder {
   async run(dataSource: DataSource, factoryManager: SeederFactoryManager) {

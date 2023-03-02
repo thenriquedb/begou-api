@@ -4,7 +4,7 @@ import { Seeder, SeederFactoryManager } from "typeorm-extension";
 import { faker } from "@faker-js/faker";
 import { Animal } from "@modules/animals/infra/typeorm/entities/Animal";
 import { StageOfLife } from "@modules/animals/infra/typeorm/entities/StageOfLife";
-import { Institution } from "@modules/institutions/entities/Institution";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";
 import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
 import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";

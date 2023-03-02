@@ -8,9 +8,9 @@ import {
 } from "typeorm";
 
 import { UUID } from "@shared/infra/cryptography/UUID";
-import { User } from "@modules/accounts/entities/User";
-import { Role } from "@modules/accounts/entities/Role";
-import { Institution } from "@modules/institutions/entities/Institution";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
+import { Role } from "@modules/accounts/infra/typeorm/entities/Role";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 
 @Entity("institution_associate")
 export class InstitutionAssociate {

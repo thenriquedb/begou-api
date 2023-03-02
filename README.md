@@ -1,7 +1,7 @@
 # Begou
 
 <p align="center">
-  <img align="center" src="images/logo.png">
+  <img align="center" src="docs/logo.png">
 </p>
 
 <p align="center">

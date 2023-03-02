@@ -1,6 +1,6 @@
 import { ICreateAdoptionDTO } from "@modules/adoptions/dtos/ICreateAdoptionDTO";
 import { IFindAdoptionRequest } from "@modules/adoptions/dtos/IFindAdoptionRequest";
-import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
+import { AdoptionStatus } from "@modules/adoptions/infra/typeorm/entities/AdoptionStatus";
 
 import { AdoptionRequest } from "../entities/AdoptionRequest";
 

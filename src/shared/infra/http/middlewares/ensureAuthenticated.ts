@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 
 import { UnauthorizedError } from "@shared/core/errors/UnauthorizedError";
-import { UsersRepository } from "@modules/accounts/repositories/implementations/UserRepository";
 import { JWTAdapter } from "@shared/infra/cryptography/JWTAdapter";
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UserRepository";
 
 const tokenManager = new JWTAdapter();
+const usersRepository = new UsersRepository();
 
 export async function ensureAuthenticated(
   request: Request,
@@ -22,7 +23,6 @@ export async function ensureAuthenticated(
   try {
     const { sub: user_id } = tokenManager.decrypt(token);
 
-    const usersRepository = new UsersRepository();
     const user = await usersRepository.findById(user_id);
 
     if (!user) {

@@ -8,8 +8,7 @@ import {
 } from "typeorm";
 
 import { UUID } from "@shared/infra/cryptography/UUID";
-
-import { Address } from "../../adresses/entities/Address";
+import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
 
 @Entity("institution")
 export class Institution {

@@ -11,7 +11,7 @@ import {
 
 import { UUID } from "@shared/infra/cryptography/UUID";
 import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
-import { Institution } from "@modules/institutions/entities/Institution";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";
 import { AnimalHealth } from "@modules/animals/infra/typeorm/entities/AnimalHealth";
 import { AnimalPersonality } from "@modules/animals/infra/typeorm/entities/AnimalPersonality";

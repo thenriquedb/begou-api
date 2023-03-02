@@ -9,7 +9,7 @@ const basePath = `${__dirname}/../../../../..`;
 
 const options: DataSourceOptions & SeederOptions = {
   type: "sqlite",
-  database: "./src/db/sqlite/database.sqlite",
+  database: "./database/begou.sqlite",
   entities: [`${basePath}/**/entities/*.{ts,js}`],
   migrations: [`${basePath}/**/migrations/*.{ts,js}`],
   seeds: [MainSeeder],

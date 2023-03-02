@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { User } from "@modules/accounts/entities/User";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { BCryptAdapter } from "@shared/infra/cryptography/BcryptAdapter";
 
 export class UserRoleSeeder implements Seeder {

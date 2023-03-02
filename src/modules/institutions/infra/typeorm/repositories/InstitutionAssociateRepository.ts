@@ -1,10 +1,9 @@
 import { FindOptionsWhere, Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
-import { InstitutionAssociate } from "@modules/institutions/entities/InstitutionAssociate";
+import { InstitutionAssociate } from "@modules/institutions/infra/typeorm/entities/InstitutionAssociate";
 import { ICreateInstitutionAssociateDTO } from "@modules/institutions/dtos/ICreateInstitutionAssociateDTO";
-
-import { IInstitutionAssociateRepository } from "../IInstitutionAssociateRepository";
+import { IInstitutionAssociateRepository } from "@modules/institutions/repositories/IInstitutionAssociateRepository";
 
 export class InstitutionAssociateRepository implements IInstitutionAssociateRepository {
   private repository: Repository<InstitutionAssociate>;

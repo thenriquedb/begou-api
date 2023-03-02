@@ -5,7 +5,7 @@ import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { IAdoptionStatusRepository } from "@modules/adoptions/repositories/IAdoptionStatusRepository";
 import { AdoptionStatusValue } from "@modules/adoptions/enums/AdoptionStatusValue";
 import { IAnimalRepository } from "@modules/animals/repositories/IAnimalRepository";
-import { AdoptionRequest } from "@modules/adoptions/entities/AdoptionRequest";
+import { AdoptionRequest } from "@modules/adoptions/infra/typeorm/entities/AdoptionRequest";
 
 interface IRequest {
   adoption_id: string;

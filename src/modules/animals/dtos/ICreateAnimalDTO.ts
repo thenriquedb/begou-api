@@ -4,7 +4,7 @@ import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
 import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";
 import { StageOfLife } from "@modules/animals/infra/typeorm/entities/StageOfLife";
 import { AnimalGenre } from "@modules/animals/enums/Genre";
-import { Institution } from "@modules/institutions/entities/Institution";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 
 export interface ICreateAnimalDTO {
   name: string;

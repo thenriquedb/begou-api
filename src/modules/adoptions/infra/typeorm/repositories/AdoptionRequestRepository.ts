@@ -1,12 +1,11 @@
 import { Repository } from "typeorm";
 
 import { ICreateAdoptionDTO } from "@modules/adoptions/dtos/ICreateAdoptionDTO";
-import { AdoptionRequest } from "@modules/adoptions/entities/AdoptionRequest";
+import { AdoptionRequest } from "@modules/adoptions/infra/typeorm/entities/AdoptionRequest";
 import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
 import { IFindAdoptionRequest } from "@modules/adoptions/dtos/IFindAdoptionRequest";
-import { AdoptionStatus } from "@modules/adoptions/entities/AdoptionStatus";
-
-import { IAdoptionRequestRepository } from "../IAdoptionRequestRepository";
+import { AdoptionStatus } from "@modules/adoptions/infra/typeorm/entities/AdoptionStatus";
+import { IAdoptionRequestRepository } from "@modules/adoptions/repositories/IAdoptionRequestRepository";
 
 export class AdoptionRequestRepository implements IAdoptionRequestRepository {
   private repository: Repository<AdoptionRequest>;

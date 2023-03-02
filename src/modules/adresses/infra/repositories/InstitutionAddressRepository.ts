@@ -1,10 +1,10 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
+import { IInstitutionAddressRepository } from "@modules/adresses/repositories/IInstitutionAddressRepository";
+import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
 
-import { Address } from "../../entities/Address";
 import { ICreateAddressDTO } from "../../dtos/ICreateAddressDTO";
-import { IInstitutionAddressRepository } from "../IInstitutionAddressRepository";
 
 export class InstitutionAddressRepository implements IInstitutionAddressRepository {
   private repository: Repository<Address>;
@@ -14,13 +14,13 @@ export class InstitutionAddressRepository implements IInstitutionAddressReposito
   }
 
   async create(data: ICreateAddressDTO) {
-    const { neighborhood, street, zipCode, ufInitials, complement } = data;
+    const { neighborhood, street, city, uf, complement } = data;
     const address = this.repository.create({
       complement,
-      neighborhood,
+      uf,
       street,
-      uf_initials: ufInitials,
-      zip_code: zipCode,
+      city,
+      neighborhood,
     });
 
     await this.repository.save(address);

@@ -1,10 +1,9 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/database/typeorm/data-source";
-
-import { City } from "../../entities/City";
-import { ICreateCityDTO } from "../../dtos/ICreateCityDTO";
-import { ICityRepository } from "../ICityRepository";
+import { ICityRepository } from "@modules/adresses/repositories/ICityRepository";
+import { City } from "@modules/adresses/infra/typeorm/entities/City";
+import { ICreateCityDTO } from "@modules/adresses/dtos/ICreateCityDTO";
 
 export class CityRepository implements ICityRepository {
   private repository: Repository<City>;

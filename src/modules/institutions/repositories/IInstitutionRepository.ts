@@ -1,7 +1,7 @@
 import { Address } from "@modules/adresses/entities/Address";
 import { ICreateInstitutionDTO } from "@modules/institutions/dtos/ICreateInstitutionDTO";
 import { IFindInstitutionDTO } from "@modules/institutions/dtos/IFindInstitutionDTO";
-import { Institution } from "@modules/institutions/entities/Institution";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 
 export interface IInstitutionRepository {
   create: (data: ICreateInstitutionDTO) => Promise<void>;

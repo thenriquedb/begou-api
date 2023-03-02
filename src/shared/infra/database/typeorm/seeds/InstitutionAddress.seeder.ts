@@ -1,10 +1,10 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
-import { Institution } from "@modules/institutions/entities/Institution";
-import { Address } from "@modules/adresses/entities/Address";
-import { Uf } from "@modules/adresses/entities/Uf";
-import { City } from "@modules/adresses/entities/City";
+import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
+import { City } from "@modules/adresses/infra/typeorm/entities/City";
+import { Uf } from "@modules/adresses/infra/typeorm/entities/Uf";
+import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 
 export class InstitutionAddressSeeder implements Seeder {
   private async createDefaultUf(dataSource: DataSource) {
