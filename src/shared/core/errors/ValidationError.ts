@@ -1,4 +1,4 @@
-import { ClassValidationDetails } from "@shared/infra/validators/ClassValdiatorAdapter";
+import { ClassValidationDetails } from "@shared/infra/adapters/validators/ClassValdiatorAdapter";
 
 import { AppError } from "./AppError";
 

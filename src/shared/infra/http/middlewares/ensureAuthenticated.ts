@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 import { UnauthorizedError } from "@shared/core/errors/UnauthorizedError";
-import { JWTAdapter } from "@shared/infra/jwt/JWTAdapter";
+import { JWTAdapter } from "@shared/infra/adapters/jwt/JWTAdapter";
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UserRepository";
 
 const tokenManager = new JWTAdapter();

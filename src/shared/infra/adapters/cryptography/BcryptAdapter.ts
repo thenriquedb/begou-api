@@ -1,6 +1,6 @@
 import { compare, hash } from "bcryptjs";
 
-import { IEncoder } from "@data/protocols/cryptography/IEncoder";
+import { IEncoder } from "@data/ports/cryptography/IEncoder";
 
 export class BCryptAdapter implements IEncoder {
   async encode(plain: string, salt: string | number) {

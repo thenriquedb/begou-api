@@ -7,7 +7,7 @@ import {
   JoinColumn,
 } from "typeorm";
 
-import { UUID } from "@shared/infra/uuid/UUID";
+import { UUID } from "@shared/infra/adapters/uuid/UUID";
 import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
 
 @Entity("institution")

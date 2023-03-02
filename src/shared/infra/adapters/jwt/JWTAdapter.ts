@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 import config from "@shared/config/cryptography";
-import { IPayload, ITokenManager } from "@data/protocols/cryptography/ITokenManager";
+import { IPayload, ITokenManager } from "@data/ports/cryptography/ITokenManager";
 
 export class JWTAdapter implements ITokenManager {
   private readonly secret: string = config.secret;

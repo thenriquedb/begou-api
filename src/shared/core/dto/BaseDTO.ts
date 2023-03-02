@@ -1,5 +1,5 @@
 import { ValidationError } from "@shared/core/errors/ValidationError";
-import { ClassValidator } from "@shared/infra/validators/ClassValdiatorAdapter";
+import { ClassValidator } from "@shared/infra/adapters/validators/ClassValdiatorAdapter";
 
 export abstract class BaseDTO {
   public abstract create(data: Partial<this>);

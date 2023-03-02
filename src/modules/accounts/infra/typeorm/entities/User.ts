@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
 
-import { UUID } from "@shared/infra/uuid/UUID";
+import { UUID } from "@shared/infra/adapters/uuid/UUID";
 
 @Entity("user")
 class User {

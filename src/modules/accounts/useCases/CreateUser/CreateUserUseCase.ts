@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { ConflictError } from "@shared/core/errors/ConflictError";
-import { IEncoder } from "@data/protocols/cryptography/IEncoder";
+import { IEncoder } from "@data/ports/cryptography/IEncoder";
 
 import { CreateUserRequestDto } from "../../dtos/CreateUser";
 import { IUsersRepository } from "../../repositories/IUserRepository";

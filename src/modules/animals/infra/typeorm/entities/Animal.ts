@@ -9,7 +9,7 @@ import {
   JoinTable,
 } from "typeorm";
 
-import { UUID } from "@shared/infra/uuid/UUID";
+import { UUID } from "@shared/infra/adapters/uuid/UUID";
 import { AnimalSize } from "@modules/animals/infra/typeorm/entities/AnimalSize";
 import { Institution } from "@modules/institutions/infra/typeorm/entities/Institution";
 import { Specie } from "@modules/animals/infra/typeorm/entities/Specie";

@@ -1,5 +1,5 @@
 import cepPromise from "cep-promise";
-import { AddressService, IAddressData } from "@data/protocols/address-service/IAddressService";
+import { AddressService, IAddressData } from "@data/ports/address-service/IAddressService";
 
 import { BrazilUfs } from "./ufs";
 

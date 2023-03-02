@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryColumn } from "typeorm";
 
-import { UUID } from "@shared/infra/uuid/UUID";
+import { UUID } from "@shared/infra/adapters/uuid/UUID";
 
 @Entity("adoption_status")
 export class AdoptionStatus {
