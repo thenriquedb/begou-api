@@ -6,9 +6,9 @@ import {
   IsString,
   Length,
 } from "class-validator";
+import { plainToInstance } from "class-transformer";
 
 import { BaseDTO } from "@shared/core/dto/BaseDTO";
-import { ClassTransformer } from "@shared/infra/util/ClassTransformer";
 
 export class CreateUserRequestDto extends BaseDTO {
   @IsNotEmpty()
@@ -28,6 +28,6 @@ export class CreateUserRequestDto extends BaseDTO {
   phone_number: string;
 
   public create(data: Partial<this>) {
-    return ClassTransformer.plainToInstance(CreateUserRequestDto, data);
+    return plainToInstance(CreateUserRequestDto, data);
   }
 }

@@ -1,9 +1,8 @@
-import { Type, Expose } from "class-transformer";
+import { Type, Expose, plainToInstance } from "class-transformer";
 import { IsNotEmpty, ArrayUnique, IsOptional, IsEnum } from "class-validator";
 
 import { AnimalGenre } from "@modules/animals/enums/Genre";
 import { BaseDTO } from "@shared/core/dto/BaseDTO";
-import { ClassTransformer } from "@shared/infra/util/ClassTransformer";
 
 @Expose()
 export class CreateAnimalRequestDTO extends BaseDTO {
@@ -38,6 +37,6 @@ export class CreateAnimalRequestDTO extends BaseDTO {
   personality_ids: string[];
 
   public create(data: Partial<this>) {
-    return ClassTransformer.plainToInstance(CreateAnimalRequestDTO, data);
+    return plainToInstance(CreateAnimalRequestDTO, data);
   }
 }

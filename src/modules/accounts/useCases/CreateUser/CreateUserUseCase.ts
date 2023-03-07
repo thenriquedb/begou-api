@@ -6,6 +6,11 @@ import { IEncoder } from "@data/ports/cryptography/IEncoder";
 import { CreateUserRequestDto } from "../../dtos/CreateUser";
 import { IUsersRepository } from "../../repositories/IUserRepository";
 
+type IRequest = Pick<
+  CreateUserRequestDto,
+  "email" | "name" | "password" | "phone_number"
+>;
+
 @injectable()
 class CreateUserUseCase {
   private usersRepository: IUsersRepository;
@@ -21,7 +26,7 @@ class CreateUserUseCase {
     this.encoder = encoder;
   }
 
-  async execute(data: CreateUserRequestDto) {
+  async execute(data: IRequest) {
     const { email, name, password, phone_number } = data;
 
     const user = await this.usersRepository.findByEmail(email);

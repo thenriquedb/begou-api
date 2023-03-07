@@ -19,7 +19,12 @@ class CreateUserController {
 
     await dto.validate();
 
-    await createUserUseCase.execute(dto);
+    await createUserUseCase.execute({
+      email,
+      name,
+      password,
+      phone_number,
+    });
 
     return response.status(201).send();
   }
