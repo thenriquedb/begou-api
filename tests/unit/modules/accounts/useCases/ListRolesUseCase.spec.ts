@@ -1,6 +1,6 @@
 import { RoleRepositoryFake } from "@tests/common/modules/accounts/repositories/RoleRepositoryFake";
 import { describe, it, expect, beforeEach } from "@jest/globals";
-import { ListRolesUseCase } from "@modules/accounts/useCases/ListRoles/ListRoleUseCase";
+import { ListRolesUseCase } from "@modules/accounts/useCases/ListRoles/ListRolesUseCase";
 import { faker } from "@faker-js/faker";
 import { BadRequestError } from "@shared/core/errors/BadRequestError";
 import { CreateRoleUseCase } from "@modules/accounts/useCases/CreateRole/CreateRoleUseCase";

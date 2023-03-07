@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { ListRolesUseCase } from "./ListRoleUseCase";
+import { ListRolesUseCase } from "./ListRolesUseCase";
 
 export class ListRolesController {
   async handle(request: Request, response: Response) {
